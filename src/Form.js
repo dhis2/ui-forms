@@ -7,7 +7,7 @@ const defaultMutators = {
     clear,
 }
 
-export const Form = ({ children, mutators, ...props }) => {
+export const Form = ({ mutators, ...props }) => {
     return (
         <RFFForm
             {...props}
@@ -15,9 +15,7 @@ export const Form = ({ children, mutators, ...props }) => {
                 ...defaultMutators,
                 ...mutators,
             }}
-        >
-            {children}
-        </RFFForm>
+        />
     )
 }
 

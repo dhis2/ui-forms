@@ -8,10 +8,14 @@ export const conditional = Input => {
             {condition && <Input {...props} />}
 
             <FormSpy
-                onChange={({ form }) => {
+                render={({ form, values }) => {
+                    if (!form.mutators.clear) return <Fragment />
+
                     if (!condition && values[props.name]) {
                         form.mutators.clear(props.name)
                     }
+
+                    return <Fragment />
                 }}
             />
         </Fragment>
