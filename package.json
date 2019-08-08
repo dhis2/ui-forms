@@ -1,0 +1,74 @@
+{
+    "name": "@dhis2/ui-form",
+    "version": "1.0.4",
+    "main": "./build/cjs/index.js",
+    "module": "./build/es/index.js",
+    "sideEffects": false,
+    "repository": "git@github.com:dhis2/ui-widgets.git",
+    "author": "Jan-Gerke Salomon <jan-gerke@dhis2.org>",
+    "contributors": [],
+    "license": "BSD-3-Clause",
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "extract-pot": "d2-i18n-extract -p src/ -o i18n/",
+        "generate-locale": "d2-i18n-generate -n 'ui-widgets' -p ./i18n/ -o ./src/locales/",
+        "localize": "yarn extract-pot && yarn generate-locale",
+        "prebuild": "rm -rf ./build/* && yarn localize",
+        "build:commonjs": "BABEL_ENV=commonjs babel src --out-dir ./build/cjs --copy-files --verbose",
+        "build:modules": "BABEL_ENV=modules babel src --out-dir ./build/es --copy-files --verbose",
+        "build": "NODE_ENV=production yarn build:commonjs && NODE_ENV=production yarn build:modules",
+        "postbuild": "NODE_ENV=production yarn build-storybook",
+        "build-storybook": "build-storybook -c .storybook -o ./build/docs",
+        "start-storybook": "start-storybook --port 5000",
+        "prestart": "yarn localize",
+        "start": "yarn start-storybook"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "d2-style commit check",
+            "pre-commit": "d2-style js apply"
+        }
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.0.0",
+        "@babel/core": "^7.0.0",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+        "@babel/plugin-transform-react-constant-elements": "^7.2.0",
+        "@babel/preset-env": "^7.1.6",
+        "@babel/preset-react": "^7.0.0",
+        "@dhis2/app-runtime": "1.2.0",
+        "@dhis2/cli-style": "3.3.1",
+        "@dhis2/d2-i18n-extract": "1.0.8",
+        "@dhis2/d2-i18n-generate": "1.1.1",
+        "@storybook/addon-notes": "5.0.11",
+        "@storybook/react": "5.0.11",
+        "babel-loader": "^8.0.5",
+        "fs-extra": "^7.0.0",
+        "husky": "^2.4.1",
+        "react": "^16.8.6",
+        "react-dev-utils": "^8.0.0",
+        "react-dom": "^16.8.6",
+        "storybook-addon-jsx": "^7.0.0",
+        "storybook-addon-react-docgen": "^1.2.2",
+        "typeface-roboto": "^0.0.54"
+    },
+    "peerDependencies": {
+        "@dhis2/app-runtime": "^1.1.0",
+        "prop-types": "^15",
+        "react": "^16.8",
+        "react-dom": "^16.8"
+    },
+    "dependencies": {
+        "@dhis2/d2-i18n": "1.0.4",
+        "@dhis2/ui-core": "3.3.0",
+        "classnames": "^2.2.6",
+        "styled-jsx": "^3.2.1"
+    },
+    "files": [
+        "build"
+    ]
+}
