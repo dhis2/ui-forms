@@ -1,11 +1,11 @@
-import { useField } from 'react-final-form'
 import { Help } from '@dhis2/ui-core'
+import { useField } from 'react-final-form'
 import React, { useRef, useCallback } from 'react'
 import propTypes from 'prop-types'
-import i18n from '@dhis2/d2-i18n'
 
-import { styles } from './File/styles.js'
 import { FileUploadIcon } from './File/FileUploadIcon.js'
+import { conditional } from './conditional'
+import { styles } from './File/styles.js'
 
 const useFileField = ({ name, ref, validate }) => {
     return useField(name, {
@@ -21,7 +21,7 @@ const useOnClick = ({ ref }) => {
     }, [ref])
 }
 
-export const File = ({ name, label, validate }) => {
+const File = ({ name, label, validate }) => {
     const ref = useRef()
     const onClick = useOnClick({ ref })
     const { input, meta } = useFileField({ name, ref, validate })
@@ -54,7 +54,6 @@ File.propTypes = {
     validate: propTypes.func,
 }
 
-File.propTypes = {
-    name: propTypes.string,
-    validate: propTypes.func,
-}
+const ConditionalFile = conditional(File)
+
+export { ConditionalFile as File }
