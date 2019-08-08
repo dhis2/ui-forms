@@ -27,6 +27,7 @@ const File = ({ name, label, validate }) => {
     const { input, meta } = useFileField({ name, ref, validate })
 
     const { value, ...withoutValue } = input
+    const realLabel = value ? value.name : label
 
     return (
         <div className="container">
@@ -34,7 +35,7 @@ const File = ({ name, label, validate }) => {
 
             <button onClick={onClick} className="button">
                 <FileUploadIcon />
-                <span className="label">{label}</span>
+                <span className="label">{realLabel}</span>
             </button>
 
             {meta.touched && meta.error && (
