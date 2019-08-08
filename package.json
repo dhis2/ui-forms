@@ -24,12 +24,13 @@
         "build-storybook": "build-storybook -c .storybook -o ./build/docs",
         "start-storybook": "start-storybook --port 5000",
         "prestart": "yarn localize",
-        "start": "yarn start-storybook"
+        "start": "yarn start-storybook",
+        "test": "jest"
     },
     "husky": {
         "hooks": {
             "commit-msg": "d2-style commit check",
-            "pre-commit": "d2-style js apply"
+            "pre-commit": "yarn test && d2-style js apply"
         }
     },
     "devDependencies": {
@@ -67,6 +68,7 @@
         "@dhis2/ui-core": "3.3.0",
         "classnames": "^2.2.6",
         "final-form": "^4.18.3",
+        "jest": "^24.8.0",
         "react-final-form": "^6.3.0",
         "styled-jsx": "^3.2.1"
     },
