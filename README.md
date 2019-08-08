@@ -4,3 +4,13 @@
 
 **[Online docs and demos (latest master
 build)](https://d2-ci.github.io/ui-form/)**
+
+## Building a form
+
+This library offers a `<Form />` component with the same api as react-final-form's Form api.
+It should always be used as `ui-forms` uses custom mutators behind the scenes to provide certain functionalities such as conditional fields.
+
+### Validation
+
+`ui-forms` provides basic validation functions and a `composeValidators`.
+The validation functions have the same api as react-final-form's validators
