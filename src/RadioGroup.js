@@ -2,10 +2,10 @@ import { Radio as RadioOrig } from '@dhis2/ui-core'
 import { useField } from 'react-final-form'
 import React from 'react'
 import propTypes from 'prop-types'
+import css from 'styled-jsx/css'
 
 import { Radio } from './Radio.js'
 import { conditional } from './helper/conditional.js'
-import { styles } from './RadioGroup/styles.js'
 
 const RadioGroup = ({ label, name, options, validate, defaultValue }) => {
     return (
@@ -14,10 +14,9 @@ const RadioGroup = ({ label, name, options, validate, defaultValue }) => {
 
             <div className="inputs">
                 {options.map(option => (
-                    <div className="input">
+                    <div className="input" key={option.value}>
                         <Radio
                             name={name}
-                            key={option.value}
                             value={option.value}
                             label={option.label}
                             validate={validate}
@@ -27,7 +26,39 @@ const RadioGroup = ({ label, name, options, validate, defaultValue }) => {
                 ))}
             </div>
 
-            <style jsx>{styles}</style>
+            {
+                /*
+                For whatever reason styled-jsx had problems when all styles where in one tag
+            */ ''
+            }
+            <style jsx>{`
+                .container {
+                    margin-bottom: 15px;
+                }
+            `}</style>
+
+            <style jsx>{`
+                .label {
+                    display: block;
+                    color: #000;
+                    font-size: 13px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    margin: 0 0 10px;
+                }
+            `}</style>
+
+            <style jsx>{`
+                .inputs {
+                    display: flex;
+                }
+            `}</style>
+
+            <style jsx>{`
+                .input {
+                    margin-right: 15px;
+                }
+            `}</style>
         </div>
     )
 }
