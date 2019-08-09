@@ -18,7 +18,7 @@ export const styles = css`
         display: flex;
     }
 
-    .input-container {
+    .input {
         margin-right: 15px;
     }
 `

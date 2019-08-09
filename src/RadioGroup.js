@@ -14,7 +14,7 @@ const RadioGroup = ({ label, name, options, validate, defaultValue }) => {
 
             <div className="inputs">
                 {options.map(option => (
-                    <div className="input-container">
+                    <div className="input">
                         <Radio
                             name={name}
                             key={option.value}

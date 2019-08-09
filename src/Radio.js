@@ -3,8 +3,6 @@ import { Radio as RadioOrig } from '@dhis2/ui-core'
 import React, { Fragment } from 'react'
 import propTypes from 'prop-types'
 
-import { styles } from './Radio/styles.js'
-
 const Radio = ({ name, label, value, validate, defaultValue }) => {
     const { input, meta } = useField(name, {
         type: 'radio',
@@ -14,18 +12,14 @@ const Radio = ({ name, label, value, validate, defaultValue }) => {
     })
 
     return (
-        <Fragment>
-            <RadioOrig
-                {...input}
-                key={value}
-                label={label}
-                valid={!!input.value && !meta.error}
-                error={meta.touched && !!meta.error}
-                className="radio"
-            />
-
-            <style jsx>{styles}</style>
-        </Fragment>
+        <RadioOrig
+            {...input}
+            key={value}
+            label={label}
+            valid={!!input.value && !meta.error}
+            error={meta.touched && !!meta.error}
+            className="radio"
+        />
     )
 }
 
