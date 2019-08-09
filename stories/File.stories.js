@@ -1,12 +1,10 @@
 import React from 'react'
-import { addDecorator, storiesOf } from '@storybook/react'
+import { storiesOf } from '@storybook/react'
 
-import { FormWrapper } from '../.storybook/form-decorator'
-import { File, required } from '../src'
-
-addDecorator(FormWrapper)
+import { Form, File, required } from '../src'
 
 storiesOf('File', module)
+    .addDecorator(fn => <Form onSubmit={console.log}>{() => fn()}</Form>)
     .add('Default', () => <File name="upload" label="This is a file upload" />)
     .add('Required', () => (
         <File

@@ -4,7 +4,7 @@ import React, { useRef, useCallback } from 'react'
 import propTypes from 'prop-types'
 
 import { FileUploadIcon } from './File/FileUploadIcon.js'
-import { conditional } from './conditional'
+import { conditional } from './helper/conditional.js'
 import { styles } from './File/styles.js'
 
 const useFileField = ({ name, ref, validate }) => {
@@ -57,4 +57,4 @@ File.propTypes = {
 
 const ConditionalFile = conditional(File)
 
-export { ConditionalFile as File }
+export { File, ConditionalFile }
