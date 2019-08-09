@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import { storiesOf } from '@storybook/react'
 
-import { File, Form, required } from '../src'
+import { ManagedForm, File, ConditionalFile, required } from '../src'
 
 storiesOf('Conditional fields', module).add('Default', () => (
-    <Form onSubmit={v => console.log(JSON.stringify(v, null, 2))}>
-        {({ handleSubmit, values }) => (
-            <form data-test onSubmit={handleSubmit}>
+    <ManagedForm onSubmit={v => console.log(JSON.stringify(v, null, 2))}>
+        {({ values }) => (
+            <Fragment>
                 <File name="file1" label="File one" />
 
-                <File
+                <ConditionalFile
                     name="file2"
                     label="File two"
                     condition={!!values.file1}
                 />
-            </form>
+            </Fragment>
         )}
-    </Form>
+    </ManagedForm>
 ))
