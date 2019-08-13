@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import { storiesOf } from '@storybook/react'
 
-import { ManagedForm, File, ConditionalFile, required } from '../src'
+import { ManagedForm, File, ConditionalFile } from '../src'
 
 storiesOf('Conditional fields', module).add('Default', () => (
     <ManagedForm onSubmit={v => console.log(JSON.stringify(v, null, 2))}>

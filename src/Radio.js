@@ -1,6 +1,6 @@
 import { useField } from 'react-final-form'
 import { Radio as RadioOrig } from '@dhis2/ui-core'
-import React, { Fragment } from 'react'
+import React from 'react'
 import propTypes from 'prop-types'
 
 const Radio = ({ name, label, value, validate, defaultValue }) => {

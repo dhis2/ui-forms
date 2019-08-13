@@ -1,8 +1,5 @@
-import { Radio as RadioOrig } from '@dhis2/ui-core'
-import { useField } from 'react-final-form'
 import React from 'react'
 import propTypes from 'prop-types'
-import css from 'styled-jsx/css'
 
 import { Radio } from './Radio.js'
 import { conditional } from './helper/conditional.js'
