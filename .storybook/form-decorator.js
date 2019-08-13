@@ -1,6 +1,5 @@
 import { Form } from 'react-final-form'
-import React, { Fragment } from 'react'
-import css from 'styled-jsx/css'
+import React from 'react'
 
 const FormWrapper = fn => (
     <Form onSubmit={values => console.log(JSON.stringify(values, null, 2))}>
