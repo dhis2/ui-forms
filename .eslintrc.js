@@ -37,5 +37,6 @@ module.exports = {
             },
         ],
         'no-mixed-spaces-and-tabs': [SEVERITY],
+        'import/extensions': [SEVERITY, 'ignorePackages'],
     },
 }
