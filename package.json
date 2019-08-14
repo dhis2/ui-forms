@@ -61,7 +61,7 @@
         "husky": "^3.0.3",
         "react": "^16.8.6",
         "react-dev-utils": "^9.0.3",
-        "react-dom": "^16.8.6",
+        "react-dom": "^16.9.0",
         "storybook-addon-jsx": "^7.0.0",
         "storybook-addon-react-docgen": "^1.2.2",
         "typeface-roboto": "^0.0.75"
