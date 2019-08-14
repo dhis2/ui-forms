@@ -2,7 +2,7 @@ import { Form as RFFForm } from 'react-final-form'
 import React from 'react'
 import propTypes from 'prop-types'
 
-import { clear } from './ManagedForm/mutators.js'
+import { clear } from './mutators.js'
 
 const defaultMutators = {
     clear,

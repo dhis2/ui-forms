@@ -1,7 +1,7 @@
 import React from 'react'
 import propTypes from 'prop-types'
 
-import { Radio } from './Radio.js'
+import { Radio } from '../components/Radio.js'
 
 const RadioGroup = ({ label, name, options, validate, defaultValue }) => {
     return (
