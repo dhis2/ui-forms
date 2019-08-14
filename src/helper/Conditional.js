@@ -24,8 +24,8 @@ Conditional.propTypes = {
     show: propTypes.bool,
     fieldsToClearOnHide: propTypes.arrayOf(propTypes.string),
     children: propTypes.oneOfType([
-        propTypes.element,
-        propTypes.arrayOf(propTypes.element),
+        propTypes.node,
+        propTypes.arrayOf(propTypes.node),
     ]),
 }
 
