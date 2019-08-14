@@ -2,7 +2,6 @@ import React from 'react'
 import propTypes from 'prop-types'
 
 import { Radio } from './Radio.js'
-import { conditional } from './helper/conditional.js'
 
 const RadioGroup = ({ label, name, options, validate, defaultValue }) => {
     return (
@@ -74,6 +73,4 @@ RadioGroup.propTypes = {
     defaultValue: propTypes.string,
 }
 
-const ConditionalRadioGroup = conditional(RadioGroup)
-
-export { RadioGroup, ConditionalRadioGroup }
+export { RadioGroup }
