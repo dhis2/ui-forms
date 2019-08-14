@@ -32,7 +32,7 @@ const File = ({ name, label, validate }) => {
         <div className="container">
             <input {...withoutValue} ref={ref} className="input" />
 
-            <button onClick={onClick} className="button">
+            <button onClick={onClick} className="button" type="button">
                 <FileUploadIcon />
                 <span className="label">{realLabel}</span>
             </button>
