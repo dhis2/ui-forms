@@ -3,10 +3,14 @@ import { Form } from '../../src'
 
 const defaultFormProps = {
     onSubmit: values => {
-        console.log('++++++++++++++++')
-        console.log('Form was submitted, values:')
-        console.log(values)
-        console.log('----------------')
+        console.log(
+            [
+                '++++++++++++++++',
+                'Form was submitted with values:',
+                JSON.stringify(values, null, 4),
+                '----------------',
+            ].join('\n')
+        )
     },
     mutators: {},
 }

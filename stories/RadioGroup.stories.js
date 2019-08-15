@@ -14,7 +14,7 @@ storiesOf('RadioGroup', module)
     .addDecorator(formDecorator)
     .add('Default', () => (
         <Field
-            name="default"
+            name="choice"
             label="Choose something"
             component={RadioGroup}
             options={options}
@@ -23,7 +23,7 @@ storiesOf('RadioGroup', module)
     ))
     .add('Required', () => (
         <Field
-            name="default"
+            name="choice"
             label="Choose something"
             component={RadioGroup}
             validate={required}
