@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { RadioGroup, required } from '../src'
+import { Field, RadioGroup, required } from '../src'
 import { formDecorator } from './helpers/formDecorator'
 
 const options = [
@@ -13,13 +13,22 @@ const options = [
 storiesOf('RadioGroup', module)
     .addDecorator(formDecorator)
     .add('Default', () => (
-        <RadioGroup name="fooBarBaz" label="FooBarBaz" options={options} />
+        <Field
+            name="default"
+            label="Choose something"
+            component={RadioGroup}
+            options={options}
+            type="select"
+        />
     ))
     .add('Required', () => (
-        <RadioGroup
-            name="fooBarBaz"
-            label="FooBarBaz *"
-            options={options}
+        <Field
+            name="default"
+            label="Choose something"
+            component={RadioGroup}
             validate={required}
+            required
+            options={options}
+            type="select"
         />
     ))
