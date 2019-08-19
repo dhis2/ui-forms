@@ -4,7 +4,15 @@ import propTypes from 'prop-types'
 import { FlexContainer, GroupLabel, InputSpacer } from './for-ui-core/index.js'
 import { Help, Radio } from '@dhis2/ui-core'
 
-const RadioGroup = ({ input, meta, options, required, inline, label }) => {
+const RadioGroup = ({
+    input,
+    meta,
+    options,
+    required,
+    inline,
+    label,
+    ...rest
+}) => {
     const hasError = meta.touched && meta.invalid
     const flexDirection = inline ? 'row' : 'column'
 
@@ -23,6 +31,7 @@ const RadioGroup = ({ input, meta, options, required, inline, label }) => {
                             label={option.label}
                             checked={input.value === option.value}
                             onChange={input.onChange}
+                            {...rest}
                         />
                     </InputSpacer>
                 ))}
