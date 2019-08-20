@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from '@dhis2/ui-core'
 import { Form } from '../../src'
 
 const defaultFormProps = {
@@ -16,11 +17,13 @@ const defaultFormProps = {
 }
 
 export const createFormDecorator = formProps => fn => (
-    <Form {...{ ...defaultFormProps, ...formProps }}>
-        {formProps => (
-            <form onSubmit={formProps.handleSubmit}>
-                {fn({ formProps })}
-                <button type="submit">Submit</button>
+    <Form {...defaultFormProps} {...formProps}>
+        {formRenderProps => (
+            <form onSubmit={formRenderProps.handleSubmit}>
+                {fn({ formRenderProps })}
+                <Button primary type="submit">
+                    Submit
+                </Button>
             </form>
         )}
     </Form>

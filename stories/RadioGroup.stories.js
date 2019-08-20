@@ -30,5 +30,6 @@ storiesOf('RadioGroup', module)
             required
             options={options}
             type="select"
+            inline={false}
         />
     ))

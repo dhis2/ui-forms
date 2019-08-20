@@ -7,12 +7,12 @@ import { createFormDecorator } from './helpers/formDecorator.js'
 
 storiesOf('Conditional fields', module)
     .addDecorator(createFormDecorator({ mutators: { clear } }))
-    .add('Default', ({ formProps }) => (
+    .add('Default', ({ formRenderProps }) => (
         <>
             <File name="file1" label="File one" />
 
             <Conditional
-                show={!!formProps.values.file1}
+                show={!!formRenderProps.values.file1}
                 fieldsToClearOnHide={['file2', 'file3']}
             >
                 <File name="file2" label="File two - cleared on hide" />
