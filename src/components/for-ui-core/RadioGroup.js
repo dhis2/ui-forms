@@ -3,7 +3,7 @@ import propTypes from 'prop-types'
 import cx from 'classnames'
 import { resolve } from 'styled-jsx/css'
 
-import { Help, Radio } from '@dhis2/ui-core'
+import { Radio } from '@dhis2/ui-core'
 
 import { theme } from '@dhis2/ui-core'
 const spacers = {
@@ -36,7 +36,7 @@ const RadioGroup = ({
     const radioStyle = inline ? inlineRadio : stackedRadio
 
     return (
-        <div className={cx('container', className)}>
+        <>
             <span className={cx('group-label', { ...statusProps, required })}>
                 {label}
             </span>
@@ -54,13 +54,8 @@ const RadioGroup = ({
                     />
                 ))}
             </div>
-            {helpText && <Help {...statusProps}>{helpText}</Help>}
             {radioStyle.styles}
             <style jsx>{`
-                .container {
-                    box-sizing: content-box;
-                }
-
                 .group-label {
                     display: block;
                     font-size: 16px;
@@ -96,7 +91,7 @@ const RadioGroup = ({
                     color: ${theme.warning};
                 }
             `}</style>
-        </div>
+        </>
     )
 }
 
