@@ -12,6 +12,7 @@ const defaultFormProps = {
                 '----------------',
             ].join('\n')
         )
+        console.log(values)
     },
     mutators: {},
 }

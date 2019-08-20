@@ -1,57 +1,34 @@
+import React from 'react'
+import { File as UiCoreFile } from './for-ui-core/File.js'
+import { FormControl } from './for-ui-core/FormControl.js'
 import { Help } from '@dhis2/ui-core'
-import { useField } from 'react-final-form'
-import React, { useRef, useCallback } from 'react'
-import propTypes from 'prop-types'
+import { fieldRenderProps } from './Field.js'
 
-import { FileUploadIcon } from './File/FileUploadIcon.js'
-import { styles } from './File/styles.js'
-
-const useFileField = ({ name, ref, validate }) => {
-    return useField(name, {
-        type: 'file',
-        parse: () => ref.current.files[0],
-        validate,
-    })
-}
-
-const useOnClick = ({ ref }) => {
-    return useCallback(() => {
-        ref.current.click()
-    }, [ref])
-}
-
-const File = ({ name, label, validate }) => {
-    const ref = useRef()
-    const onClick = useOnClick({ ref })
-    const { input, meta } = useFileField({ name, ref, validate })
-
-    const { value, ...withoutValue } = input
-    const realLabel = value ? value.name : label
+const File = ({ input, meta, ...rest }) => {
+    const error = meta.touched && meta.invalid
+    const helpText = error ? meta.error : rest.helpText
 
     return (
-        <div className="container">
-            <input {...withoutValue} ref={ref} className="input" />
-
-            <button onClick={onClick} className="button" type="button">
-                <FileUploadIcon />
-                <span className="label">{realLabel}</span>
-            </button>
-
-            {meta.touched && meta.error && (
-                <div className="error">
-                    <Help error>{meta.error}</Help>
-                </div>
+        <FormControl>
+            <UiCoreFile
+                {...input}
+                {...meta}
+                {...rest}
+                error={error}
+                valid={rest.valid}
+            />
+            {helpText && (
+                <Help error={error} warning={rest.warning} valid={rest.valid}>
+                    {helpText}
+                </Help>
             )}
-
-            <style jsx>{styles}</style>
-        </div>
+        </FormControl>
     )
 }
 
 File.propTypes = {
-    name: propTypes.string.isRequired,
-    label: propTypes.string.isRequired,
-    validate: propTypes.func,
+    ...fieldRenderProps,
+    ...UiCoreFile.propTypes,
 }
 
 export { File }
