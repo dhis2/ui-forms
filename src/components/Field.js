@@ -11,7 +11,7 @@ const fieldRenderProps = {
     }),
     meta: propTypes.shape({
         active: propTypes.bool,
-        data: propTypes.bool,
+        data: propTypes.object,
         dirty: propTypes.bool,
         dirtySinceLastSubmit: propTypes.bool,
         error: propTypes.string,
