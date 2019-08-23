@@ -1030,9 +1030,9 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.0.3.tgz#6230616b355c80373a7bd05af395a7eba666322a"
 
-"@dhis2/ui-core@3.7.2":
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui-core/-/ui-core-3.7.2.tgz#a1229930b1a7700883b7d903fa7c335471e2b153"
+"@dhis2/ui-core@3.9.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui-core/-/ui-core-3.9.0.tgz#67711e7446e7045a9b90b094a616b11bb7a91514"
   dependencies:
     "@dhis2/prop-types" "^1.0.3"
     classnames "^2.2.6"
