@@ -9236,9 +9236,9 @@ store2@^2.7.1:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.8.0.tgz#032d5dcbd185a5d74049d67a1765ff1e75faa04b"
 
-storybook-addon-jsx@^7.0.0:
-  version "7.1.5"
-  resolved "https://registry.yarnpkg.com/storybook-addon-jsx/-/storybook-addon-jsx-7.1.5.tgz#f57b4fdc7da5d07b85b1da6a9425207bffbc2fb1"
+storybook-addon-jsx@^7.1.6:
+  version "7.1.6"
+  resolved "https://registry.yarnpkg.com/storybook-addon-jsx/-/storybook-addon-jsx-7.1.6.tgz#56177cc0c98d836fcec837c8bb2f7e2c64838f7f"
   dependencies:
     copy-to-clipboard "^3.0.8"
     js-beautify "^1.8.8"
