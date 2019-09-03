@@ -1,7 +1,6 @@
 // Components
 export { Form } from './components/Form.js'
 export { Field } from './components/Field.js'
-export { Conditional } from './components/Conditional.js'
 export { File } from './components/File.js'
 export { RadioGroup } from './components/RadioGroup.js'
 
