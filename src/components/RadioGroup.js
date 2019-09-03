@@ -1,34 +1,62 @@
 import React from 'react'
-import { RadioGroup as UiCoreRadioGroup } from './for-ui-core/RadioGroup.js'
-import { Help } from '@dhis2/ui-core'
-import { FormControl } from './for-ui-core/FormControl.js'
-import { fieldRenderProps } from './Field.js'
+import propTypes from 'prop-types'
+import { FormControl, FieldSet, Legend, Radio, Help } from '@dhis2/ui-core'
 
-const RadioGroup = ({ input, meta, ...rest }) => {
-    const error = meta.touched && meta.invalid
-    const helpText = error ? meta.error : rest.helpText
+import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
 
+const RadioGroupComponent = ({
+    label,
+    required,
+    options,
+    name,
+    value,
+    onChange,
+    error,
+    warning,
+    valid,
+    helpText,
+    errorText,
+}) => {
     return (
         <FormControl>
-            <UiCoreRadioGroup
-                {...input}
-                {...meta}
-                {...rest}
-                error={error}
-                valid={rest.valid}
-            />
-            {helpText && (
-                <Help error={error} warning={rest.warning} valid={rest.valid}>
-                    {helpText}
-                </Help>
-            )}
+            <FieldSet>
+                {label && <Legend required={required}>{label}</Legend>}
+
+                {options.map(option => (
+                    <FormControl key={option.value}>
+                        <Radio
+                            name={name}
+                            value={option.value}
+                            label={option.label}
+                            checked={value === option.value}
+                            onChange={onChange}
+                            error={error}
+                            warning={warning}
+                            valid={valid}
+                        />
+                    </FormControl>
+                ))}
+
+                {helpText && <Help>{helpText}</Help>}
+
+                {error && errorText && <Help error>{errorText}</Help>}
+            </FieldSet>
         </FormControl>
     )
 }
 
-RadioGroup.propTypes = {
-    ...fieldRenderProps,
-    ...UiCoreRadioGroup.propTypes,
+RadioGroupComponent.propTypes = {
+    ...adapterComponentProps,
+    options: propTypes.arrayOf(
+        propTypes.shape({
+            label: propTypes.string.isRequired,
+            value: propTypes.any.isRequired,
+        })
+    ).isRequired,
 }
+
+const RadioGroup = props => (
+    <FieldAdapter {...props} component={RadioGroupComponent} />
+)
 
 export { RadioGroup }
