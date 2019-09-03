@@ -1030,11 +1030,24 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.0.3.tgz#6230616b355c80373a7bd05af395a7eba666322a"
 
+"@dhis2/prop-types@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.0.4.tgz#37eb55a3baf7bc9cf76e19222ad4e2d0e465be8f"
+  integrity sha512-BiDR0KKn5fyUQ12u6XPq9pLs/tKR3hwiLzSWc+wVxN/enwgb8XUnLpt+Schc/ZBZq+sGozeUfPbFMRqIsifsIA==
+
 "@dhis2/ui-core@3.9.0":
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/@dhis2/ui-core/-/ui-core-3.9.0.tgz#67711e7446e7045a9b90b094a616b11bb7a91514"
   dependencies:
     "@dhis2/prop-types" "^1.0.3"
+    classnames "^2.2.6"
+    styled-jsx "^3.2.1"
+
+"@dhis2/ui-core@https://github.com/dhis2/ui-core#feat/File":
+  version "3.9.0"
+  resolved "https://github.com/dhis2/ui-core#863bba714ad1820c7d00d91e7ff61832bd195cd6"
+  dependencies:
+    "@dhis2/prop-types" "^1.0.4"
     classnames "^2.2.6"
     styled-jsx "^3.2.1"
 
