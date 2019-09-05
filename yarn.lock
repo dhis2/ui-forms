@@ -1020,9 +1020,9 @@
   resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.0.4.tgz#37eb55a3baf7bc9cf76e19222ad4e2d0e465be8f"
   integrity sha512-BiDR0KKn5fyUQ12u6XPq9pLs/tKR3hwiLzSWc+wVxN/enwgb8XUnLpt+Schc/ZBZq+sGozeUfPbFMRqIsifsIA==
 
-"@dhis2/ui-core@https://github.com/dhis2/ui-core#feat/File":
+"@dhis2/ui-core@https://github.com/dhis2/ui-core#next":
   version "3.9.0"
-  resolved "https://github.com/dhis2/ui-core#4477a71ac8ee4f95d0c0f65e57c96f6542ac1e55"
+  resolved "https://github.com/dhis2/ui-core#8ff1446b78fd146760852b0b16b20371edcee95e"
   dependencies:
     "@dhis2/prop-types" "^1.0.4"
     classnames "^2.2.6"
