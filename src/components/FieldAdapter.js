@@ -1,6 +1,6 @@
 import React from 'react'
 import propTypes from 'prop-types'
-import { fieldRenderProps } from './Field'
+import { fieldRenderProps, fieldInputProps, fieldMetaProps } from './Field'
 
 const FieldAdapter = ({ input, meta, component: Component, ...ownProps }) => (
     <Component
@@ -26,16 +26,18 @@ FieldAdapter.propTypes = {
 }
 
 const adapterComponentProps = {
-    ...fieldRenderProps.input,
-    ...fieldRenderProps.meta,
+    ...fieldInputProps,
+    ...fieldMetaProps,
     // computed props
     error: propTypes.bool,
     valid: propTypes.bool,
     loading: propTypes.bool,
     errorText: propTypes.string,
     // other commmon props used by input components
+    className: propTypes.string,
     label: propTypes.string,
     required: propTypes.bool,
+    disabled: propTypes.bool,
     warning: propTypes.bool,
     helpText: propTypes.string,
 }

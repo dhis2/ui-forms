@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, RadioGroup, required } from '../src'
+import { Field, RadioGroupAdapter, required } from '../src'
 import { formDecorator } from './helpers/formDecorator'
 
 const options = [
@@ -16,7 +16,7 @@ storiesOf('RadioGroup', module)
         <Field
             name="choice"
             label="Choose something"
-            component={RadioGroup}
+            component={RadioGroupAdapter}
             options={options}
             type="select"
         />
@@ -25,7 +25,7 @@ storiesOf('RadioGroup', module)
         <Field
             name="choice"
             label="Choose something"
-            component={RadioGroup}
+            component={RadioGroupAdapter}
             validate={required}
             required
             options={options}

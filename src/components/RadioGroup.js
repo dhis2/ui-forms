@@ -1,12 +1,13 @@
 import React from 'react'
 import propTypes from 'prop-types'
-import { FormControl, FieldSet, Legend, Radio, Help } from '@dhis2/ui-core'
+import { Field, FieldSet, Legend, Radio, Help } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
 
-const RadioGroupComponent = ({
+const RadioGroup = ({
     label,
     required,
+    disabled,
     options,
     name,
     value,
@@ -16,36 +17,34 @@ const RadioGroupComponent = ({
     valid,
     helpText,
     errorText,
-}) => {
-    return (
-        <FormControl>
-            <FieldSet>
-                {label && <Legend required={required}>{label}</Legend>}
+}) => (
+    <Field>
+        <FieldSet>
+            {label && <Legend required={required}>{label}</Legend>}
 
-                {options.map(option => (
-                    <FormControl key={option.value}>
-                        <Radio
-                            name={name}
-                            value={option.value}
-                            label={option.label}
-                            checked={value === option.value}
-                            onChange={onChange}
-                            error={error}
-                            warning={warning}
-                            valid={valid}
-                        />
-                    </FormControl>
-                ))}
+            {options.map(option => (
+                <Radio
+                    key={option.value}
+                    name={name}
+                    disabled={disabled}
+                    value={option.value}
+                    label={option.label}
+                    checked={value === option.value}
+                    onChange={onChange}
+                    error={error}
+                    warning={warning}
+                    valid={valid}
+                />
+            ))}
 
-                {helpText && <Help>{helpText}</Help>}
+            {helpText && <Help>{helpText}</Help>}
 
-                {error && errorText && <Help error>{errorText}</Help>}
-            </FieldSet>
-        </FormControl>
-    )
-}
+            {error && errorText && <Help error>{errorText}</Help>}
+        </FieldSet>
+    </Field>
+)
 
-RadioGroupComponent.propTypes = {
+RadioGroup.propTypes = {
     ...adapterComponentProps,
     options: propTypes.arrayOf(
         propTypes.shape({
@@ -55,8 +54,8 @@ RadioGroupComponent.propTypes = {
     ).isRequired,
 }
 
-const RadioGroup = props => (
-    <FieldAdapter {...props} component={RadioGroupComponent} />
+const RadioGroupAdapter = props => (
+    <FieldAdapter {...props} component={RadioGroup} />
 )
 
-export { RadioGroup }
+export { RadioGroupAdapter, RadioGroup }
