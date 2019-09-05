@@ -11,13 +11,29 @@ const messages = {
 
 class FileInput extends PureComponent {
     onFileInputChange = fileList => {
-        const { multiple, value, onChange } = this.props
+        const { multifile, onChange } = this.props
         // A JavaScript FileList instance is read-only, so we cannot add files to it
         // FileList also doesn't have a .map method so by destructuring the FileList
         // instance into an array we can add, remove and map
-        const files = multiple ? [...value, ...fileList] : [...fileList]
+        const files = multifile ? this.dedupeAndConcat(fileList) : [...fileList]
 
         onChange(files)
+    }
+
+    // This deduplicates the file array based on file name
+    // and keeps the most recent version of the found duplicate
+    dedupeAndConcat(fileList) {
+        const reversedNewFileArray = [...fileList].reverse()
+        return [...reversedNewFileArray, ...this.props.value].reduce(
+            (acc, file) => {
+                if (!acc.unique.has(file.name)) {
+                    acc.unique.add(file.name)
+                    acc.files.push(file)
+                }
+                return acc
+            },
+            { files: [], unique: new Set() }
+        ).files
     }
 
     onFileRemove(fileToDelete) {
@@ -28,7 +44,7 @@ class FileInput extends PureComponent {
     }
 
     getButtonLabel() {
-        return this.props.buttonLabel || this.props.multiple
+        return this.props.buttonLabel || this.props.multifile
             ? messages.uploadFiles
             : messages.uploadFile
     }
@@ -36,7 +52,7 @@ class FileInput extends PureComponent {
     getDisabled() {
         return (
             this.props.disabled ||
-            (!this.props.multiple && this.props.value.length >= 1)
+            (!this.props.multifile && this.props.value.length >= 1)
         )
     }
 
@@ -50,7 +66,7 @@ class FileInput extends PureComponent {
             valid,
             helpText,
             errorText,
-            multiple,
+            multifile,
             small,
             large,
             accept,
@@ -71,7 +87,7 @@ class FileInput extends PureComponent {
                     required={required}
                     disabled={this.getDisabled()}
                     accept={accept}
-                    multiple={multiple}
+                    multiple={multifile}
                 >
                     {helpText && <Help>{helpText}</Help>}
 
@@ -109,7 +125,7 @@ FileInput.propTypes = {
     buttonLabel: propTypes.string,
     small: propTypes.bool,
     large: propTypes.bool,
-    multiple: propTypes.bool,
+    multifile: propTypes.bool,
     value: propTypes.oneOfType([
         propTypes.arrayOf(propTypes.instanceOf(File)),
         propTypes.oneOf(['']),
