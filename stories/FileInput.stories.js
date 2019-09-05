@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { Field, FileInputAdapter, required } from '../src'
 import { formDecorator } from './helpers/formDecorator'
 
-storiesOf('File', module)
+storiesOf('FileInput', module)
     .addDecorator(formDecorator)
     .add('Default', () => (
         <Field
