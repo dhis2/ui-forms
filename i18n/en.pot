@@ -5,8 +5,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-08-08T15:10:47.455Z\n"
-"PO-Revision-Date: 2019-08-08T15:10:47.455Z\n"
+"POT-Creation-Date: 2019-09-04T13:26:27.402Z\n"
+"PO-Revision-Date: 2019-09-04T13:26:27.402Z\n"
+
+msgid "Upload file"
+msgstr ""
+
+msgid "Upload files"
+msgstr ""
+
+msgid "No file(s) selected yet"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
 
 msgid "Required"
 msgstr ""
