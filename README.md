@@ -5,6 +5,21 @@
 **[Online docs and demos (latest master
 build)](https://d2-ci.github.io/ui-form/)**
 
+## Known issues
+
+#### ui-core
+
+Currently ui-forms relies on some components that are not available yet in the published version of ui-core. So builds are failing and to get things to work locally you have to build ui-core locally:
+
+```bash
+cd node_modules/@dhis2/ui-core
+yarn install && yarn build
+```
+
+#### prop-types
+
+Currently some of the custom prop-type validations (i.e. `FileList` prop `children`) are throwing errors they shouldn't be. This issue cannot be reproduced in ui-core, and needs to be investigated further.
+
 ## Building a form
 
 This library offers a `<Form />` component with the same api as react-final-form's Form api.
