@@ -11,24 +11,25 @@ const messages = {
 
 class FileInput extends PureComponent {
     onFileInputChange = fileList => {
-        const { multifile, onChange } = this.props
+        const { multifile, onChange, value } = this.props
         // A JavaScript FileList instance is read-only, so we cannot add files to it
         // FileList also doesn't have a .map method so by destructuring the FileList
         // instance into an array we can add, remove and map
-        const files = multifile ? this.dedupeAndConcat(fileList) : [...fileList]
+        const files = multifile
+            ? this.dedupe([...value, ...fileList])
+            : [...fileList]
 
         onChange(files)
     }
 
     // This deduplicates the file array based on file name
     // and keeps the most recent version of the found duplicate
-    dedupeAndConcat(fileList) {
-        const reversedNewFileArray = [...fileList].reverse()
-        return [...reversedNewFileArray, ...this.props.value].reduce(
+    dedupe(fileArray) {
+        return fileArray.reduceRight(
             (acc, file) => {
                 if (!acc.unique.has(file.name)) {
                     acc.unique.add(file.name)
-                    acc.files.push(file)
+                    acc.files.unshift(file)
                 }
                 return acc
             },
