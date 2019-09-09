@@ -45,9 +45,10 @@ class FileInput extends PureComponent {
     }
 
     getButtonLabel() {
-        return this.props.buttonLabel || this.props.multifile
-            ? messages.uploadFiles
-            : messages.uploadFile
+        return (
+            this.props.buttonLabel ||
+            (this.props.multifile ? messages.uploadFiles : messages.uploadFile)
+        )
     }
 
     getDisabled() {
@@ -95,7 +96,7 @@ class FileInput extends PureComponent {
                     {error && errorText && <Help error>{errorText}</Help>}
 
                     <UiCoreFileInput.FileList>
-                        {!value && (
+                        {!value && !error && (
                             <UiCoreFileInput.Placeholder>
                                 {i18n.t('No file(s) selected yet')}
                             </UiCoreFileInput.Placeholder>
