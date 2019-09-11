@@ -11,8 +11,14 @@ const useAdapterOnChange = onChange =>
         [onChange]
     )
 
-const FieldAdapter = ({ input, meta, component: Component, ...ownProps }) => {
-    const onChange = useAdapterOnChange(input.onChange)
+const FieldAdapter = ({
+    input,
+    meta,
+    component: Component,
+    useOnChange,
+    ...ownProps
+}) => {
+    const onChange = useOnChange(input.onChange)
 
     return (
         <Component
@@ -38,6 +44,11 @@ FieldAdapter.propTypes = {
     ...fieldRenderProps,
     component: propTypes.oneOfType([propTypes.func, propTypes.object])
         .isRequired,
+    useOnChange: propTypes.func,
+}
+
+FieldAdapter.defaultProps = {
+    useOnChange: useAdapterOnChange,
 }
 
 const adapterComponentProps = {
