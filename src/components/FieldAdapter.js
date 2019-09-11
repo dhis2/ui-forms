@@ -1,23 +1,38 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import propTypes from 'prop-types'
 import { fieldRenderProps, fieldInputProps, fieldMetaProps } from './Field'
 
-const FieldAdapter = ({ input, meta, component: Component, ...ownProps }) => (
-    <Component
-        {...input}
-        {...meta}
-        {...ownProps}
-        error={ownProps.error || (meta.touched && meta.invalid)}
-        valid={
-            ownProps.valid ||
-            (ownProps.showValidStatus && meta.touched && meta.valid)
-        }
-        loading={
-            ownProps.loading || (ownProps.showLoadingStatus && meta.validating)
-        }
-        errorText={ownProps.errorText || meta.error || ''}
-    />
-)
+const useAdapterOnChange = onChange =>
+    useCallback(
+        potentialEvent =>
+            potentialEvent && potentialEvent.target
+                ? onChange(potentialEvent.target.value)
+                : onChange(potentialEvent),
+        [onChange]
+    )
+
+const FieldAdapter = ({ input, meta, component: Component, ...ownProps }) => {
+    const onChange = useAdapterOnChange(input.onChange)
+
+    return (
+        <Component
+            {...input}
+            {...meta}
+            {...ownProps}
+            error={ownProps.error || (meta.touched && meta.invalid)}
+            valid={
+                ownProps.valid ||
+                (ownProps.showValidStatus && meta.touched && meta.valid)
+            }
+            loading={
+                ownProps.loading ||
+                (ownProps.showLoadingStatus && meta.validating)
+            }
+            errorText={ownProps.errorText || meta.error || ''}
+            onChange={onChange}
+        />
+    )
+}
 
 FieldAdapter.propTypes = {
     ...fieldRenderProps,

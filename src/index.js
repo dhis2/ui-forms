@@ -1,4 +1,5 @@
 // Components
+export { Checkbox, CheckboxAdapter } from './components/Checkbox.js'
 export { Form } from './components/Form.js'
 export { Field } from './components/Field.js'
 export { FileInput, FileInputAdapter } from './components/FileInput.js'
