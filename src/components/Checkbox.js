@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import propTypes from 'prop-types'
 import { Field, Checkbox as CoreCheckbox, Help } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
@@ -9,6 +10,7 @@ const Checkbox = ({
     disabled,
     name,
     value,
+    checkedValue,
     onChange,
     error,
     warning,
@@ -21,7 +23,7 @@ const Checkbox = ({
             required={required}
             name={name}
             disabled={disabled}
-            value={value}
+            value={checkedValue}
             label={label}
             checked={!!value}
             onChange={onChange}
@@ -36,10 +38,21 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
     ...adapterComponentProps,
+    checkedValue: propTypes.string,
+}
+
+// If the input has a value (checkedValue prop) the form value is: checkedValue || ''
+// Otherwise the form-value is: true || false
+const getValue = ({ checked, value }) => {
+    if (value) {
+        return checked ? value : ''
+    } else {
+        return !!checked
+    }
 }
 
 const useCheckboxOnChange = onChange =>
-    useCallback(event => onChange(!!event.target.checked), [onChange])
+    useCallback(event => onChange(getValue(event.target)), [onChange])
 
 const CheckboxAdapter = props => (
     <FieldAdapter
