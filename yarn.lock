@@ -1105,17 +1105,17 @@
     i18next "^10.3"
     moment "^2.24.0"
 
-"@dhis2/prop-types@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.0.4.tgz#37eb55a3baf7bc9cf76e19222ad4e2d0e465be8f"
-  integrity sha512-BiDR0KKn5fyUQ12u6XPq9pLs/tKR3hwiLzSWc+wVxN/enwgb8XUnLpt+Schc/ZBZq+sGozeUfPbFMRqIsifsIA==
+"@dhis2/prop-types@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.1.0.tgz#6144470f336fbcf0fd9142c5ea402d03dfb92c2a"
+  integrity sha512-hHbkoqEbi7vcWcJG1VdBkjKBUFZGWj7VRkwr2GvRU3g1j7AXW5WzsrGGgd/4ejK4nQMardlkZmCrzw7+mkTcRg==
 
 "@dhis2/ui-core@https://github.com/dhis2/ui-core#next":
-  version "3.9.1"
-  uid cf889837c1f1304088bf11cd84a2397fd1de6c3c
-  resolved "https://github.com/dhis2/ui-core#cf889837c1f1304088bf11cd84a2397fd1de6c3c"
+  version "3.10.0"
+  uid "6282d9f210daaf3af388e15852923b37eca54086"
+  resolved "https://github.com/dhis2/ui-core#6282d9f210daaf3af388e15852923b37eca54086"
   dependencies:
-    "@dhis2/prop-types" "^1.0.4"
+    "@dhis2/prop-types" "^1.1.0"
     classnames "^2.2.6"
     styled-jsx "^3.2.2"
 
