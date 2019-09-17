@@ -9,7 +9,6 @@ storiesOf('FileInput', module)
     .add('Default', () => (
         <Field
             component={FileInputAdapter}
-            type="file"
             name="upload"
             label="This is a file upload"
             multifile
@@ -18,7 +17,6 @@ storiesOf('FileInput', module)
     .add('Required', () => (
         <Field
             component={FileInputAdapter}
-            type="file"
             name="upload"
             label="This is a file upload"
             required

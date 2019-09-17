@@ -18,7 +18,6 @@ storiesOf('RadioGroup', module)
             label="Choose something"
             component={RadioGroupAdapter}
             options={options}
-            type="select"
         />
     ))
     .add('Required', () => (
@@ -29,7 +28,6 @@ storiesOf('RadioGroup', module)
             validate={required}
             required
             options={options}
-            type="select"
             inline={false}
         />
     ))
