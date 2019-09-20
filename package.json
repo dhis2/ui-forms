@@ -58,7 +58,7 @@
         "react-dev-utils": "^9.0.3",
         "react-dom": "^16.9.0",
         "storybook-addon-jsx": "^7.1.6",
-        "storybook-addon-react-docgen": "^1.2.18",
+        "storybook-addon-react-docgen": "^1.2.21",
         "typeface-roboto": "^0.0.75"
     },
     "peerDependencies": {
