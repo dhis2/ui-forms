@@ -1119,8 +1119,8 @@
 
 "@dhis2/ui-core@https://github.com/dhis2/ui-core#next":
   version "3.10.0"
-  uid "54218e9bd63b5038940ce85a000f6bc4badc18b8"
-  resolved "https://github.com/dhis2/ui-core#54218e9bd63b5038940ce85a000f6bc4badc18b8"
+  uid "353aa6e48d200b4061c4c35b2bcfbbccb9c101cf"
+  resolved "https://github.com/dhis2/ui-core#353aa6e48d200b4061c4c35b2bcfbbccb9c101cf"
   dependencies:
     "@dhis2/prop-types" "^1.1.0"
     classnames "^2.2.6"
