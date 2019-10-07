@@ -1,13 +1,14 @@
 import React, { PureComponent } from 'react'
 import propTypes from 'prop-types'
 import i18n from '@dhis2/d2-i18n'
-import { FileInput as UiCoreFileInput, Help, Field } from '@dhis2/ui-core'
+import {
+    FileInputField as UiCoreFileInputField,
+    FileListItem,
+} from '@dhis2/ui-core'
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
 
-const messages = {
-    uploadFile: i18n.t('Upload file'),
-    uploadFiles: i18n.t('Upload files'),
-}
+const btnLabel = i18n.t('Upload file')
+const btnLabelMulti = i18n.t('Upload files')
 
 class FileInput extends PureComponent {
     onFileInputChange = fileList => {
@@ -43,80 +44,66 @@ class FileInput extends PureComponent {
         onChange(files.length > 0 ? files : null)
     }
 
-    getButtonLabel() {
-        return this.props.buttonLabel || this.props.multifile
-            ? messages.uploadFiles
-            : messages.uploadFile
-    }
-
-    getDisabled() {
-        return (
-            this.props.disabled ||
-            (!this.props.multifile && this.props.value.length >= 1)
-        )
-    }
-
     render() {
         const {
             className,
             label,
+            buttonLabel,
             required,
+            disabled,
             error,
             warning,
             valid,
             helpText,
-            errorText,
             multifile,
             small,
             large,
             accept,
             value,
+            validationText,
+            tabIndex,
+            placeholder,
         } = this.props
 
         return (
-            <Field className={className}>
-                <UiCoreFileInput
-                    onChange={this.onFileInputChange}
-                    label={label}
-                    buttonLabel={this.getButtonLabel()}
-                    error={error}
-                    valid={valid}
-                    warning={warning}
-                    small={small}
-                    large={large}
-                    required={required}
-                    disabled={this.getDisabled()}
-                    accept={accept}
-                    multiple={multifile}
-                >
-                    {helpText && <Help>{helpText}</Help>}
-
-                    {error && errorText && <Help error>{errorText}</Help>}
-
-                    <UiCoreFileInput.FileList>
-                        {!value && (
-                            <UiCoreFileInput.Placeholder>
-                                {i18n.t('No file(s) selected yet')}
-                            </UiCoreFileInput.Placeholder>
-                        )}
-
-                        {value &&
-                            value.map(file => (
-                                <UiCoreFileInput.FileListItem
-                                    key={file.name}
-                                    label={file.name}
-                                    onRemove={this.onFileRemove.bind(
-                                        this,
-                                        file
-                                    )}
-                                    removeText={i18n.t('Remove')}
-                                />
-                            ))}
-                    </UiCoreFileInput.FileList>
-                </UiCoreFileInput>
-            </Field>
+            <UiCoreFileInputField
+                className={className}
+                onChange={this.onFileInputChange}
+                label={label}
+                buttonLabel={
+                    buttonLabel || multifile ? btnLabelMulti : btnLabel
+                }
+                error={error}
+                valid={valid}
+                warning={warning}
+                small={small}
+                large={large}
+                required={required}
+                disabled={disabled || (!multifile && value.length >= 1)}
+                accept={accept}
+                multiple={multifile}
+                name={name}
+                helpText={helpText}
+                validationText={validationText}
+                tabIndex={tabIndex}
+                placeholder={placeholder}
+            >
+                {value &&
+                    value.map(file => (
+                        <FileListItem
+                            key={file.name}
+                            label={file.name}
+                            onRemove={this.onFileRemove.bind(this, file)}
+                            removeText={i18n.t('Remove')}
+                        />
+                    ))}
+            </UiCoreFileInputField>
         )
     }
+}
+
+FileInput.defaultProps = {
+    placeholder: i18n.t('No file(s) selected yet'),
 }
 
 FileInput.propTypes = {
@@ -130,6 +117,7 @@ FileInput.propTypes = {
         propTypes.arrayOf(propTypes.instanceOf(File)),
         propTypes.oneOf(['']),
     ]),
+    placeholder: propTypes.string,
 }
 
 const FileInputAdapter = props => (

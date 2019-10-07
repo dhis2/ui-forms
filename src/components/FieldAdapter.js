@@ -34,7 +34,9 @@ const FieldAdapter = ({
                 ownProps.loading ||
                 (ownProps.showLoadingStatus && meta.validating)
             }
-            errorText={ownProps.errorText || meta.error || ''}
+            validationText={
+                ownProps.errorText || (meta.touched && meta.error) || ''
+            }
             onChange={onChange}
         />
     )
@@ -58,7 +60,7 @@ const adapterComponentProps = {
     error: propTypes.bool,
     valid: propTypes.bool,
     loading: propTypes.bool,
-    errorText: propTypes.string,
+    validationText: propTypes.string,
     // other commmon props used by input components
     className: propTypes.string,
     label: propTypes.string,
@@ -66,6 +68,7 @@ const adapterComponentProps = {
     disabled: propTypes.bool,
     warning: propTypes.bool,
     helpText: propTypes.string,
+    tabIndex: propTypes.string,
 }
 
 export { FieldAdapter, adapterComponentProps }
