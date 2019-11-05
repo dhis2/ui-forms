@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import propTypes from 'prop-types'
 import i18n from '@dhis2/d2-i18n'
 import {
@@ -10,7 +10,7 @@ import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
 const btnLabel = i18n.t('Upload file')
 const btnLabelMulti = i18n.t('Upload files')
 
-class FileInput extends PureComponent {
+class FileInputComponent extends Component {
     onFileInputChange = fileList => {
         const { multifile, onChange } = this.props
         // A JavaScript FileList instance is read-only, so we cannot add files to it
@@ -24,12 +24,11 @@ class FileInput extends PureComponent {
     // This deduplicates the file array based on file name
     // and keeps the most recent version of the found duplicate
     dedupeAndConcat(fileList) {
-        const reversedNewFileArray = [...fileList].reverse()
-        return [...reversedNewFileArray, ...this.props.value].reduce(
+        return [...this.props.value, ...fileList].reduceRight(
             (acc, file) => {
                 if (!acc.unique.has(file.name)) {
                     acc.unique.add(file.name)
-                    acc.files.push(file)
+                    acc.files.unshift(file)
                 }
                 return acc
             },
@@ -41,7 +40,7 @@ class FileInput extends PureComponent {
         const { value, onChange } = this.props
         const files = value.filter(file => file !== fileToDelete)
 
-        onChange(files.length > 0 ? files : null)
+        onChange(files.length > 0 ? files : '')
     }
 
     render() {
@@ -88,7 +87,7 @@ class FileInput extends PureComponent {
                 tabIndex={tabIndex}
                 placeholder={placeholder}
             >
-                {value &&
+                {Array.isArray(value) &&
                     value.map(file => (
                         <FileListItem
                             key={file.name}
@@ -102,11 +101,11 @@ class FileInput extends PureComponent {
     }
 }
 
-FileInput.defaultProps = {
+FileInputComponent.defaultProps = {
     placeholder: i18n.t('No file(s) selected yet'),
 }
 
-FileInput.propTypes = {
+FileInputComponent.propTypes = {
     ...adapterComponentProps,
     accept: propTypes.string,
     buttonLabel: propTypes.string,
@@ -120,8 +119,8 @@ FileInput.propTypes = {
     placeholder: propTypes.string,
 }
 
-const FileInputAdapter = props => (
-    <FieldAdapter {...props} component={FileInput} />
+const FileInput = props => (
+    <FieldAdapter {...props} component={FileInputComponent} />
 )
 
-export { FileInputAdapter, FileInput }
+export { FileInput }
