@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, RadioGroup, required } from '../src'
+import { Field, SwitchGroup, required } from '../src'
 import { formDecorator } from './helpers/formDecorator'
 
 const options = [
@@ -10,24 +10,27 @@ const options = [
     { label: 'Baz', value: 'baz' },
 ]
 
-storiesOf('RadioGroup', module)
+const multipleValue = ['bar', 'baz']
+
+storiesOf('SwitchGroup', module)
     .addDecorator(formDecorator)
-    .add('Default - Radio', () => (
+    .add('Default - Switch', () => (
         <Field
             name="choice"
             label="Choose something"
-            component={RadioGroup}
+            component={SwitchGroup}
             options={options}
-            initialValue="bar"
+            initialValue={multipleValue}
         />
     ))
-    .add('Required - Radio', () => (
+    .add('Required - Switch', () => (
         <Field
             name="choice"
             label="Choose something"
-            component={RadioGroup}
+            component={SwitchGroup}
             validate={required}
             required
             options={options}
+            inline={false}
         />
     ))

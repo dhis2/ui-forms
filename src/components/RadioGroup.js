@@ -1,8 +1,8 @@
 import React from 'react'
-import propTypes from 'prop-types'
 import { RadioGroupField, Radio } from '@dhis2/ui-core'
 
-import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
+import { FieldAdapter } from './FieldAdapter.js'
+import { toggleGroupPropTypes } from './ToggleGroup.js'
 
 const RadioGroupComponent = ({ options, ...rest }) => (
     <RadioGroupField {...rest}>
@@ -11,16 +11,7 @@ const RadioGroupComponent = ({ options, ...rest }) => (
         ))}
     </RadioGroupField>
 )
-
-RadioGroupComponent.propTypes = {
-    ...adapterComponentProps,
-    options: propTypes.arrayOf(
-        propTypes.shape({
-            label: propTypes.string.isRequired,
-            value: propTypes.string.isRequired,
-        })
-    ).isRequired,
-}
+RadioGroupComponent.propTypes = toggleGroupPropTypes
 
 const RadioGroup = props => (
     <FieldAdapter {...props} component={RadioGroupComponent} />

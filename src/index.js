@@ -1,14 +1,3 @@
-// Components
-export { Checkbox } from './components/Checkbox.js'
-export { Form } from './components/Form.js'
-export { Field } from './components/Field.js'
-export { FileInput, FileInputAdapter } from './components/FileInput.js'
-export { RadioGroup } from './components/RadioGroup.js'
-
-// Mutators
-export { clear } from './mutators/clear.js'
-
-// Validators
-export { composeValidators } from './validators/composeValidators.js'
-export { required } from './validators/required.js'
-export { validEmail } from './validators/validEmail.js'
+export * from './components/index.js'
+export * from './transformers/index.js'
+export * from './validators/index.js'

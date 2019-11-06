@@ -19,13 +19,14 @@ const FieldAdapter = ({
     ...ownProps
 }) => {
     const onChange = useOnChange(input.onChange)
+    const error = ownProps.error || (meta.touched && meta.invalid)
 
     return (
         <Component
             {...input}
             {...meta}
             {...ownProps}
-            error={ownProps.error || (meta.touched && meta.invalid)}
+            error={error}
             valid={
                 ownProps.valid ||
                 (ownProps.showValidStatus && meta.touched && meta.valid)
@@ -34,7 +35,9 @@ const FieldAdapter = ({
                 ownProps.loading ||
                 (ownProps.showLoadingStatus && meta.validating)
             }
-            errorText={ownProps.errorText || meta.error || ''}
+            validationText={
+                ownProps.validationText || (error && meta.error) || ''
+            }
             onChange={onChange}
         />
     )
@@ -58,7 +61,7 @@ const adapterComponentProps = {
     error: propTypes.bool,
     valid: propTypes.bool,
     loading: propTypes.bool,
-    errorText: propTypes.string,
+    validationText: propTypes.string,
     // other commmon props used by input components
     className: propTypes.string,
     label: propTypes.string,
