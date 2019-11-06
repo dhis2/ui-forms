@@ -1,18 +1,18 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, CheckboxAdapter, required } from '../src'
+import { Field, Checkbox, required } from '../src'
 import { formDecorator } from './helpers/formDecorator'
 
 storiesOf('Checkbox', module)
     .addDecorator(formDecorator)
     .add('Default', () => (
-        <Field component={CheckboxAdapter} name="agree" label="Do you agree?" />
+        <Field component={Checkbox} name="agree" label="Do you agree?" />
     ))
     .add('Required', () => (
         <Field
             name="agree"
-            component={CheckboxAdapter}
+            component={Checkbox}
             required
             validate={required}
             label="Do you agree?"
@@ -21,7 +21,7 @@ storiesOf('Checkbox', module)
     .add('Disabled', () => (
         <Field
             name="agree"
-            component={CheckboxAdapter}
+            component={Checkbox}
             disabled
             label="Do you agree?"
         />
@@ -29,7 +29,7 @@ storiesOf('Checkbox', module)
     .add('Help text', () => (
         <Field
             name="agree"
-            component={CheckboxAdapter}
+            component={Checkbox}
             label="Do you agree?"
             helpText="Click to agree"
         />
@@ -38,22 +38,24 @@ storiesOf('Checkbox', module)
         <>
             <Field
                 name="valid"
-                component={CheckboxAdapter}
+                component={Checkbox}
                 label="Valid"
                 valid
+                validationText="Validation text"
             />
             <Field
                 name="warning"
-                component={CheckboxAdapter}
+                component={Checkbox}
                 label="Warning"
                 warning
+                validationText="Validation text"
             />
             <Field
                 name="error"
-                component={CheckboxAdapter}
+                component={Checkbox}
                 label="Error"
                 error
-                errorText="Oops"
+                validationText="Validation text"
             />
         </>
     ))
@@ -61,13 +63,13 @@ storiesOf('Checkbox', module)
         <>
             <Field
                 name="bool"
-                component={CheckboxAdapter}
+                component={Checkbox}
                 label="I produce boolean form values"
                 helpText="Click submit and check the console"
             />
             <Field
                 name="string"
-                component={CheckboxAdapter}
+                component={Checkbox}
                 label="I produce string form values"
                 checkedValue="value_when_checked"
                 helpText="Click submit and check the console"

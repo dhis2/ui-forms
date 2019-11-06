@@ -1,42 +1,14 @@
 import React, { useCallback } from 'react'
 import propTypes from 'prop-types'
-import { Field, Checkbox as CoreCheckbox, Help } from '@dhis2/ui-core'
+import { CheckboxField } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
 
-const Checkbox = ({
-    label,
-    required,
-    disabled,
-    name,
-    value,
-    checkedValue,
-    onChange,
-    error,
-    warning,
-    valid,
-    helpText,
-    errorText,
-}) => (
-    <Field>
-        <CoreCheckbox
-            required={required}
-            name={name}
-            disabled={disabled}
-            value={checkedValue}
-            label={label}
-            checked={!!value}
-            onChange={onChange}
-            error={error}
-            warning={warning}
-            valid={valid}
-        />
-        {helpText && <Help>{helpText}</Help>}
-        {error && errorText && <Help error>{errorText}</Help>}
-    </Field>
+const CheckboxComponent = ({ value, checkedValue, ...rest }) => (
+    <CheckboxField checked={!!value} value={checkedValue} {...rest} />
 )
 
-Checkbox.propTypes = {
+CheckboxComponent.propTypes = {
     ...adapterComponentProps,
     checkedValue: propTypes.string,
 }
@@ -54,12 +26,12 @@ const getValue = ({ checked, value }) => {
 const useCheckboxOnChange = onChange =>
     useCallback(event => onChange(getValue(event.target)), [onChange])
 
-const CheckboxAdapter = props => (
+const Checkbox = props => (
     <FieldAdapter
         {...props}
-        component={Checkbox}
+        component={CheckboxComponent}
         useOnChange={useCheckboxOnChange}
     />
 )
 
-export { Checkbox, CheckboxAdapter }
+export { Checkbox }
