@@ -1,4 +1,7 @@
-const format = value => value || []
+const format = value => {
+    console.log(value)
+    return value || []
+}
 
 const parse = value =>
     !value || (Array.isArray(value) && value.length === 0) ? undefined : value

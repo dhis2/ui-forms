@@ -24,7 +24,7 @@ const getValue = ({ checked, value }) => {
 }
 
 const useCheckboxOnChange = onChange =>
-    useCallback(event => onChange(getValue(event.target)), [onChange])
+    useCallback(payload => onChange(getValue(payload)), [onChange])
 
 const Checkbox = props => (
     <FieldAdapter

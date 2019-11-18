@@ -4,8 +4,9 @@ import propTypes from 'prop-types'
 import { adapterComponentProps } from './FieldAdapter.js'
 
 class MultiToggleGroup extends Component {
-    onChange = ({ target }) => {
-        this.props.onChange(this.getUpdatedValueArray(target.value))
+    onChange = ({ value }) => {
+        const valueArray = this.getUpdatedValueArray(value)
+        this.props.onChange({ value: valueArray }, null)
     }
 
     getUpdatedValueArray(activeValue) {
@@ -29,6 +30,7 @@ class MultiToggleGroup extends Component {
             toggleGroupComponent: ToggleGroupComponent,
             ...rest
         } = this.props
+        console.log('rendeur', this.props.value)
 
         return (
             <ToggleGroupComponent {...rest} onChange={this.onChange}>

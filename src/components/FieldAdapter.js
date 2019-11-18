@@ -2,14 +2,21 @@ import React, { useCallback } from 'react'
 import propTypes from 'prop-types'
 import { fieldRenderProps, fieldInputProps, fieldMetaProps } from './Field'
 
+const extractValue = payload => {
+    // ui-core input component
+    if (payload && payload.value) {
+        return payload.value
+    }
+    // Synthetic event
+    if (payload && payload.target) {
+        return payload.target.value
+    }
+
+    return ''
+}
+
 const useAdapterOnChange = onChange =>
-    useCallback(
-        potentialEvent =>
-            potentialEvent && potentialEvent.target
-                ? onChange(potentialEvent.target.value)
-                : onChange(potentialEvent),
-        [onChange]
-    )
+    useCallback(payload => onChange(extractValue(payload)), [onChange])
 
 const FieldAdapter = ({
     input,
