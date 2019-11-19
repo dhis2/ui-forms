@@ -12,6 +12,7 @@ storiesOf('FileInput', module)
             name="upload"
             label="This is a file upload"
             multifile
+            placeholder=""
         />
     ))
     .add('Required', () => (

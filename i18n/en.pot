@@ -14,10 +14,10 @@ msgstr ""
 msgid "Upload files"
 msgstr ""
 
-msgid "No file(s) selected yet"
+msgid "Remove"
 msgstr ""
 
-msgid "Remove"
+msgid "No file(s) selected yet"
 msgstr ""
 
 msgid "Not a valid e-mail"

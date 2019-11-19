@@ -76,6 +76,7 @@ const adapterComponentProps = {
     disabled: propTypes.bool,
     warning: propTypes.bool,
     helpText: propTypes.string,
+    tabIndex: propTypes.string,
 }
 
 export { FieldAdapter, adapterComponentProps }
