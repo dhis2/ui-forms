@@ -25,12 +25,10 @@ class MultiToggleGroup extends Component {
     render() {
         const {
             options,
-            onChange,
             toggleComponent: ToggleComponent,
             toggleGroupComponent: ToggleGroupComponent,
             ...rest
         } = this.props
-        console.log('rendeur', this.props.value)
 
         return (
             <ToggleGroupComponent {...rest} onChange={this.onChange}>
