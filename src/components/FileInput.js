@@ -87,15 +87,16 @@ class FileInputComponent extends Component {
                 tabIndex={tabIndex}
                 placeholder={placeholder}
             >
-                {Array.isArray(value) &&
-                    value.map(file => (
-                        <FileListItem
-                            key={file.name}
-                            label={file.name}
-                            onRemove={this.onFileRemove.bind(this, file)}
-                            removeText={i18n.t('Remove')}
-                        />
-                    ))}
+                {Array.isArray(value)
+                    ? value.map(file => (
+                          <FileListItem
+                              key={file.name}
+                              label={file.name}
+                              onRemove={this.onFileRemove.bind(this, file)}
+                              removeText={i18n.t('Remove')}
+                          />
+                      ))
+                    : undefined}
             </UiCoreFileInputField>
         )
     }
