@@ -11,14 +11,14 @@ const btnLabel = i18n.t('Upload file')
 const btnLabelMulti = i18n.t('Upload files')
 
 class FileInputComponent extends Component {
-    onFileInputChange = fileList => {
+    onFileInputChange = ({ files }) => {
         const { multifile, onChange } = this.props
         // A JavaScript FileList instance is read-only, so we cannot add files to it
         // FileList also doesn't have a .map method so by destructuring the FileList
         // instance into an array we can add, remove and map
-        const files = multifile ? this.dedupeAndConcat(fileList) : [...fileList]
+        const value = multifile ? this.dedupeAndConcat(files) : [...files]
 
-        onChange(files)
+        onChange({ value })
     }
 
     // This deduplicates the file array based on file name
