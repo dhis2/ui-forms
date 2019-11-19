@@ -1,7 +1,7 @@
 export { Checkbox } from './Checkbox.js'
 export { CheckboxGroup } from './CheckboxGroup.js'
 export { Field } from './Field.js'
-export { FileInput, FileInputAdapter } from './FileInput.js'
+export { FileInput } from './FileInput.js'
 export { Form } from './Form.js'
 export { Input } from './Input.js'
 export { RadioGroup } from './RadioGroup.js'
