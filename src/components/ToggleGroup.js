@@ -1,43 +1,41 @@
-import React, { Component } from 'react'
+import React, { useCallback } from 'react'
 import propTypes from 'prop-types'
 
 import { adapterComponentProps } from './FieldAdapter.js'
 
-class MultiToggleGroup extends Component {
-    onChange = ({ value }) => {
-        const valueArray = this.getUpdatedValueArray(value)
-        this.props.onChange({ value: valueArray }, null)
-    }
+const useChangeHandler = (value, onChange) =>
+    useCallback(
+        payload => {
+            const activeIndex = value.indexOf(payload.value)
+            const valueArray =
+                activeIndex === -1
+                    ? [...value, payload.value]
+                    : value
+                          .slice(0, activeIndex)
+                          .concat(value.slice(activeIndex + 1))
 
-    getUpdatedValueArray(activeValue) {
-        const currentValues = this.props.value
-        const activeIndex = currentValues.indexOf(activeValue)
+            onChange({ value: valueArray }, null)
+        },
+        [value, onChange]
+    )
 
-        if (activeIndex === -1) {
-            return [...currentValues, activeValue]
-        }
+const MultiToggleGroup = ({
+    options,
+    toggleComponent: ToggleComponent,
+    toggleGroupComponent: ToggleGroupComponent,
+    value,
+    onChange,
+    ...rest
+}) => {
+    const handleChange = useChangeHandler(value, onChange)
 
-        return currentValues
-            .slice(0, activeIndex)
-            .concat(currentValues.slice(activeIndex + 1))
-    }
-
-    render() {
-        const {
-            options,
-            toggleComponent: ToggleComponent,
-            toggleGroupComponent: ToggleGroupComponent,
-            ...rest
-        } = this.props
-
-        return (
-            <ToggleGroupComponent {...rest} onChange={this.onChange}>
-                {options.map(({ value, label }) => (
-                    <ToggleComponent key={value} label={label} value={value} />
-                ))}
-            </ToggleGroupComponent>
-        )
-    }
+    return (
+        <ToggleGroupComponent {...rest} value={value} onChange={handleChange}>
+            {options.map(({ value, label }) => (
+                <ToggleComponent key={value} label={label} value={value} />
+            ))}
+        </ToggleGroupComponent>
+    )
 }
 
 const toggleGroupPropTypes = {
