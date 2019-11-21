@@ -9,7 +9,7 @@ const SwitchGroupComponent = ({ options, value, onChange, ...rest }) => {
     const handleChange = useToggleGroupChangeHandler(value, onChange)
 
     return (
-        <SwitchGroupField {...rest} value={value} onChange={handleChange}>
+        <SwitchGroupField {...rest} value={value || []} onChange={handleChange}>
             {options.map(({ value, label }) => (
                 <Switch key={value} label={label} value={value} />
             ))}

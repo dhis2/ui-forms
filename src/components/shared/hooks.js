@@ -14,20 +14,21 @@ const useToggleChangeHandler = onChange =>
         onChange(getToggleValue(payload)), [onChange]
     })
 
-const useToggleGroupChangeHandler = (value, onChange) =>
+const useToggleGroupChangeHandler = (currentValues, onChange) =>
     useCallback(
         payload => {
-            const activeIndex = value.indexOf(payload.value)
+            const activeIndex = currentValues.indexOf(payload.value)
             const valueArray =
                 activeIndex === -1
-                    ? [...value, payload.value]
-                    : value
+                    ? [...currentValues, payload.value]
+                    : currentValues
                           .slice(0, activeIndex)
-                          .concat(value.slice(activeIndex + 1))
+                          .concat(currentValues.slice(activeIndex + 1))
+            const value = valueArray.length === 0 ? '' : valueArray
 
-            onChange({ value: valueArray }, null)
+            onChange({ value }, null)
         },
-        [value, onChange]
+        [currentValues, onChange]
     )
 
 export { useToggleChangeHandler, useToggleGroupChangeHandler }

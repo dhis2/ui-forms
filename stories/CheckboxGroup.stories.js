@@ -1,13 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import {
-    Field,
-    CheckboxGroup,
-    array,
-    arrayWithIdObjects,
-    required,
-} from '../src'
+import { Field, CheckboxGroup, arrayWithIdObjects, required } from '../src'
 import { formDecorator } from '../.storybook/formDecorator'
 
 const options = [
@@ -27,8 +21,6 @@ storiesOf('CheckboxGroup', module)
             component={CheckboxGroup}
             options={options}
             initialValue={multipleValue}
-            format={array.format}
-            parse={array.parse}
         />
     ))
     .add('Required - Checkbox', () => (
@@ -40,8 +32,6 @@ storiesOf('CheckboxGroup', module)
             required
             options={options}
             inline={false}
-            format={array.format}
-            parse={array.parse}
         />
     ))
 
@@ -49,11 +39,9 @@ storiesOf('CheckboxGroup', module)
         <>
             <Field
                 name="array"
-                label="My values are going to the form as an array of strings"
+                label="My values are going to the form as an array of strings (default)"
                 component={CheckboxGroup}
                 options={options}
-                format={array.format}
-                parse={array.parse}
             />
             <Field
                 name="arrayWithIdObjects"

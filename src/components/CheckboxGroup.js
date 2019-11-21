@@ -9,7 +9,11 @@ const CheckboxGroupComponent = ({ options, value, onChange, ...rest }) => {
     const handleChange = useToggleGroupChangeHandler(value, onChange)
 
     return (
-        <CheckboxGroupField {...rest} value={value} onChange={handleChange}>
+        <CheckboxGroupField
+            {...rest}
+            value={value || []}
+            onChange={handleChange}
+        >
             {options.map(({ value, label }) => (
                 <Checkbox key={value} label={label} value={value} />
             ))}
