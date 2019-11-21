@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { Field, TextArea, required } from '../src'
-import { formDecorator } from './helpers/formDecorator'
+import { formDecorator } from '../.storybook/formDecorator'
 
 storiesOf('TextArea', module)
     .addDecorator(formDecorator)

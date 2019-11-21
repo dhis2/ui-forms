@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { Field, SingleSelect } from '../src'
-import { formDecorator } from './helpers/formDecorator'
+import { formDecorator } from '../.storybook/formDecorator'
 
 const options = [
     { value: '1', label: 'one' },
