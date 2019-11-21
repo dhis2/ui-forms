@@ -1,19 +1,28 @@
 import React from 'react'
+import propTypes from '@dhis2/prop-types'
 import { SwitchField } from '@dhis2/ui-core'
 
-import { FieldAdapter } from './FieldAdapter.js'
-import { Toggle, useToggleOnChange } from './Toggle.js'
+import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
+import { useToggleChangeHandler } from './shared/hooks.js'
 
-const SwitchComponent = props => <Toggle {...props} component={SwitchField} />
+const SwitchComponent = ({ onChange, value, checkedValue, ...rest }) => {
+    const handleChange = useToggleChangeHandler(onChange)
 
-SwitchComponent.propTypes = Toggle.propTypes
+    return (
+        <SwitchField
+            {...rest}
+            checked={!!value}
+            value={checkedValue}
+            onChange={handleChange}
+        />
+    )
+}
 
-const Switch = props => (
-    <FieldAdapter
-        {...props}
-        component={SwitchComponent}
-        useOnChange={useToggleOnChange}
-    />
-)
+SwitchComponent.propTypes = {
+    ...adapterComponentProps,
+    checkedValue: propTypes.string,
+}
+
+const Switch = props => <FieldAdapter {...props} component={SwitchComponent} />
 
 export { Switch }

@@ -1,5 +1,5 @@
 import { Field } from 'react-final-form'
-import propTypes from 'prop-types'
+import propTypes from '@dhis2/prop-types'
 
 const fieldInputProps = {
     name: propTypes.string.isRequired,

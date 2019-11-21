@@ -1,31 +1,29 @@
 import React, { useCallback } from 'react'
-import propTypes from 'prop-types'
+import propTypes from '@dhis2/prop-types'
 import { fieldRenderProps, fieldInputProps, fieldMetaProps } from './Field'
 
-const extractValue = payload => {
-    // ui-core input component
-    if (payload && payload.value) {
-        return payload.value
-    }
-    // Synthetic event
-    if (payload && payload.target) {
-        return payload.target.value
-    }
+const PRIMITIVE_TYPES = new Set(['string', 'number', 'boolean'])
 
-    return ''
-}
+const useChangeHandler = onChange =>
+    useCallback(
+        payload => {
+            const value =
+                // ui-core event signature
+                (payload && payload.value) ||
+                // synthetic event
+                (payload && payload.target && payload.target.value) ||
+                // directly usable value
+                (PRIMITIVE_TYPES.has(typeof payload) && payload) ||
+                // ¯\_(ツ)_/¯
+                ''
 
-const useAdapterOnChange = onChange =>
-    useCallback(payload => onChange(extractValue(payload)), [onChange])
+            onChange(value)
+        },
+        [onChange]
+    )
 
-const FieldAdapter = ({
-    input,
-    meta,
-    component: Component,
-    useOnChange,
-    ...ownProps
-}) => {
-    const onChange = useOnChange(input.onChange)
+const FieldAdapter = ({ input, meta, component: Component, ...ownProps }) => {
+    const handleChange = useChangeHandler(input.onChange)
     const error = ownProps.error || (meta.touched && meta.invalid)
 
     return (
@@ -45,7 +43,7 @@ const FieldAdapter = ({
             validationText={
                 ownProps.validationText || (error && meta.error) || ''
             }
-            onChange={onChange}
+            onChange={handleChange}
         />
     )
 }
@@ -54,11 +52,6 @@ FieldAdapter.propTypes = {
     ...fieldRenderProps,
     component: propTypes.oneOfType([propTypes.func, propTypes.object])
         .isRequired,
-    useOnChange: propTypes.func,
-}
-
-FieldAdapter.defaultProps = {
-    useOnChange: useAdapterOnChange,
 }
 
 const adapterComponentProps = {
