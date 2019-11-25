@@ -22,12 +22,12 @@ const useSelectedOptions = (options, value) =>
 const MultiSelectComponent = ({ options, value, onChange, ...rest }) => {
     const handleChange = useChangeHandler(onChange)
     const renderOptions = Array.isArray(options) ? options : []
-    const selectedOption = useSelectedOptions(renderOptions, value)
+    const selectedOptions = useSelectedOptions(renderOptions, value)
 
     return (
         <MultiSelectField
             {...rest}
-            selected={selectedOption}
+            selected={selectedOptions}
             onChange={handleChange}
         >
             {renderOptions.map(option => (
