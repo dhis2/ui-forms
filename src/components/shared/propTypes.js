@@ -5,4 +5,4 @@ export const toggleGroupOptionsProp = propTypes.arrayOf(
         label: propTypes.string.isRequired,
         value: propTypes.string.isRequired,
     })
-).isRequired
+)

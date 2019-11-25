@@ -19,7 +19,7 @@ const SwitchGroupComponent = ({ options, value, onChange, ...rest }) => {
 
 SwitchGroupComponent.propTypes = {
     ...adapterComponentProps,
-    options: toggleGroupOptionsProp,
+    options: toggleGroupOptionsProp.isRequired,
 }
 
 const SwitchGroup = props => (

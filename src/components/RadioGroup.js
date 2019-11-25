@@ -13,7 +13,7 @@ const RadioGroupComponent = ({ options, ...rest }) => (
 )
 RadioGroupComponent.propTypes = {
     ...adapterComponentProps,
-    options: toggleGroupOptionsProp,
+    options: toggleGroupOptionsProp.isRequired,
 }
 
 const RadioGroup = props => (

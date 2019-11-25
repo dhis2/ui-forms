@@ -23,7 +23,7 @@ const CheckboxGroupComponent = ({ options, value, onChange, ...rest }) => {
 
 CheckboxGroupComponent.propTypes = {
     ...adapterComponentProps,
-    options: toggleGroupOptionsProp,
+    options: toggleGroupOptionsProp.isRequired,
 }
 
 const CheckboxGroup = props => (
