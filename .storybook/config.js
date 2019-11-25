@@ -9,9 +9,20 @@ addDecorator(jsxDecorator)
 addDecorator(withPropsTable)
 addDecorator(CssResetWrapper)
 
+const includeTesting = 'STORYBOOK_INCLUDE_TESTING' in process.env
+
 function loadStories() {
     const req = require.context('../stories', true, /\.stories\.js$/)
     req.keys().forEach(filename => req(filename))
 }
 
-configure(loadStories, module)
+function loadStoriesInclTesting() {
+    const req = require.context(
+        '../stories',
+        true,
+        /\.stories(\.testing)?\.js$/
+    )
+    req.keys().forEach(filename => req(filename))
+}
+
+configure(includeTesting ? loadStoriesInclTesting : loadStories, module)
