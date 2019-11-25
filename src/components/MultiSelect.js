@@ -39,7 +39,7 @@ const MultiSelectComponent = ({ options, value, onChange, ...rest }) => {
 }
 
 MultiSelectComponent.propTypes = {
-    options: propTypes.arrayOf(MultiSelectField.propTypes.selected),
+    options: MultiSelectField.propTypes.selected,
     value: propTypes.string,
     ...MultiSelectField.propTypes,
 }
