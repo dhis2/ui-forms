@@ -17,7 +17,8 @@ const useSelectedOption = (options, value) =>
 
 const SingleSelectComponent = ({ options, value, onChange, ...rest }) => {
     const handleChange = useChangeHandler(onChange)
-    const selectedOption = useSelectedOption(options, value)
+    const renderOptions = Array.isArray(options) ? options : []
+    const selectedOption = useSelectedOption(renderOptions, value)
 
     return (
         <SingleSelectField
@@ -25,11 +26,9 @@ const SingleSelectComponent = ({ options, value, onChange, ...rest }) => {
             selected={selectedOption}
             onChange={handleChange}
         >
-            {Array.isArray(options)
-                ? options.map(option => (
-                      <SingleSelectOption key={option.value} {...option} />
-                  ))
-                : undefined}
+            {renderOptions.map(option => (
+                <SingleSelectOption key={option.value} {...option} />
+            ))}
         </SingleSelectField>
     )
 }
