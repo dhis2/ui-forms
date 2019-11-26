@@ -3,7 +3,7 @@ import { CheckboxGroupField, Checkbox } from '@dhis2/ui-core'
 
 import { normalizeProps } from './shared/helpers.js'
 import { toggleGroupOptionsProp } from './shared/propTypes.js'
-import { fieldRenderProps } from './Field.js'
+import { fieldRenderProps } from './shared/propTypes.js'
 
 const createChangeHandler = (currentValues, onChange) => payload => {
     const activeIndex = currentValues.indexOf(payload.value)
