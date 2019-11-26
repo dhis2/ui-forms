@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import propTypes from '@dhis2/prop-types'
 import i18n from '@dhis2/d2-i18n'
 import {
@@ -10,97 +10,89 @@ import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
 const btnLabel = i18n.t('Upload file')
 const btnLabelMulti = i18n.t('Upload files')
 
-class FileInputComponent extends Component {
-    onFileInputChange = ({ files }) => {
-        const { multifile, onChange } = this.props
-        // A JavaScript FileList instance is read-only, so we cannot add files to it
-        // FileList also doesn't have a .map method so by destructuring the FileList
-        // instance into an array we can add, remove and map
-        const value = multifile ? this.dedupeAndConcat(files) : [...files]
-
-        onChange({ value })
-    }
-
-    // This deduplicates the file array based on file name
-    // and keeps the most recent version of the found duplicate
-    dedupeAndConcat(fileList) {
-        return [...this.props.value, ...fileList].reduceRight(
-            (acc, file) => {
-                if (!acc.unique.has(file.name)) {
-                    acc.unique.add(file.name)
-                    acc.files.unshift(file)
-                }
-                return acc
-            },
-            { files: [], unique: new Set() }
-        ).files
-    }
-
-    onFileRemove(fileToDelete) {
-        const { value, onChange } = this.props
-        const files = value.filter(file => file !== fileToDelete)
-
-        onChange(files.length > 0 ? files : '')
-    }
-
-    render() {
-        const {
-            className,
-            label,
-            buttonLabel,
-            required,
-            disabled,
-            error,
-            warning,
-            valid,
-            helpText,
-            multifile,
-            small,
-            large,
-            accept,
-            value,
-            validationText,
-            tabIndex,
-            placeholder,
-        } = this.props
-
-        return (
-            <UiCoreFileInputField
-                className={className}
-                onChange={this.onFileInputChange}
-                label={label}
-                buttonLabel={
-                    buttonLabel || multifile ? btnLabelMulti : btnLabel
-                }
-                error={error}
-                valid={valid}
-                warning={warning}
-                small={small}
-                large={large}
-                required={required}
-                disabled={disabled || (!multifile && value.length >= 1)}
-                accept={accept}
-                multiple={multifile}
-                name={name}
-                helpText={helpText}
-                validationText={validationText}
-                tabIndex={tabIndex}
-                placeholder={placeholder}
-            >
-                {Array.isArray(value)
-                    ? value.map(file => (
-                          <FileListItem
-                              key={file.name}
-                              label={file.name}
-                              onRemove={this.onFileRemove.bind(this, file)}
-                              removeText={i18n.t('Remove')}
-                          />
-                      ))
-                    : undefined}
-            </UiCoreFileInputField>
-        )
-    }
+const dedupeAndConcat = (currentFiles, newFileList) => {
+    return [...currentFiles, ...newFileList].reduceRight(
+        (acc, file) => {
+            if (!acc.unique.has(file.name)) {
+                acc.unique.add(file.name)
+                acc.files.unshift(file)
+            }
+            return acc
+        },
+        { files: [], unique: new Set() }
+    ).files
 }
+
+const createChangeHandler = (currentFiles, multifile, onChange) => ({
+    files,
+}) => {
+    // A JavaScript FileList instance is read-only, so we cannot add files to it
+    // FileList also doesn't have a .map method so by destructuring the FileList
+    // instance into an array we can add, remove and map
+    const value = multifile ? dedupeAndConcat(currentFiles, files) : [...files]
+
+    onChange({ value })
+}
+
+const createRemoveHandler = (currentFiles, fileToDelete, onChange) => () => {
+    const files = currentFiles.filter(file => file !== fileToDelete)
+    const value = files.length > 0 ? files : ''
+
+    onChange({ value })
+}
+
+const FileInputComponent = ({
+    className,
+    label,
+    buttonLabel,
+    required,
+    disabled,
+    error,
+    warning,
+    valid,
+    helpText,
+    multifile,
+    small,
+    large,
+    accept,
+    value,
+    validationText,
+    tabIndex,
+    placeholder,
+    onChange,
+}) => (
+    <UiCoreFileInputField
+        className={className}
+        onChange={createChangeHandler(value, multifile, onChange)}
+        label={label}
+        buttonLabel={buttonLabel || multifile ? btnLabelMulti : btnLabel}
+        error={error}
+        valid={valid}
+        warning={warning}
+        small={small}
+        large={large}
+        required={required}
+        disabled={disabled || (!multifile && value.length >= 1)}
+        accept={accept}
+        multiple={multifile}
+        name={name}
+        helpText={helpText}
+        validationText={validationText}
+        tabIndex={tabIndex}
+        placeholder={placeholder}
+    >
+        {Array.isArray(value)
+            ? value.map(file => (
+                  <FileListItem
+                      key={file.name}
+                      label={file.name}
+                      onRemove={createRemoveHandler(value, file, onChange)}
+                      removeText={i18n.t('Remove')}
+                  />
+              ))
+            : undefined}
+    </UiCoreFileInputField>
+)
 
 FileInputComponent.defaultProps = {
     placeholder: i18n.t('No file(s) selected yet'),
