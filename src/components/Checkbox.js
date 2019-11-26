@@ -2,25 +2,22 @@ import React from 'react'
 import propTypes from '@dhis2/prop-types'
 import { CheckboxField } from '@dhis2/ui-core'
 
-import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
-import { createToggleChangeHandler } from './shared/helpers.js'
+import { createToggleChangeHandler, normalizeProps } from './shared/helpers.js'
+import { fieldRenderProps } from './Field.js'
 
-const CheckboxComponent = ({ onChange, value, checkedValue, ...rest }) => (
-    <CheckboxField
-        {...rest}
-        checked={!!value}
-        value={checkedValue}
-        onChange={createToggleChangeHandler(onChange)}
-    />
-)
+const Checkbox = props => {
+    const { value, checkedValue, ...rest } = normalizeProps(
+        props,
+        createToggleChangeHandler(props.input.onChange)
+    )
 
-CheckboxComponent.propTypes = {
-    ...adapterComponentProps,
-    checkedValue: propTypes.string,
+    return <CheckboxField {...rest} checked={!!value} value={checkedValue} />
 }
 
-const Checkbox = props => (
-    <FieldAdapter {...props} component={CheckboxComponent} />
-)
+Checkbox.propTypes = {
+    ...fieldRenderProps,
+    ...CheckboxField.propTypes,
+    checkedValue: propTypes.string,
+}
 
 export { Checkbox }

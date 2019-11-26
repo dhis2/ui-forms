@@ -2,23 +2,22 @@ import React from 'react'
 import propTypes from '@dhis2/prop-types'
 import { SwitchField } from '@dhis2/ui-core'
 
-import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
-import { createToggleChangeHandler } from './shared/helpers.js'
+import { createToggleChangeHandler, normalizeProps } from './shared/helpers.js'
+import { fieldRenderProps } from './Field.js'
 
-const SwitchComponent = ({ onChange, value, checkedValue, ...rest }) => (
-    <SwitchField
-        {...rest}
-        checked={!!value}
-        value={checkedValue}
-        onChange={createToggleChangeHandler(onChange)}
-    />
-)
+const Switch = props => {
+    const { value, checkedValue, ...rest } = normalizeProps(
+        props,
+        createToggleChangeHandler(props.input.onChange)
+    )
 
-SwitchComponent.propTypes = {
-    ...adapterComponentProps,
-    checkedValue: propTypes.string,
+    return <SwitchField {...rest} checked={!!value} value={checkedValue} />
 }
 
-const Switch = props => <FieldAdapter {...props} component={SwitchComponent} />
+Switch.propTypes = {
+    ...fieldRenderProps,
+    ...SwitchField.propTypes,
+    checkedValue: propTypes.string,
+}
 
 export { Switch }
