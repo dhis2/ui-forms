@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities, react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
 
 import { Button } from '@dhis2/ui-core'
 import React from 'react'
@@ -18,16 +18,9 @@ import {
     email,
     required,
 } from '../src'
-
-const H2 = ({ children, style }) => (
-    <h2 style={{ margin: '50px 0 20px', ...style }}>{children}</h2>
-)
-
-const Text = ({ children }) => (
-    <div style={{ borderLeft: '4px solid blue', paddingLeft: 10 }}>
-        {children}
-    </div>
-)
+import { Code } from './guides/Code'
+import { H2 } from './guides/Headline'
+import { Text } from './guides/Text'
 
 storiesOf('Guides: Forms', module)
     .addParameters({ options: { showPanel: false } })
@@ -47,9 +40,7 @@ storiesOf('Guides: Forms', module)
                             As you can see, there's only one prop on the values
                             object. That's the case because the "gender" field
                             is the only one with an "initialValue" prop.
-                            <code>
-                                <pre>{JSON.stringify(values, null, 2)}</pre>
-                            </code>
+                            <Code>{JSON.stringify(values, null, 2)}</Code>
                         </Text>
 
                         <H2>Standard SingleSelect field</H2>
@@ -59,8 +50,7 @@ storiesOf('Guides: Forms', module)
                             requires an "initialValue" prop, otherwise the
                             "gender" property is missing until this field is
                             changed.
-                            <code>
-                                <pre>{`
+                            <Code>{`
 <Field
     name="gender"
     label="Gender"
@@ -73,8 +63,8 @@ storiesOf('Guides: Forms', module)
         { value: 'other', label: 'Other' },
         { value: 'unknown', label: 'I'd rather not say' },
     ]}
-/> `}</pre>
-                            </code>
+/>
+                            `}</Code>
                         </Text>
 
                         <Field
@@ -101,8 +91,7 @@ storiesOf('Guides: Forms', module)
                             "required" validator. But if you also want to show
                             the required asterix, you also need to provide the
                             "required" prop.
-                            <code>
-                                <pre>{`
+                            <Code>{`
 <Field
     required
     label="First name"
@@ -119,8 +108,8 @@ storiesOf('Guides: Forms', module)
     validate={required}
     component={Input}
     helpText="Please enter your first name, excluding middle names"
-/> `}</pre>
-                            </code>
+/>
+                            `}</Code>
                         </Text>
                         <Field
                             required
@@ -149,8 +138,7 @@ storiesOf('Guides: Forms', module)
                             values will still be on the values object. An
                             example of how to remove these values will be added
                             later.
-                            <code>
-                                <pre>{`
+                            <Code>{`
 <Field
     name="subscribe"
     checkedValue="yes"
@@ -158,36 +146,25 @@ storiesOf('Guides: Forms', module)
     component={Switch}
 />
 
-{values.subscribe && (
-    <Field
-        required={values.subscribe}
-        label="E-mail address"
-        name="email1"
-        validate={composeValidators(
-            email,
-            value => {
-                if (values.subscribe && !value) {
-                    return "You need to provide an e-mail address"
-                }
-            }
-        )}
-        component={Input}
-        helpText="Please enter the e-mail address you want us to send the updates to"
-    />
-)}
+{values.subscribe && <Field
+    required={values.subscribe}
+    label="E-mail address"
+    name="email1"
+    validate={composeValidators(email, required)}
+    component={Input}
+    helpText="Please enter the e-mail address you want us to send the updates to"
+/>}
 
-{values.subscribe && (
-    <Field
-        disabled={!values.subscribe}
-        required={values.subscribe}
-        label="E-mail address confirmation"
-        name="email2"
-        validate={composeValidators(email, required)}
-        component={Input}
-        helpText="Please confirm your e-mail address"
-    />
-)} `}</pre>
-                            </code>
+{values.subscribe && <Field
+    disabled={!values.subscribe}
+    required={values.subscribe}
+    label="E-mail address confirmation"
+    name="email2"
+    validate={composeValidators(email, required)}
+    component={Input}
+    helpText="Please confirm your e-mail address"
+/>}
+                            `}</Code>
                         </Text>
                         <Field
                             name="subscribe"
@@ -244,8 +221,7 @@ storiesOf('Guides: Forms', module)
                             contrary to the ui-core component, you can provide
                             the options as an array and the component will use
                             ui-core's Radio component for each option specified.
-                            <code>
-                                <pre>{`
+                            <Code>{`
 <Field
     name="food"
     label="Food"
@@ -258,8 +234,8 @@ storiesOf('Guides: Forms', module)
         { value: 'halal', label: 'Halal' },
     ]}
     helpText="If we ever gather for food, what meal type would you like to eat"
-/> `}</pre>
-                            </code>
+/>
+                            `}</Code>
                         </Text>
                         <Field
                             name="food"
@@ -279,8 +255,7 @@ storiesOf('Guides: Forms', module)
                         <Text>
                             This behaves similar to the RadioGroup. The apis of
                             these two components are identical.
-                            <code>
-                                <pre>{`
+                            <Code>{`
 <Field
     label="Pizza toppings"
     name="pizzaToppings"
@@ -293,8 +268,8 @@ storiesOf('Guides: Forms', module)
         { value: 'bellpepper', label: 'Bellpepper' },
     ]}
     helpText="If we ever order pizza, what ingredients would you like on top"
-/> `}</pre>
-                            </code>
+/>
+                            `}</Code>
                         </Text>
                         <Field
                             label="Pizza toppings"
@@ -331,15 +306,11 @@ storiesOf('Guides: Forms', module)
                             If you want to submit forms, you don't need any
                             special field. Any button or input with
                             type="submit" will suffice.
-                            <code>
-                                <pre>{`
-<Button
-    primary
-    type="submit"
->
+                            <Code>{`
+<Button primary type="submit">
     Submit
-</Button> `}</pre>
-                            </code>
+</Button>
+                            `}</Code>
                         </Text>
                         <Button primary type="submit">
                             Submit
