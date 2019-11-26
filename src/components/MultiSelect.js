@@ -31,15 +31,15 @@ const MultiSelectComponent = ({ options, value, onChange, ...rest }) => {
 }
 
 // eslint-disable-next-line no-unused-vars
-const { selected, ...MultiSelectProps } = MultiSelectField.propTypes
+const { selected, value, ...MultiSelectProps } = MultiSelectField.propTypes
 
 MultiSelectComponent.propTypes = {
+    ...MultiSelectProps,
     options: MultiSelectField.propTypes.selected,
     value: propTypes.oneOfType([
-        MultiSelectField.propTypes.selected,
+        propTypes.arrayOf(propTypes.string),
         propTypes.oneOf(['']),
     ]),
-    ...MultiSelectProps,
 }
 
 const MultiSelect = props => (
