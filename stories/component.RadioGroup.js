@@ -10,7 +10,7 @@ const options = [
     { label: 'Baz', value: 'baz' },
 ]
 
-storiesOf('RadioGroup', module)
+storiesOf('Component: RadioGroup', module)
     .addDecorator(formDecorator)
     .add('Default - Radio', () => (
         <Field

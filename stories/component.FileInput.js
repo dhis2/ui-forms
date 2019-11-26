@@ -6,7 +6,7 @@ import { formDecorator } from '../.storybook/formDecorator'
 
 const files = [new File([], 'file1.txt'), new File([], 'file2.txt')]
 
-storiesOf('FileInput', module)
+storiesOf('Component: FileInput', module)
     .addDecorator(formDecorator)
     .add('Default', () => (
         <Field

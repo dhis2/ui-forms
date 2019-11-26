@@ -12,7 +12,7 @@ const options = [
 
 const multipleValue = ['bar', 'baz']
 
-storiesOf('SwitchGroup', module)
+storiesOf('Component: SwitchGroup', module)
     .addDecorator(formDecorator)
     .add('Default - Switch', () => (
         <Field

@@ -12,7 +12,7 @@ const options = [
 
 const multipleValue = ['bar', 'baz']
 
-storiesOf('CheckboxGroup', module)
+storiesOf('Component: CheckboxGroup', module)
     .addDecorator(formDecorator)
     .add('Default - Checkbox', () => (
         <Field

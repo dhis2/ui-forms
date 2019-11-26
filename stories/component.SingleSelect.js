@@ -17,7 +17,7 @@ const options = [
     { value: '10', label: 'ten' },
 ]
 
-storiesOf('SingleSelect', module)
+storiesOf('Component: SingleSelect', module)
     .addDecorator(formDecorator)
     .add('Default', () => (
         <Field

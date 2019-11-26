@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { Field, Switch, required } from '../src'
 import { formDecorator } from '../.storybook/formDecorator'
 
-storiesOf('Switch', module)
+storiesOf('Component: Switch', module)
     .addDecorator(formDecorator)
     .add('Default', () => (
         <Field component={Switch} name="agree" label="Do you agree?" />

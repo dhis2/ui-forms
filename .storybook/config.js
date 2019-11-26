@@ -12,17 +12,22 @@ addDecorator(CssResetWrapper)
 const includeTesting = 'STORYBOOK_INCLUDE_TESTING' in process.env
 
 function loadStories() {
-    const req = require.context('../stories', true, /\.stories\.js$/)
-    req.keys().forEach(filename => req(filename))
+    const components = require.context(
+        '../stories',
+        true,
+        /\/component\.[^.]+\.js/
+    )
+    components.keys().forEach(filename => components(filename))
+
+    const guides = require.context('../stories', true, /\/guides\.[^.]+\.js/)
+    guides.keys().forEach(filename => guides(filename))
 }
 
 function loadStoriesInclTesting() {
-    const req = require.context(
-        '../stories',
-        true,
-        /\.stories(\.testing)?\.js$/
-    )
-    req.keys().forEach(filename => req(filename))
+    loadStories()
+
+    const testing = require.context('../stories', true, /\/testing\.[^.]+\.js/)
+    testing.keys().forEach(filename => testing(filename))
 }
 
 configure(includeTesting ? loadStoriesInclTesting : loadStories, module)
