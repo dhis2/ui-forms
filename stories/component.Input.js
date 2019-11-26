@@ -6,9 +6,11 @@ import { formDecorator } from '../.storybook/formDecorator'
 
 storiesOf('Component: Input', module)
     .addDecorator(formDecorator)
+
     .add('Default', () => (
         <Field component={Input} name="agree" label="Do you agree?" />
     ))
+
     .add('Required', () => (
         <Field
             name="agree"
@@ -18,9 +20,11 @@ storiesOf('Component: Input', module)
             label="Do you agree?"
         />
     ))
+
     .add('Disabled', () => (
         <Field name="agree" component={Input} disabled label="Do you agree?" />
     ))
+
     .add('Help text', () => (
         <Field
             name="agree"
@@ -29,6 +33,28 @@ storiesOf('Component: Input', module)
             helpText="Click to agree"
         />
     ))
+
+    .add('Validation text', () => (
+        <>
+            <h3>Without error:</h3>
+            <Field
+                name="agree"
+                component={Input}
+                label="Do you agree?"
+                validationText="Click to agree"
+            />
+
+            <h3>With error:</h3>
+            <Field
+                error
+                name="agree"
+                component={Input}
+                label="Do you agree?"
+                validationText="Click to agree"
+            />
+        </>
+    ))
+
     .add('Statuses', () => (
         <>
             <Field
