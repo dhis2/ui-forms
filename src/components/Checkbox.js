@@ -3,20 +3,16 @@ import propTypes from '@dhis2/prop-types'
 import { CheckboxField } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
-import { useToggleChangeHandler } from './shared/hooks.js'
+import { createToggleChangeHandler } from './shared/helpers.js'
 
-const CheckboxComponent = ({ onChange, value, checkedValue, ...rest }) => {
-    const handleChange = useToggleChangeHandler(onChange)
-
-    return (
-        <CheckboxField
-            {...rest}
-            checked={!!value}
-            value={checkedValue}
-            onChange={handleChange}
-        />
-    )
-}
+const CheckboxComponent = ({ onChange, value, checkedValue, ...rest }) => (
+    <CheckboxField
+        {...rest}
+        checked={!!value}
+        value={checkedValue}
+        onChange={createToggleChangeHandler(onChange)}
+    />
+)
 
 CheckboxComponent.propTypes = {
     ...adapterComponentProps,

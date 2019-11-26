@@ -3,20 +3,16 @@ import propTypes from '@dhis2/prop-types'
 import { SwitchField } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
-import { useToggleChangeHandler } from './shared/hooks.js'
+import { createToggleChangeHandler } from './shared/helpers.js'
 
-const SwitchComponent = ({ onChange, value, checkedValue, ...rest }) => {
-    const handleChange = useToggleChangeHandler(onChange)
-
-    return (
-        <SwitchField
-            {...rest}
-            checked={!!value}
-            value={checkedValue}
-            onChange={handleChange}
-        />
-    )
-}
+const SwitchComponent = ({ onChange, value, checkedValue, ...rest }) => (
+    <SwitchField
+        {...rest}
+        checked={!!value}
+        value={checkedValue}
+        onChange={createToggleChangeHandler(onChange)}
+    />
+)
 
 SwitchComponent.propTypes = {
     ...adapterComponentProps,

@@ -2,24 +2,32 @@ import React from 'react'
 import { CheckboxGroupField, Checkbox } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
-import { useToggleGroupChangeHandler } from './shared/hooks.js'
 import { toggleGroupOptionsProp } from './shared/propTypes.js'
 
-const CheckboxGroupComponent = ({ options, value, onChange, ...rest }) => {
-    const handleChange = useToggleGroupChangeHandler(value, onChange)
+const createChangeHandler = (currentValues, onChange) => payload => {
+    const activeIndex = currentValues.indexOf(payload.value)
+    const valueArray =
+        activeIndex === -1
+            ? [...currentValues, payload.value]
+            : currentValues
+                  .slice(0, activeIndex)
+                  .concat(currentValues.slice(activeIndex + 1))
+    const value = valueArray.length === 0 ? '' : valueArray
 
-    return (
-        <CheckboxGroupField
-            {...rest}
-            value={value || []}
-            onChange={handleChange}
-        >
-            {options.map(({ value, label }) => (
-                <Checkbox key={value} label={label} value={value} />
-            ))}
-        </CheckboxGroupField>
-    )
+    onChange({ value }, null)
 }
+
+const CheckboxGroupComponent = ({ options, value, onChange, ...rest }) => (
+    <CheckboxGroupField
+        {...rest}
+        value={value || []}
+        onChange={createChangeHandler(value, onChange)}
+    >
+        {options.map(({ value, label }) => (
+            <Checkbox key={value} label={label} value={value} />
+        ))}
+    </CheckboxGroupField>
+)
 
 CheckboxGroupComponent.propTypes = {
     ...adapterComponentProps,
