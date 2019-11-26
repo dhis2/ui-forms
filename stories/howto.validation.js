@@ -3,30 +3,31 @@ import React from 'react'
 
 import { storiesOf } from '@storybook/react'
 
-import { Code } from './guides/Code';
-import { InlineCode } from './guides/InlineCode';
-import { Field, Input, composeValidators, email, required } from '../src';
-import { H2 } from './guides/Headline';
-import { Text } from './guides/Text';
+import { Code } from './howto/Code'
+import { InlineCode } from './howto/InlineCode'
+import { Field, Input, composeValidators, email, required } from '../src'
+import { H2 } from './howto/Headline'
+import { Text } from './howto/Text'
 import { formDecorator } from '../.storybook/formDecorator'
 
-storiesOf('Guides: Validation', module)
+storiesOf('Howto: Validation', module)
     .addDecorator(formDecorator)
     .add('"required" validator', () => (
         <>
             <H2>Required validator</H2>
             <Text>
-                If one of your fields is required,
-                you can use the <InlineCode>required</InlineCode> validator.<br />
+                If one of your fields is required, you can use the{' '}
+                <InlineCode>required</InlineCode> validator.
+                <br />
                 <br />
                 <Text>
-                    <b>Note:</b> If you want to display the "required" style
-                    of the component, you will have to add custom props
-                    to enable that.<br />
-                    If you're using the built-in components of ui-forms,
-                    you will have to add the "required" prop
+                    <b>Note:</b> If you want to display the "required" style of
+                    the component, you will have to add custom props to enable
+                    that.
+                    <br />
+                    If you're using the built-in components of ui-forms, you
+                    will have to add the "required" prop
                 </Text>
-
                 <Code>{`
 <Field
     component={Input}
@@ -65,8 +66,9 @@ storiesOf('Guides: Validation', module)
         <>
             <H2>E-mail validator</H2>
             <Text>
-                If one of your fields has to be a valid e-mail address,
-                you can use the <InlineCode>email</InlineCode> validator.<br />
+                If one of your fields has to be a valid e-mail address, you can
+                use the <InlineCode>email</InlineCode> validator.
+                <br />
                 <Code>{`
 <Field
     component={Input}
@@ -89,8 +91,9 @@ storiesOf('Guides: Validation', module)
         <>
             <H2>Multiple validators</H2>
             <Text>
-                If you want to use multiple validators,
-                you can use the <InlineCode>composeValidators</InlineCode> helper<br />
+                If you want to use multiple validators, you can use the{' '}
+                <InlineCode>composeValidators</InlineCode> helper
+                <br />
                 <br />
                 <Code>{`
 <Field

@@ -18,11 +18,11 @@ import {
     email,
     required,
 } from '../src'
-import { Code } from './guides/Code'
-import { H2 } from './guides/Headline'
-import { Text } from './guides/Text'
+import { Code } from './howto/Code'
+import { H2 } from './howto/Headline'
+import { Text } from './howto/Text'
 
-storiesOf('Guides: Forms', module)
+storiesOf('Howto: Forms', module)
     .addParameters({ options: { showPanel: false } })
     .add('Standard form', () => {
         return (

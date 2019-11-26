@@ -19,8 +19,8 @@ function loadStories() {
     )
     components.keys().forEach(filename => components(filename))
 
-    const guides = require.context('../stories', true, /\/guides\.[^.]+\.js/)
-    guides.keys().forEach(filename => guides(filename))
+    const howto = require.context('../stories', true, /\/howto\.[^.]+\.js/)
+    howto.keys().forEach(filename => howto(filename))
 }
 
 function loadStoriesInclTesting() {
