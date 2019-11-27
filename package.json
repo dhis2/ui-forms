@@ -25,6 +25,7 @@
         "start-storybook": "start-storybook --port 5000",
         "prestart": "yarn localize",
         "start": "yarn start-storybook",
+        "start:testing": "STORYBOOK_INCLUDE_TESTING=1 yarn start",
         "test": "jest"
     },
     "husky": {
