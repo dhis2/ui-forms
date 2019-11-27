@@ -67,7 +67,7 @@
         "react-dom": "^16.8"
     },
     "dependencies": {
-        "@dhis2/d2-i18n": "1.0.5",
+        "@dhis2/d2-i18n": "1.0.6",
         "@dhis2/ui-core": "4.0.0-beta.2",
         "classnames": "^2.2.6",
         "final-form": "^4.18.5",
