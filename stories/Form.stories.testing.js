@@ -1,4 +1,4 @@
-import { useFormState } from 'react-final-form'
+import { useFormState, FormSpy } from 'react-final-form'
 import React from 'react'
 
 import { storiesOf } from '@storybook/react'
@@ -23,6 +23,12 @@ const StandardForm = () => {
 
     return (
         <div style={{ maxWidth: 830 }}>
+            <FormSpy>
+                {({ values }) => {
+                    window.formValues = values
+                    return null
+                }}
+            </FormSpy>
             <Field
                 name="gender"
                 label="Gender"
@@ -137,10 +143,10 @@ const StandardForm = () => {
             <Field
                 required
                 name="tnc"
-                checkedValue="yes"
                 label="I accept the terms and conditions"
                 validate={required}
                 component={Checkbox}
+                className="checkbox"
             />
         </div>
     )

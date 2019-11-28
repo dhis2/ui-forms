@@ -1,21 +1,15 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
 Given('a Checkbox is rendered', () => {
-    cy.visitStory('Checkbox', 'Default')
-})
-
-Given('a custom onChange handler is provided', () => {
-    cy.window().then(win => {
-        win.onChange = cy.stub()
-    })
+    cy.visitStory('Testing:Forms', 'Standard form')
 })
 
 When('the user clicks on the Checkbox', () => {
-    cy.get('label').click()
+    cy.get('.checkbox label').click()
 })
 
-Then('the onChange handler will be called', () => {
+Then('the form value that corresponds to the checkbox will be yes', () => {
     cy.window().then(win => {
-        expect(win.onChange).to.be.calledWith({})
+        expect(win.formValues.tnc).to.equal(true)
     })
 })
