@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { } from '../src/index.js'
+import {} from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator'
 import {
     Checkbox,
@@ -16,7 +16,6 @@ import {
     composeValidators,
     email,
     required,
-    useFormState, 
     FormSpy,
 } from '../src'
 
@@ -25,9 +24,8 @@ const valuesToWindow = ({ values }) => {
     return null
 }
 
-const StandardForm = () => {
-    const { values } = useFormState()
-
+/* eslint-disable react/prop-types */
+const StandardForm = ({ values }) => {
     return (
         <div style={{ maxWidth: 830 }}>
             <FormSpy>{valuesToWindow}</FormSpy>
@@ -159,8 +157,9 @@ const StandardForm = () => {
         </div>
     )
 }
+/* eslint-enable react/prop-types */
 
 storiesOf('Testing: Forms', module)
     .addDecorator(formDecorator)
     .addParameters({ options: { showPanel: false } })
-    .add('Standard form', () => <StandardForm />)
+    .add('Standard form', ({formRenderProps}) => <StandardForm {...formRenderProps} />)
