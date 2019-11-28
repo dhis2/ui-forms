@@ -19,17 +19,17 @@ import {
     required,
 } from '../src'
 
+const valuesToWindow = ({ values }) => {
+    window.formValues = values
+    return null
+}
+
 const StandardForm = () => {
     const { values } = useFormState()
 
     return (
         <div style={{ maxWidth: 830 }}>
-            <FormSpy>
-                {({ values }) => {
-                    window.formValues = values
-                    return null
-                }}
-            </FormSpy>
+            <FormSpy>{valuesToWindow}</FormSpy>
             <Field
                 name="gender"
                 label="Gender"
