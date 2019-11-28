@@ -6,7 +6,7 @@ Given('a Checkbox is rendered', () => {
 
 Given('a custom onChange handler is provided', () => {
     cy.window().then(win => {
-        cy.stub(win, 'onClick')
+        win.onChange = cy.stub()
     })
 })
 
@@ -16,6 +16,6 @@ When('the user clicks on the Checkbox', () => {
 
 Then('the onChange handler will be called', () => {
     cy.window().then(win => {
-        expect(win.onClick).to.be.calledWith({})
+        expect(win.onChange).to.be.calledWith({})
     })
 })
