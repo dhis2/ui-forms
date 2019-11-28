@@ -26,6 +26,10 @@
         "prestart": "yarn localize",
         "start": "yarn start-storybook",
         "start:testing": "STORYBOOK_INCLUDE_TESTING=1 yarn start",
+        "cypress:browser": "cypress open --config baseUrl=http://localhost:$PORT",
+        "cypress:ci": "NO_COLOR=1 cypress run -b $BROWSER --config baseUrl=http://localhost:$PORT",
+        "cypress:open": "PORT=12345 concurrently --kill-others -n storybook,cypress 'yarn start:testing' 'wait-on http-get://localhost:$PORT && yarn cypress:browser'",
+        "cypress:run": "PORT=12345 concurrently --kill-others --success first -n storybook,cypress 'yarn start:testing' 'wait-on http-get://localhost:$PORT && yarn cypress:ci'",
         "test": "jest"
     },
     "husky": {
@@ -50,6 +54,9 @@
         "@storybook/react": "^5.2.1",
         "babel-eslint": "10.x",
         "babel-loader": "^8.0.5",
+        "concurrently": "^5.0.0",
+        "cypress": "^3.6.1",
+        "cypress-cucumber-preprocessor": "^1.16.2",
         "enzyme": "^3.10.0",
         "enzyme-adapter-react-16": "^1.14.0",
         "eslint-plugin-react": "^7.14.3",
@@ -61,7 +68,8 @@
         "react-dom": "^16.9.0",
         "storybook-addon-jsx": "^7.1.6",
         "storybook-addon-react-docgen": "^1.2.21",
-        "typeface-roboto": "^0.0.75"
+        "typeface-roboto": "^0.0.75",
+        "wait-on": "^3.3.0"
     },
     "peerDependencies": {
         "prop-types": "^15",
