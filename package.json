@@ -42,15 +42,15 @@
         "nonGlobalStepDefinitions": true
     },
     "devDependencies": {
-        "@babel/cli": "^7.6.2",
-        "@babel/core": "^7.6.2",
-        "@babel/plugin-proposal-class-properties": "^7.4.0",
-        "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
-        "@babel/plugin-transform-react-constant-elements": "^7.6.0",
-        "@babel/preset-env": "^7.6.2",
-        "@babel/preset-react": "^7.0.0",
+        "@babel/cli": "^7.7.4",
+        "@babel/core": "^7.7.4",
+        "@babel/plugin-proposal-class-properties": "^7.7.4",
+        "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+        "@babel/plugin-transform-react-constant-elements": "^7.7.4",
+        "@babel/preset-env": "^7.7.4",
+        "@babel/preset-react": "^7.7.4",
         "@dhis2/app-runtime": "2.0.4",
-        "@dhis2/cli-style": "4.2.0",
+        "@dhis2/cli-style": "5.0.2",
         "@dhis2/d2-i18n-extract": "1.0.8",
         "@dhis2/d2-i18n-generate": "1.1.1",
         "@storybook/addon-notes": "5.2.6",
@@ -80,8 +80,9 @@
         "react-dom": "^16.8"
     },
     "dependencies": {
-        "@dhis2/d2-i18n": "^1.0.5",
-        "@dhis2/ui-core": "^4.0.1",
+        "@dhis2/d2-i18n": "1.0.6",
+        "@dhis2/ui-core": "4.0.3",
+        "classnames": "^2.2.6",
         "final-form": "^4.18.5",
         "react-final-form": "^6.3.0"
     },

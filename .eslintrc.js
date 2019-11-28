@@ -6,4 +6,9 @@ module.exports = {
     env: {
         es6: true,
     },
+    settings: {
+        react: {
+            version: 'detect'
+        }
+    }
 }
