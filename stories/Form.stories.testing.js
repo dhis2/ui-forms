@@ -13,6 +13,7 @@ import {
     RadioGroup,
     SingleSelect,
     Switch,
+    TextArea,
     composeValidators,
     email,
     required,
@@ -132,6 +133,12 @@ const StandardForm = () => {
                     { value: 'bellpepper', label: 'Bellpepper' },
                 ]}
                 helpText="If we ever order sandwiches, what ingredients would you like on top"
+            />
+
+            <Field
+                name="message"
+                label="If you want to tell us anything, just add your message here"
+                component={TextArea}
             />
 
             <Field
