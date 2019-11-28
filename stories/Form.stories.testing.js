@@ -1,8 +1,7 @@
-import { useFormState, FormSpy } from 'react-final-form'
 import React from 'react'
-
 import { storiesOf } from '@storybook/react'
 
+import { } from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator'
 import {
     Checkbox,
@@ -17,6 +16,8 @@ import {
     composeValidators,
     email,
     required,
+    useFormState, 
+    FormSpy,
 } from '../src'
 
 const valuesToWindow = ({ values }) => {
