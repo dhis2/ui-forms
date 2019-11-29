@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
@@ -7,6 +8,7 @@ import {
     Checkbox,
     CheckboxGroup,
     Field,
+    FileInput,
     Input,
     MultiSelect,
     RadioGroup,
@@ -21,10 +23,9 @@ import {
 
 const valuesToWindow = ({ values }) => {
     window.formValues = values
-    return null
+    return <span className="form-spy-internal" />
 }
 
-/* eslint-disable react/prop-types */
 const StandardForm = ({ values }) => {
     return (
         <div style={{ maxWidth: 830 }}>
@@ -147,6 +148,40 @@ const StandardForm = ({ values }) => {
             />
 
             <Field
+                name="fileTxt"
+                accept=".txt"
+                label="If you want to send us a txt file, please attach it here"
+                className="fileTxt"
+                validate={files => {
+                    if (!files) return undefined
+
+                    const [file] = files
+                    if (file.type !== 'text/plain') {
+                        return `The file you provided is not a txt file, received "${file.type}"`
+                    }
+                }}
+                component={FileInput}
+            />
+
+            <Field
+                multiple
+                accept="image/jpg"
+                name="fileJpgs"
+                label="If you want to send us some picture file, please attach it here"
+                validate={files => {
+                    if (!files) return undefined
+
+                    return files.reduce((error, file) => {
+                        if (error) return error
+                        if (file.type !== 'application/jpg') {
+                            return `One of the files is not a jpg, received "${file.type}"`
+                        }
+                    }, undefined)
+                }}
+                component={FileInput}
+            />
+
+            <Field
                 required
                 name="tnc"
                 label="I accept the terms and conditions"
@@ -162,4 +197,6 @@ const StandardForm = ({ values }) => {
 storiesOf('Testing: Forms', module)
     .addDecorator(formDecorator)
     .addParameters({ options: { showPanel: false } })
-    .add('Standard form', ({formRenderProps}) => <StandardForm {...formRenderProps} />)
+    .add('Standard form', ({ formRenderProps }) => (
+        <StandardForm {...formRenderProps} />
+    ))
