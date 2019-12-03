@@ -19,9 +19,10 @@ import {
     FormSpy,
 } from '../src'
 
+// eslint-disable-next-line react/prop-types
 const valuesToWindow = ({ values }) => {
     window.formValues = values
-    return null
+    return <span className="form-spy-inernal" />
 }
 
 /* eslint-disable react/prop-types */
