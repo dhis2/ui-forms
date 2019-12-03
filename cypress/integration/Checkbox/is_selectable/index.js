@@ -3,7 +3,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 Given('an unchecked Checkbox is rendered', () => {
     cy.visitStory('Testing:Forms', 'Standard form')
     // make sure form spy function ran
-    cy.get('.form-spy-inernal')
+    cy.get('.form-spy-internal')
     cy.window().then(win => {
         expect(win.formValues.tnc).to.be.undefined
     })

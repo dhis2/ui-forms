@@ -3,7 +3,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import {} from '../src/index.js'
-import { formDecorator } from '../.storybook/formDecorator'
+import { formDecorator } from '../.storybook/formDecorator.js'
 import {
     Checkbox,
     CheckboxGroup,
@@ -19,7 +19,7 @@ import {
     email,
     required,
     FormSpy,
-} from '../src'
+} from '../src/index.js'
 
 const valuesToWindow = ({ values }) => {
     window.formValues = values
@@ -192,9 +192,8 @@ const StandardForm = ({ values }) => {
         </div>
     )
 }
-/* eslint-enable react/prop-types */
 
-storiesOf('Testing: Forms', module)
+storiesOf('Testing:Forms', module)
     .addDecorator(formDecorator)
     .addParameters({ options: { showPanel: false } })
     .add('Standard form', ({ formRenderProps }) => (
