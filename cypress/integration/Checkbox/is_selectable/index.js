@@ -1,8 +1,13 @@
 import '../common'
-import { Then } from 'cypress-cucumber-preprocessor/steps'
+import { Given, Then } from 'cypress-cucumber-preprocessor/steps'
+
+Given('an unchecked Checkbox is rendered', () => {
+    cy.visitStory('Testing:Checkbox', 'Unchecked')
+    cy.verifyFormValue('checkbox', undefined)
+})
 
 Then('the form value that corresponds to the checkbox will be true', () => {
     cy.window().then(win => {
-        expect(win.formValues.tnc).to.equal(true)
+        expect(win.formValues.checkbox).to.equal(true)
     })
 })
