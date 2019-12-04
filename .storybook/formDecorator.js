@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@dhis2/ui-core'
-import { Form } from '../src'
+import { Form, FormSpy } from '../src'
 
 const defaultFormProps = {
     onSubmit: values => {
@@ -18,6 +18,14 @@ export const createFormDecorator = formProps => fn => (
     <Form {...defaultFormProps} {...formProps}>
         {formRenderProps => (
             <form onSubmit={formRenderProps.handleSubmit}>
+                {formProps.addFormSpy && (
+                    <FormSpy>
+                        {({ values }) => {
+                            window.formValues = values
+                            return <span className="form-spy-internal" />
+                        }}
+                    </FormSpy>
+                )}
                 {fn({ formRenderProps })}
                 <Button primary type="submit">
                     Submit
@@ -28,3 +36,4 @@ export const createFormDecorator = formProps => fn => (
 )
 
 export const formDecorator = createFormDecorator({})
+export const testingFormDecorator = createFormDecorator({ addFormSpy: true })

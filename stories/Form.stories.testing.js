@@ -3,7 +3,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import {} from '../src/index.js'
-import { formDecorator } from '../.storybook/formDecorator.js'
+import { testingFormDecorator } from '../.storybook/formDecorator.js'
 import {
     Checkbox,
     CheckboxGroup,
@@ -18,18 +18,11 @@ import {
     composeValidators,
     email,
     required,
-    FormSpy,
 } from '../src/index.js'
-
-const valuesToWindow = ({ values }) => {
-    window.formValues = values
-    return <span className="form-spy-internal" />
-}
 
 const StandardForm = ({ values }) => {
     return (
         <div style={{ maxWidth: 830 }}>
-            <FormSpy>{valuesToWindow}</FormSpy>
             <Field
                 name="gender"
                 label="Gender"
@@ -194,7 +187,7 @@ const StandardForm = ({ values }) => {
 }
 
 storiesOf('Testing:Forms', module)
-    .addDecorator(formDecorator)
+    .addDecorator(testingFormDecorator)
     .addParameters({ options: { showPanel: false } })
     .add('Standard form', ({ formRenderProps }) => (
         <StandardForm {...formRenderProps} />

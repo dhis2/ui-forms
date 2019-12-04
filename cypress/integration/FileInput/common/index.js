@@ -5,8 +5,6 @@ Given('a single-file IputField is rendered', () => {
 })
 
 Given('the InputField does not hold any files', () => {
+    cy.verifyFormValue('fileTxt', undefined)
     cy.get('.form-spy-internal')
-    cy.window().then(win => {
-        expect(win.formValues.fileTxt).to.be.undefined
-    })
 })
