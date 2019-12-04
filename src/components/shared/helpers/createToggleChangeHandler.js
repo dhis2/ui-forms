@@ -1,8 +1,8 @@
-// If the input has a value (checkedValue prop) the form value is: checkedValue || ''
+// If the input has a value (checkedValue prop) the form value is: checkedValue || null
 // Otherwise the form-value is: true || false
 const getToggleValue = ({ checked, value }) => {
     if (value) {
-        return checked ? value : ''
+        return checked ? value : null
     }
     return checked
 }
