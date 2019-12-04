@@ -14,14 +14,22 @@ const defaultFormProps = {
     mutators: {},
 }
 
+const attachFormValuesToWindow = formSpyProps => {
+    // formSpyProps.values will not include form values that have been set
+    // via the Field's initialValue prop, but calling getState on the form
+    // property does return an object which also includes these initial values
+    const formState = formSpyProps.form.getState()
+    window.formValues = formState.values
+}
+
 export const createFormDecorator = formProps => fn => (
     <Form {...defaultFormProps} {...formProps}>
         {formRenderProps => (
             <form onSubmit={formRenderProps.handleSubmit}>
                 {formProps.addFormSpy && (
                     <FormSpy>
-                        {({ values }) => {
-                            window.formValues = values
+                        {formSpyProps => {
+                            attachFormValuesToWindow(formSpyProps)
                             return <span className="form-spy-internal" />
                         }}
                     </FormSpy>
