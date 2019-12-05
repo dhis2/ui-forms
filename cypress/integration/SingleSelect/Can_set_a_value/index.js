@@ -12,8 +12,7 @@ Given('the SingleSelect has one options', () => {
 })
 
 When('the user selects the first options', () => {
-    cy.get('.root-input').click()
-    cy.get('.backdrop > div > div > div > div:first-child').click()
+    cy.get('form > div').selectSelectNthOption(1)
 })
 
 Then("the form state's value equals the first option's value", () => {

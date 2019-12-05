@@ -1,6 +1,6 @@
 import './getFormValue'
 import './screenshots'
-import './selectMultiSelectNthOption'
+import './selectSelectNthOption'
 import './uploadMultipleFiles'
 import './uploadSingleFile'
 import './verifyFormValue'

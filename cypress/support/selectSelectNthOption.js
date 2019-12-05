@@ -1,13 +1,16 @@
-function selectMultiSelectNthOption(subject, index) {
+function selectSelectNthOption(subject, index, closeMenu = false) {
     cy.wrap(subject)
         .find('label + div > .root > .root-input')
         .click()
     cy.get(`.backdrop > div > div > div > div:nth-child(${index})`).click()
-    cy.get('.backdrop').click('topRight') // close menu
+
+    if (closeMenu) {
+        cy.get('.backdrop').click('topRight') // close menu
+    }
 }
 
 Cypress.Commands.add(
-    'selectMultiSelectNthOption',
+    'selectSelectNthOption',
     { prevSubject: true },
-    selectMultiSelectNthOption
+    selectSelectNthOption
 )
