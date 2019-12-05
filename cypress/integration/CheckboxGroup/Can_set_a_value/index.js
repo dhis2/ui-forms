@@ -9,8 +9,7 @@ Given('the CheckboxGroup has two options', () => {
 
     cy.wrap(options).as('options')
     cy.window().then(win => {
-        win.options = options
-        win.forceUpdate()
+        win.updateCypressProps({ options })
     })
 })
 
