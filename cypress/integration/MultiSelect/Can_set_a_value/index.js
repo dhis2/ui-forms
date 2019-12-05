@@ -24,10 +24,10 @@ When('the user selects the second options', () => {
 
 Then("the form state's value equals the first option's value", () => {
     cy.get('@options').then(options => {
-        const [ firstOption ] = options
+        const [firstOption] = options
         cy.getFormValue('multiSelect').then(selected => {
             expect(selected).to.have.lengthOf(1)
-            expect(selected).to.include.members([ firstOption.value ])
+            expect(selected).to.include.members([firstOption.value])
         })
     })
 })
