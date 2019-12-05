@@ -41,6 +41,13 @@ export const createFormDecorator = formProps => fn => {
         <Form {...defaultFormProps} {...formProps}>
             {formRenderProps => (
                 <form onSubmit={formRenderProps.handleSubmit}>
+                    {fn({ formRenderProps })}
+
+                    <Button primary type="submit">
+                        Submit
+                    </Button>
+
+                    {/* render after components to ensure capturing "initialValue"s */}
                     {formProps.addFormSpy && (
                         <FormSpy>
                             {formSpyProps => {
@@ -49,10 +56,6 @@ export const createFormDecorator = formProps => fn => {
                             }}
                         </FormSpy>
                     )}
-                    {fn({ formRenderProps })}
-                    <Button primary type="submit">
-                        Submit
-                    </Button>
                 </form>
             )}
         </Form>
