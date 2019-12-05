@@ -5,7 +5,6 @@ Feature: The Switch can toggle a value
         When the user clicks on the Switch
         Then the form value that corresponds to the switch will be yes
 
-    @focus
     Scenario: The user disables the Switch
         Given a checked Switch with a value is rendered
         When the user clicks on the Switch
