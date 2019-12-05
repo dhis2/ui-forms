@@ -1,7 +1,5 @@
-Cypress.Commands.add('verifyFormValue', (fieldName, fieldValue) => {
-    // make sure form spy function ran
-    cy.get('.form-spy-internal')
-    cy.window().then(win => {
-        expect(win.formValues[fieldName]).to.equal(fieldValue)
+Cypress.Commands.add('verifyFormValue', (fieldName, expectedValue) => {
+    cy.getFormValue(fieldName).then(actualValue => {
+        expect(actualValue).to.equal(expectedValue)
     })
 })

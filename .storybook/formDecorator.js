@@ -1,8 +1,10 @@
 import React from 'react'
+import propTypes from '@dhis2/prop-types'
 import { Button } from '@dhis2/ui-core'
+
 import { Form, FormSpy } from '../src'
 
-const defaultFormProps = {
+const formProps = {
     onSubmit: values => {
         console.log(
             '++++++++++++++++\n',
@@ -14,34 +16,63 @@ const defaultFormProps = {
     mutators: {},
 }
 
-const attachFormValuesToWindow = formSpyProps => {
-    // formSpyProps.values will not include form values that have been set
-    // via the Field's initialValue prop, but calling getState on the form
-    // property does return an object which also includes these initial values
-    const formState = formSpyProps.form.getState()
-    window.formValues = formState.values
+class FormWithSpyAndSubmit extends React.Component {
+    state = {
+        cypressProps: {},
+    }
+
+    componentDidMount() {
+        window.updateCypressProps = this.updateCypressProps
+        window.clearCypressProps = this.clearCypressProps
+    }
+
+    componentWillUnmount() {
+        delete window.updateCypressProps
+        delete window.clearCypressProps
+    }
+
+    updateCypressProps = updateObj => {
+        const cypressProps = {
+            ...this.state.cypressProps,
+            ...updateObj,
+        }
+        this.setState({ cypressProps })
+    }
+
+    clearCypressProps = () => {
+        this.setState({ cypresProps: {} })
+    }
+
+    render() {
+        return (
+            <Form {...formProps}>
+                {formRenderProps => (
+                    <form onSubmit={formRenderProps.handleSubmit}>
+                        {this.props.renderChildren({
+                            formRenderProps,
+                            cypressProps: this.state.cypressProps,
+                        })}
+
+                        <Button primary type="submit">
+                            Submit
+                        </Button>
+
+                        {/* render after components to ensure capturing "initialValue"s */}
+                        <FormSpy>
+                            {({ values }) => {
+                                window.formValues = values
+                                return <span className="form-spy-internal" />
+                            }}
+                        </FormSpy>
+                    </form>
+                )}
+            </Form>
+        )
+    }
 }
 
-export const createFormDecorator = formProps => fn => (
-    <Form {...defaultFormProps} {...formProps}>
-        {formRenderProps => (
-            <form onSubmit={formRenderProps.handleSubmit}>
-                {formProps.addFormSpy && (
-                    <FormSpy>
-                        {formSpyProps => {
-                            attachFormValuesToWindow(formSpyProps)
-                            return <span className="form-spy-internal" />
-                        }}
-                    </FormSpy>
-                )}
-                {fn({ formRenderProps })}
-                <Button primary type="submit">
-                    Submit
-                </Button>
-            </form>
-        )}
-    </Form>
-)
+FormWithSpyAndSubmit.propTypes = {
+    renderChildren: propTypes.func.isRequired,
+}
 
-export const formDecorator = createFormDecorator({})
-export const testingFormDecorator = createFormDecorator({ addFormSpy: true })
+export const formDecorator = fn => <FormWithSpyAndSubmit renderChildren={fn} />

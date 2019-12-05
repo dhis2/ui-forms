@@ -1,16 +1,16 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, Checkbox, required } from '../src'
+import { Field, Switch, required } from '../src'
 import { formDecorator } from '../.storybook/formDecorator'
 
-storiesOf('Testing:Checkbox', module)
+storiesOf('Testing:Switch', module)
     .addDecorator(formDecorator)
     .add('Unchecked', () => (
         <Field
-            component={Checkbox}
-            className="checkbox"
-            name="checkbox"
+            component={Switch}
+            className="switch"
+            name="switch"
             label="Label text"
             validate={required}
             required
@@ -18,27 +18,27 @@ storiesOf('Testing:Checkbox', module)
     ))
     .add('Checked ', () => (
         <Field
-            component={Checkbox}
-            className="checkbox"
-            name="checkbox"
+            component={Switch}
+            className="switch"
+            name="switch"
             label="Label text"
             initialValue={true}
         />
     ))
     .add('Unchecked with value', () => (
         <Field
-            component={Checkbox}
-            className="checkbox"
-            name="checkbox"
+            component={Switch}
+            className="switch"
+            name="switch"
             label="Label text"
             checkedValue="yes"
         />
     ))
     .add('Checked with value', () => (
         <Field
-            component={Checkbox}
-            className="checkbox"
-            name="checkbox"
+            component={Switch}
+            className="switch"
+            name="switch"
             label="Label text"
             checkedValue="yes"
             initialValue="yes"

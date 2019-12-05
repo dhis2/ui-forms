@@ -7,9 +7,7 @@ Given('an unchecked Checkbox with a value is rendered', () => {
 })
 
 Then('the form value that corresponds to the checkbox will be yes', () => {
-    cy.window().then(win => {
-        expect(win.formValues.checkbox).to.equal('yes')
-    })
+    cy.verifyFormValue('checkbox', 'yes')
 })
 
 Given('a checked Checkbox with a value is rendered', () => {
