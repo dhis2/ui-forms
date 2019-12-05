@@ -2,37 +2,32 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { Field, CheckboxGroup, required } from '../src'
-import { testingFormDecorator } from '../.storybook/formDecorator.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
-/**
- * With this and `window.forceUpdate` from the
- * formDecorator, we can change the rendered options
- */
-window.options = [
+const defaultOptions = [
     { label: 'Foo', value: 'foo' },
     { label: 'Bar', value: 'bar' },
     { label: 'Baz', value: 'baz' },
 ]
-const getOptions = () => window.options
 
 storiesOf('Testing:CheckboxGroup', module)
-    .addDecorator(testingFormDecorator)
-    .add('Default', () => (
+    .addDecorator(formDecorator)
+    .add('Default', ({ cypressProps }) => (
         <Field
             name="choice"
             label="Choose something"
             component={CheckboxGroup}
-            options={getOptions()}
+            options={cypressProps.options || defaultOptions}
         />
     ))
-    .add('Required', () => (
+    .add('Required', ({ cypressProps }) => (
         <Field
             name="choice"
             label="Choose something"
             component={CheckboxGroup}
             validate={required}
             required
-            options={getOptions()}
+            options={cypressProps.options || defaultOptions}
             inline={false}
         />
     ))

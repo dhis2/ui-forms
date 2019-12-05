@@ -2,10 +2,10 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { Field, TextArea, required } from '../src'
-import { testingFormDecorator } from '../.storybook/formDecorator.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 storiesOf('TextArea', module)
-    .addDecorator(testingFormDecorator)
+    .addDecorator(formDecorator)
     .add('Default', () => (
         <Field
             component={TextArea}

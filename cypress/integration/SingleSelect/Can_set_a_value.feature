@@ -1,4 +1,4 @@
-Feature: The Checkbox can set a value
+Feature: The SingleSelect can set a value
 
     Scenario: The user clicks the first option
         Given a SingleSelect with no selected value

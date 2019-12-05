@@ -3,7 +3,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import {} from '../src/index.js'
-import { testingFormDecorator } from '../.storybook/formDecorator.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 import {
     Checkbox,
     CheckboxGroup,
@@ -187,7 +187,7 @@ const StandardForm = ({ values }) => {
 }
 
 storiesOf('Testing:Forms', module)
-    .addDecorator(testingFormDecorator)
+    .addDecorator(formDecorator)
     .addParameters({ options: { showPanel: false } })
     .add('Standard form', ({ formRenderProps }) => (
         <StandardForm {...formRenderProps} />

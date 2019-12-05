@@ -2,36 +2,31 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { Field, RadioGroup, required } from '../src'
-import { testingFormDecorator } from '../.storybook/formDecorator'
+import { formDecorator } from '../.storybook/formDecorator'
 
-/**
- * With this and `window.forceUpdate` from the
- * formDecorator, we can change the rendered options
- */
-window.options = [
+const defaultOptions = [
     { label: 'Foo', value: 'foo' },
     { label: 'Bar', value: 'bar' },
     { label: 'Baz', value: 'baz' },
 ]
-const getOptions = () => window.options
 
 storiesOf('Testing:RadioGroup', module)
-    .addDecorator(testingFormDecorator)
-    .add('Default', () => (
+    .addDecorator(formDecorator)
+    .add('Default', ({ cypressProps }) => (
         <Field
             name="choice"
             label="Choose something"
             component={RadioGroup}
-            options={getOptions()}
+            options={cypressProps.options || defaultOptions}
         />
     ))
-    .add('Required', () => (
+    .add('Required', ({ cypressProps }) => (
         <Field
             name="choice"
             label="Choose something"
             component={RadioGroup}
             validate={required}
             required
-            options={getOptions()}
+            options={cypressProps.options || defaultOptions}
         />
     ))

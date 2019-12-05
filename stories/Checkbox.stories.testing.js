@@ -2,10 +2,10 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import { Field, Checkbox, required } from '../src'
-import { testingFormDecorator } from '../.storybook/formDecorator'
+import { formDecorator } from '../.storybook/formDecorator'
 
 storiesOf('Testing:Checkbox', module)
-    .addDecorator(testingFormDecorator)
+    .addDecorator(formDecorator)
     .add('Unchecked', () => (
         <Field
             component={Checkbox}
