@@ -1,4 +1,3 @@
-import '../../shared/submit.js'
 import '../common'
 import { Given, Then } from 'cypress-cucumber-preprocessor/steps'
 import { requiredMessage } from '../../../../src/validators/required'

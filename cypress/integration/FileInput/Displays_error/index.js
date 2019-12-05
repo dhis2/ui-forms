@@ -1,4 +1,3 @@
-import '../../shared/submit.js'
 import '../common'
 import { When, Then } from 'cypress-cucumber-preprocessor/steps'
 
