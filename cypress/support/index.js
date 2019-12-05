@@ -1,5 +1,6 @@
+import './getFormValue'
 import './screenshots'
 import './uploadMultipleFiles'
 import './uploadSingleFile'
-import './visitStory'
 import './verifyFormValue'
+import './visitStory'
