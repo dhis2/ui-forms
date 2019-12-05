@@ -22,26 +22,48 @@ const attachFormValuesToWindow = formSpyProps => {
     window.formValues = formState.values
 }
 
-export const createFormDecorator = formProps => fn => (
-    <Form {...defaultFormProps} {...formProps}>
-        {formRenderProps => (
-            <form onSubmit={formRenderProps.handleSubmit}>
-                {formProps.addFormSpy && (
-                    <FormSpy>
-                        {formSpyProps => {
-                            attachFormValuesToWindow(formSpyProps)
-                            return <span className="form-spy-internal" />
-                        }}
-                    </FormSpy>
-                )}
-                {fn({ formRenderProps })}
-                <Button primary type="submit">
-                    Submit
-                </Button>
-            </form>
-        )}
-    </Form>
-)
+class RerenderableForm extends React.Component {
+    componentDidMount() {
+        window.forceUpdate = () => this.forceUpdate()
+    }
+
+    componentWillUnmount() {
+        delete window.forceUpdate
+    }
+
+    render() {
+        return this.props.children
+    }
+}
+
+export const createFormDecorator = formProps => fn => {
+    const form = (
+        <Form {...defaultFormProps} {...formProps}>
+            {formRenderProps => (
+                <form onSubmit={formRenderProps.handleSubmit}>
+                    {formProps.addFormSpy && (
+                        <FormSpy>
+                            {formSpyProps => {
+                                attachFormValuesToWindow(formSpyProps)
+                                return <span className="form-spy-internal" />
+                            }}
+                        </FormSpy>
+                    )}
+                    {fn({ formRenderProps })}
+                    <Button primary type="submit">
+                        Submit
+                    </Button>
+                </form>
+            )}
+        </Form>
+    )
+
+    if (formProps.addFormSpy) {
+        return <RerenderableForm>{form}</RerenderableForm>
+    }
+
+    return form
+}
 
 export const formDecorator = createFormDecorator({})
 export const testingFormDecorator = createFormDecorator({ addFormSpy: true })
