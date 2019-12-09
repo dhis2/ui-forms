@@ -5,14 +5,14 @@ describe('validator: alphaNumeric', () => {
         expect(alphaNumeric('')).toBe(undefined)
     })
 
-    it('should return undefined for a valid alphaNumeric values', () => {
+    it('should return undefined for a valid alpha-numeric values', () => {
         const values = ['123456', 'abcdef', 'a1b2c3', 'A1B2C3d4e5']
         for (const value of values) {
             expect(alphaNumeric(value)).toBe(undefined)
         }
     })
 
-    it('should return undefined for a valid alphaNumeric values', () => {
+    it('should return an error for non-alpha-numeric values', () => {
         const values = ['.,/|~', 'I have spaces']
         for (const value of values) {
             expect(alphaNumeric(value)).toBe(invalidAlphaNumericMessage)
