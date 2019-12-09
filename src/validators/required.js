@@ -1,4 +1,10 @@
 import i18n from '@dhis2/d2-i18n'
 
-export const requiredMessage = i18n.t('Required')
-export const required = value => (value ? undefined : requiredMessage)
+const requiredMessage = i18n.t('Required')
+
+const required = value =>
+    typeof value === 'undefined' || value === null || value === ''
+        ? requiredMessage
+        : undefined
+
+export { required, requiredMessage }
