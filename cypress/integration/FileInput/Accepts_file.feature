@@ -1,7 +1,7 @@
 Feature: The FileInput accepts files
 
     Scenario: The user provides a file
-        Given a single-file IputField is rendered
+        Given a single-file FileInput is rendered
         And the InputField does not contain any files
         When a file is provided
         Then the form state contains that file
