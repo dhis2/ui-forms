@@ -13,7 +13,7 @@ Given('the RadioGroup has one options', () => {
     })
 })
 
-When('the user selects the first options', () => {
+When('the user selects the first option', () => {
     cy.get('legend + label + label').click()
 })
 

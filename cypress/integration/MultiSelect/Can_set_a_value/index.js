@@ -13,11 +13,11 @@ Given('the MultiSelect has two options', () => {
     })
 })
 
-When('the user selects the first options', () => {
+When('the user selects the first option', () => {
     cy.get('form > div').selectSelectNthOption(1, true)
 })
 
-When('the user selects the second options', () => {
+When('the user selects the second option', () => {
     cy.get('form > div').selectSelectNthOption(2, true)
 })
 

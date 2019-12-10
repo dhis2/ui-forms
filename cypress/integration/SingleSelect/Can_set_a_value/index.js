@@ -10,7 +10,7 @@ Given('the SingleSelect has one options', () => {
     })
 })
 
-When('the user selects the first options', () => {
+When('the user selects the first option', () => {
     cy.get('form > div').selectSelectNthOption(1)
 })
 
