@@ -5,7 +5,7 @@ Given('a TextArea with no text is rendered', () => {
     cy.verifyFormValue('comment', undefined)
 })
 
-When('the user types something', () => {
+When('the user types something in the TextArea', () => {
     cy.get('textarea').type('something')
 })
 

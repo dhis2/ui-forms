@@ -5,7 +5,7 @@ Given('a Input with no text is rendered', () => {
     cy.verifyFormValue('agree', undefined)
 })
 
-When('the user types something', () => {
+When('the user types something in the Input', () => {
     cy.get('input').type('something')
 })
 
