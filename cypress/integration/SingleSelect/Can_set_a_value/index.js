@@ -1,7 +1,7 @@
 import '../common'
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
-Given('the SingleSelect has one options', () => {
+Given('the SingleSelect has one option', () => {
     const options = [{ value: 'Value', label: 'Label' }]
 
     cy.wrap(options).as('options')

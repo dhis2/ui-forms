@@ -1,7 +1,7 @@
 import '../common'
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
-Given('the RadioGroup has one options', () => {
+Given('the RadioGroup has one option', () => {
     const options = [
         { value: 'value1', label: 'Label 1' },
         { value: 'value2', label: 'Label 2' },
