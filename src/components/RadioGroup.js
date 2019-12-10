@@ -1,5 +1,5 @@
 import React from 'react'
-import propTypes from 'prop-types'
+import propTypes from '@dhis2/prop-types'
 import { Field, FieldSet, Legend, Radio, Help } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'

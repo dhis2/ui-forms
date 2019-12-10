@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import propTypes from 'prop-types'
+import propTypes from '@dhis2/prop-types'
 import { Field, Checkbox as CoreCheckbox, Help } from '@dhis2/ui-core'
 
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'

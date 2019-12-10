@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import propTypes from 'prop-types'
+import propTypes from '@dhis2/prop-types'
 import i18n from '@dhis2/d2-i18n'
 import { FileInput as UiCoreFileInput, Help, Field } from '@dhis2/ui-core'
 import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'

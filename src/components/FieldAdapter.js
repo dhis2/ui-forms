@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import propTypes from 'prop-types'
+import propTypes from '@dhis2/prop-types'
 import { fieldRenderProps, fieldInputProps, fieldMetaProps } from './Field'
 
 const useAdapterOnChange = onChange =>
