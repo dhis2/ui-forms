@@ -11,6 +11,7 @@ const createDefaultChangeHandler = onChange => payload => {
         // directly usable value
         onChange(payload)
     } else {
+        // ¯\_(ツ)_/¯
         throw new Error('Could not process event payload')
     }
 }

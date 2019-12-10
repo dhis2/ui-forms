@@ -26,17 +26,16 @@ Then("the form state's value equals the first option's value", () => {
         const [firstOption] = options
         cy.getFormValue('multiSelect').then(selected => {
             expect(selected).to.have.lengthOf(1)
-            expect(selected).to.include.members([firstOption.value])
+            expect(selected).to.deep.equal([firstOption])
         })
     })
 })
 
 Then("the form state's value contains both options", () => {
     cy.get('@options').then(options => {
-        const allOptions = options.map(({ value }) => value)
         cy.getFormValue('multiSelect').then(selected => {
-            expect(selected).to.have.lengthOf(allOptions.length)
-            expect(selected).to.include.members(allOptions)
+            expect(selected).to.have.lengthOf(options.length)
+            expect(selected).to.deep.equal(options)
         })
     })
 })

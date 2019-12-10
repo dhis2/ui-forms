@@ -6,26 +6,18 @@ import { normalizeProps } from './shared/helpers.js'
 import { fieldRenderProps } from './shared/propTypes.js'
 
 const createChangeHandler = ({ input }) => ({ selected }) => {
-    const values = selected.map(({ value }) => value)
-    input.onChange(values)
-}
-
-const filterSelectedOptions = (options, value) => {
-    const selectedValues = new Set(value || [])
-    return options.filter(({ value }) => selectedValues.has(value))
+    input.onChange(selected)
 }
 
 const MultiSelect = props => {
-    const { options, value, ...rest } = normalizeProps(
+    const { options = [], value, ...rest } = normalizeProps(
         props,
         createChangeHandler(props)
     )
-    const renderOptions = Array.isArray(options) ? options : []
-    const selectedOptions = filterSelectedOptions(renderOptions, value)
 
     return (
-        <MultiSelectField {...rest} selected={selectedOptions}>
-            {renderOptions.map(option => (
+        <MultiSelectField {...rest} selected={value || []}>
+            {options.map(option => (
                 <MultiSelectOption key={option.value} {...option} />
             ))}
         </MultiSelectField>
@@ -40,7 +32,7 @@ MultiSelect.propTypes = {
     ...MultiSelectProps,
     options: MultiSelectField.propTypes.selected,
     value: propTypes.oneOfType([
-        propTypes.arrayOf(propTypes.string),
+        MultiSelectField.propTypes.selected,
         propTypes.oneOf(['']),
     ]),
 }
