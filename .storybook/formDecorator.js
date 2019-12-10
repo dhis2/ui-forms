@@ -40,7 +40,7 @@ class FormWithSpyAndSubmit extends React.Component {
     }
 
     clearCypressProps = () => {
-        this.setState({ cypresProps: {} })
+        this.setState({ cypressProps: {} })
     }
 
     render() {
