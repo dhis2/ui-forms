@@ -1,21 +1,10 @@
 import { boolean, invalidBooleanMessage } from '../boolean'
+import { testValidatorValues } from './testValidatorValues.js'
 
 describe('validator: boolean', () => {
-    it('should return undefined for an empty string', () => {
-        expect(boolean('')).toBe(undefined)
-    })
+    const validInputs = ['', true, false]
+    const invalidInputs = ['text', 3, {}, [], () => {}]
 
-    it('should return undefined for a valid boolean', () => {
-        const values = [true, false]
-        for (const value of values) {
-            expect(boolean(value)).toBe(undefined)
-        }
-    })
-
-    it('should return an error for non-boolean values', () => {
-        const values = ['text', 3, {}, [], () => {}]
-        for (const value of values) {
-            expect(boolean(value)).toBe(invalidBooleanMessage)
-        }
-    })
+    testValidatorValues(validInputs, boolean, undefined)
+    testValidatorValues(invalidInputs, boolean, invalidBooleanMessage)
 })
