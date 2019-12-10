@@ -1,17 +1,18 @@
 const PRIMITIVE_TYPES = new Set(['string', 'number', 'boolean'])
 
 const createDefaultChangeHandler = onChange => payload => {
-    const value =
+    if (payload && 'value' in payload) {
         // ui-core event signature
-        (payload && payload.value) ||
+        onChange(payload.value)
+    } else if (payload && payload.target && 'value' in payload.target) {
         // synthetic event
-        (payload && payload.target && payload.target.value) ||
+        onChange(payload.target.value)
+    } else if (PRIMITIVE_TYPES.has(typeof payload)) {
         // directly usable value
-        (PRIMITIVE_TYPES.has(typeof payload) && payload) ||
-        // ¯\_(ツ)_/¯
-        ''
-
-    onChange(value)
+        onChange(payload)
+    } else {
+        throw new Error('Could not process event payload')
+    }
 }
 
 const normalizeProps = ({ input, meta, ...ownProps }, changeHandler) => {
