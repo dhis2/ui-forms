@@ -1,4 +1,4 @@
-Feature: The Checkbox can set a value
+Feature: The RadioGroup can set a value
 
     Scenario: The user clicks the first option
         Given a RadioGroup with no selected value
