@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { isEmpty } from './helpers/isEmpty.js'
+import { isEmpty } from './helpers/index.js'
 
 const invalidBooleanMessage = i18n.t('Please provide a boolean value')
 

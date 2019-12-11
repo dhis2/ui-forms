@@ -1,10 +1,22 @@
 import { boolean, invalidBooleanMessage } from '../boolean'
-import { testValidatorValues } from './testValidatorValues.js'
+import { testValidatorValues } from './helpers/testValidatorValues'
 
 describe('validator: boolean', () => {
-    const validInputs = ['', true, false]
-    const invalidInputs = ['text', 3, {}, [], () => {}]
+    describe('allows empty values', () => {
+        testValidatorValues(boolean, undefined, ['', null, undefined])
+    })
 
-    testValidatorValues(validInputs, boolean, undefined)
-    testValidatorValues(invalidInputs, boolean, invalidBooleanMessage)
+    describe('allows boolean values', () => {
+        testValidatorValues(boolean, undefined, [true, false])
+    })
+
+    describe('rejects non-boolean values', () => {
+        testValidatorValues(boolean, invalidBooleanMessage, [
+            'text',
+            3,
+            {},
+            [],
+            () => {},
+        ])
+    })
 })
