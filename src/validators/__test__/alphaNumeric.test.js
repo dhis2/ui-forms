@@ -1,21 +1,28 @@
-import { alphaNumeric, invalidAlphaNumericMessage } from '../alphaNumeric'
+import { alphaNumeric, invalidAlphaNumericMessage } from '../alphaNumeric.js'
+import { testValidatorValues } from './helpers/testValidatorValues.js'
 
 describe('validator: alphaNumeric', () => {
-    it('should return undefined for an empty string', () => {
-        expect(alphaNumeric('')).toBe(undefined)
+    describe('allows empty values', () => {
+        testValidatorValues(alphaNumeric, undefined, ['', null, undefined])
     })
 
-    it('should return undefined for a valid alpha-numeric values', () => {
-        const values = ['123456', 'abcdef', 'a1b2c3', 'A1B2C3d4e5']
-        for (const value of values) {
-            expect(alphaNumeric(value)).toBe(undefined)
-        }
+    describe('allows alpha-numeric values', () => {
+        testValidatorValues(alphaNumeric, undefined, [
+            '123456',
+            'abcdef',
+            'a1b2c3',
+            'A1B2C3d4e5',
+        ])
     })
 
-    it('should return an error for non-alpha-numeric values', () => {
-        const values = ['.,/|~', 'I have spaces']
-        for (const value of values) {
-            expect(alphaNumeric(value)).toBe(invalidAlphaNumericMessage)
-        }
+    describe('rejects non-alpha-numeric values', () => {
+        testValidatorValues(alphaNumeric, invalidAlphaNumericMessage, [
+            '.,/|~',
+            'I have spaces',
+            true,
+            false,
+            0,
+            1,
+        ])
     })
 })
