@@ -1,7 +1,7 @@
 import { Given } from 'cypress-cucumber-preprocessor/steps'
 
-Given('a MultiSelect with no selected value', () => {
+Given('a required MultiSelect with no selected value', () => {
     cy.visitStory('Testing:MultiSelect', 'Required')
-    cy.getFormValue('multiSelect').then(arg => console.log('arg', arg))
+    cy.getFormValue('multiSelect')
     cy.verifyFormValue('multiSelect', undefined)
 })

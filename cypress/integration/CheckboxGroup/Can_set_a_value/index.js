@@ -13,11 +13,11 @@ Given('the CheckboxGroup has two options', () => {
     })
 })
 
-When('the user selects the first options', () => {
+When('the user selects the first option', () => {
     cy.get('legend + label').click()
 })
 
-When('the user selects the second options', () => {
+When('the user selects the second option', () => {
     cy.get('legend + label + label').click()
 })
 

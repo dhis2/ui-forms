@@ -5,24 +5,18 @@ import { SingleSelectField, SingleSelectOption } from '@dhis2/ui-core'
 import { normalizeProps } from './shared/helpers'
 import { fieldRenderProps } from './shared/propTypes'
 
-const createChangeHandler = props => payload =>
-    props.input.onChange(payload.selected.value)
+const createChangeHandler = props => ({ selected }) =>
+    props.input.onChange(selected)
 
 const SingleSelect = props => {
-    const { options, value, onChange, ...rest } = normalizeProps(
+    const { options = [], value, onChange, ...rest } = normalizeProps(
         props,
         createChangeHandler(props)
     )
-    const renderOptions = Array.isArray(options) ? options : []
-    const selectedOption = renderOptions.find(o => o.value === value) || {}
 
     return (
-        <SingleSelectField
-            {...rest}
-            selected={selectedOption}
-            onChange={onChange}
-        >
-            {renderOptions.map(option => (
+        <SingleSelectField {...rest} selected={value || {}} onChange={onChange}>
+            {options.map(option => (
                 <SingleSelectOption key={option.value} {...option} />
             ))}
         </SingleSelectField>

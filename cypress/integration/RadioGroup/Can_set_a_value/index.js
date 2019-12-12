@@ -1,7 +1,7 @@
 import '../common'
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
-Given('the RadioGroup has one options', () => {
+Given('the RadioGroup has two options', () => {
     const options = [
         { value: 'value1', label: 'Label 1' },
         { value: 'value2', label: 'Label 2' },
@@ -13,7 +13,7 @@ Given('the RadioGroup has one options', () => {
     })
 })
 
-When('the user selects the first options', () => {
+When('the user selects the first option', () => {
     cy.get('legend + label + label').click()
 })
 

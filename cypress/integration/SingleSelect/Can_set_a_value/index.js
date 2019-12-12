@@ -1,7 +1,7 @@
 import '../common'
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
-Given('the SingleSelect has one options', () => {
+Given('the SingleSelect has one option', () => {
     const options = [{ value: 'Value', label: 'Label' }]
 
     cy.wrap(options).as('options')
@@ -10,12 +10,14 @@ Given('the SingleSelect has one options', () => {
     })
 })
 
-When('the user selects the first options', () => {
+When('the user selects the first option', () => {
     cy.get('form > div').selectSelectNthOption(1)
 })
 
 Then("the form state's value equals the first option's value", () => {
     cy.get('@options').then(options => {
-        cy.verifyFormValue('singleSelect', options[0].value)
+        cy.getFormValue('singleSelect').then(actualValue => {
+            expect(actualValue).to.deep.equal(options[0])
+        })
     })
 })

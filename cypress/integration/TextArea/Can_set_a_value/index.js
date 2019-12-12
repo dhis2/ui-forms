@@ -5,15 +5,10 @@ Given('a TextArea with no text is rendered', () => {
     cy.verifyFormValue('comment', undefined)
 })
 
-When('the user types something', () => {
-    cy.wrap('user input').as('userInput')
-    cy.get('@userInput').then(userInput => {
-        cy.get('textarea').type(userInput)
-    })
+When('the user types something in the TextArea', () => {
+    cy.get('textarea').type('something')
 })
 
 Then("the form state's value equals the written text", () => {
-    cy.get('@userInput').then(userInput => {
-        cy.verifyFormValue('comment', userInput)
-    })
+    cy.verifyFormValue('comment', 'something')
 })
