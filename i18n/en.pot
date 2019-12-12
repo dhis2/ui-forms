@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-11-06T15:56:26.431Z\n"
-"PO-Revision-Date: 2019-11-06T15:56:26.431Z\n"
+"POT-Creation-Date: 2019-12-12T13:08:56.845Z\n"
+"PO-Revision-Date: 2019-12-12T13:08:56.846Z\n"
 
 msgid "Upload file"
 msgstr ""
@@ -20,8 +20,23 @@ msgstr ""
 msgid "No file(s) selected yet"
 msgstr ""
 
-msgid "Not a valid e-mail"
+msgid "Please provide an alpha-numeric value"
 msgstr ""
 
-msgid "Required"
+msgid "Please provide a boolean value"
+msgstr ""
+
+msgid "Please enter between {{lowerBound}} and {{upperBound}} characters"
+msgstr ""
+
+msgid "Please enter numerical values"
+msgstr ""
+
+msgid "Please enter a number between {{lowerBound}} and {{upperBound}}"
+msgstr ""
+
+msgid "Please provide a valid email address"
+msgstr ""
+
+msgid "This is a required field"
 msgstr ""

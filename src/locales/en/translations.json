@@ -3,6 +3,11 @@
     "Upload files": "",
     "Remove": "",
     "No file(s) selected yet": "",
-    "Not a valid e-mail": "",
-    "Required": ""
+    "Please provide an alpha-numeric value": "",
+    "Please provide a boolean value": "",
+    "Please enter between {{lowerBound}} and {{upperBound}} characters": "",
+    "Please enter numerical values": "",
+    "Please enter a number between {{lowerBound}} and {{upperBound}}": "",
+    "Please provide a valid email address": "",
+    "This is a required field": ""
 }
