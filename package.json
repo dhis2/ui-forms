@@ -1,10 +1,10 @@
 {
     "name": "@dhis2/ui-form",
-    "version": "1.0.4",
+    "version": "0.0.1",
     "main": "./build/cjs/index.js",
     "module": "./build/es/index.js",
     "sideEffects": false,
-    "repository": "git@github.com:dhis2/ui-widgets.git",
+    "repository": "git@github.com:dhis2/ui-forms.git",
     "author": "Jan-Gerke Salomon <jan-gerke@dhis2.org>",
     "contributors": [],
     "license": "BSD-3-Clause",
@@ -14,7 +14,7 @@
     },
     "scripts": {
         "extract-pot": "d2-i18n-extract -p src/ -o i18n/",
-        "generate-locale": "d2-i18n-generate -n 'ui-widgets' -p ./i18n/ -o ./src/locales/",
+        "generate-locale": "d2-i18n-generate -n 'ui-forms' -p ./i18n/ -o ./src/locales/",
         "localize": "yarn extract-pot && yarn generate-locale",
         "prebuild": "rm -rf ./build/* && yarn localize",
         "build:commonjs": "BABEL_ENV=commonjs babel src --out-dir ./build/cjs --copy-files --verbose",
@@ -25,6 +25,11 @@
         "start-storybook": "start-storybook --port 5000",
         "prestart": "yarn localize",
         "start": "yarn start-storybook",
+        "start:testing": "STORYBOOK_INCLUDE_TESTING=1 yarn start --ci --port $PORT",
+        "cypress:browser": "cypress open --config baseUrl=http://localhost:$PORT",
+        "cypress:ci": "NO_COLOR=1 cypress run -b $BROWSER --config baseUrl=http://localhost:$PORT",
+        "cypress:open": "PORT=12345 concurrently --kill-others -n storybook,cypress 'yarn start:testing' 'wait-on http-get://localhost:$PORT && yarn cypress:browser'",
+        "cypress:run": "PORT=12345 concurrently --kill-others --success first -n storybook,cypress 'yarn start:testing' 'wait-on http-get://localhost:$PORT && yarn cypress:ci'",
         "test": "jest"
     },
     "husky": {
@@ -33,13 +38,16 @@
             "pre-commit": "yarn test && d2-style js apply"
         }
     },
+    "cypress-cucumber-preprocessor": {
+        "nonGlobalStepDefinitions": true
+    },
     "devDependencies": {
-        "@babel/cli": "^7.7.4",
-        "@babel/core": "^7.7.4",
+        "@babel/cli": "^7.7.5",
+        "@babel/core": "^7.7.5",
         "@babel/plugin-proposal-class-properties": "^7.7.4",
         "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
         "@babel/plugin-transform-react-constant-elements": "^7.7.4",
-        "@babel/preset-env": "^7.7.4",
+        "@babel/preset-env": "^7.7.6",
         "@babel/preset-react": "^7.7.4",
         "@dhis2/app-runtime": "2.0.4",
         "@dhis2/cli-style": "5.0.3",
@@ -49,8 +57,12 @@
         "@dhis2/ui-core": "4.1.1",
         "@storybook/addon-notes": "5.2.8",
         "@storybook/react": "^5.2.8",
+        "@storybook/router": "^5.2.8",
         "babel-eslint": "10.x",
         "babel-loader": "^8.0.5",
+        "concurrently": "^5.0.0",
+        "cypress": "^3.6.1",
+        "cypress-cucumber-preprocessor": "^1.16.2",
         "enzyme": "^3.10.0",
         "enzyme-adapter-react-16": "^1.14.0",
         "eslint-plugin-react": "^7.17.0",
@@ -62,7 +74,8 @@
         "react-dom": "^16.9.0",
         "storybook-addon-jsx": "^7.1.6",
         "storybook-addon-react-docgen": "^1.2.21",
-        "typeface-roboto": "^0.0.75"
+        "typeface-roboto": "^0.0.75",
+        "wait-on": "^3.3.0"
     },
     "peerDependencies": {
         "@dhis2/d2-i18n": "^1",
