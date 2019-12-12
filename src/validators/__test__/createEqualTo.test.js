@@ -26,7 +26,7 @@ describe('validator: createEqualTo', () => {
 
     it('should return an error string when the fields have inequal values', () => {
         const inValidFooMsg =
-            'Please make sure the value of this input matches the value in foo.'
+            'Please make sure the value of this input matches the value in "foo".'
 
         expect(equalToFoo('this', { foo: 'that' })).toEqual(inValidFooMsg)
     })
@@ -34,7 +34,7 @@ describe('validator: createEqualTo', () => {
     it('should use the property description in the error string if provided', () => {
         const equalToBar = createEqualTo('bar', 'Barista')
         const inValidBarMsg =
-            'Please make sure the value of this input matches the value in Barista.'
+            'Please make sure the value of this input matches the value in "Barista".'
 
         expect(equalToBar('this', { bar: 'that' })).toEqual(inValidBarMsg)
     })
