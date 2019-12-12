@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/ui-form",
-    "version": "1.0.4",
+    "version": "0.0.1",
     "main": "./build/cjs/index.js",
     "module": "./build/es/index.js",
     "sideEffects": false,
