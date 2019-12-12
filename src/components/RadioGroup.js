@@ -1,61 +1,25 @@
 import React from 'react'
-import propTypes from 'prop-types'
-import { Field, FieldSet, Legend, Radio, Help } from '@dhis2/ui-core'
+import { RadioGroupField, Radio } from '@dhis2/ui-core'
 
-import { FieldAdapter, adapterComponentProps } from './FieldAdapter.js'
+import { toggleGroupOptionsProp, fieldRenderProps } from './shared/propTypes.js'
+import { normalizeProps } from './shared/helpers.js'
 
-const RadioGroup = ({
-    label,
-    required,
-    disabled,
-    options,
-    name,
-    value,
-    onChange,
-    error,
-    warning,
-    valid,
-    helpText,
-    errorText,
-}) => (
-    <Field>
-        <FieldSet>
-            {label && <Legend required={required}>{label}</Legend>}
+const RadioGroup = props => {
+    const { options, ...rest } = normalizeProps(props)
 
-            {options.map(option => (
-                <Radio
-                    key={option.value}
-                    name={name}
-                    disabled={disabled}
-                    value={option.value}
-                    label={option.label}
-                    checked={value === option.value}
-                    onChange={onChange}
-                    error={error}
-                    warning={warning}
-                    valid={valid}
-                />
+    return (
+        <RadioGroupField {...rest}>
+            {options.map(({ value, label }) => (
+                <Radio key={value} label={label} value={value} />
             ))}
-
-            {helpText && <Help>{helpText}</Help>}
-
-            {error && errorText && <Help error>{errorText}</Help>}
-        </FieldSet>
-    </Field>
-)
-
-RadioGroup.propTypes = {
-    ...adapterComponentProps,
-    options: propTypes.arrayOf(
-        propTypes.shape({
-            label: propTypes.string.isRequired,
-            value: propTypes.any.isRequired,
-        })
-    ).isRequired,
+        </RadioGroupField>
+    )
 }
 
-const RadioGroupAdapter = props => (
-    <FieldAdapter {...props} component={RadioGroup} />
-)
+RadioGroup.propTypes = {
+    ...fieldRenderProps,
+    ...RadioGroupField.propTypes,
+    options: toggleGroupOptionsProp.isRequired,
+}
 
-export { RadioGroupAdapter, RadioGroup }
+export { RadioGroup }

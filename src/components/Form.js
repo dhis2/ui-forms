@@ -1,5 +1,5 @@
 import { Form } from 'react-final-form'
-import propTypes from 'prop-types'
+import propTypes from '@dhis2/prop-types'
 
 Form.propTypes = {
     form: propTypes.shape({
