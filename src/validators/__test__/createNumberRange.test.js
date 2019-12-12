@@ -4,7 +4,7 @@ import {
 } from '../createNumberRange.js'
 import { testValidatorValues } from './helpers/testValidatorValues.js'
 
-describe('validator: boolean', () => {
+describe('validator: createNumberRange', () => {
     const betweenSixAndTen = createNumberRange(6, 10)
     const outOfBoundsMessage = 'Please enter a number between 6 and 10'
 

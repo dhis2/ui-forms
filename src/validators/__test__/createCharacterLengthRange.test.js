@@ -1,7 +1,7 @@
 import { createCharacterLengthRange } from '../createCharacterLengthRange.js'
 import { testValidatorValues } from './helpers/testValidatorValues.js'
 
-describe('validator: boolean', () => {
+describe('validator: createCharacterLengthRange', () => {
     const betweenSixAndTenChars = createCharacterLengthRange(6, 10)
     const inValidMsg = 'Please enter between 6 and 10 characters'
 

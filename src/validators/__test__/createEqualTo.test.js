@@ -1,7 +1,7 @@
 import { createEqualTo } from '../createEqualTo.js'
 import { testValidatorValues } from './helpers/testValidatorValues.js'
 
-describe('validator: equalTo', () => {
+describe('validator: createEqualTo', () => {
     const equalToFoo = createEqualTo('foo')
 
     it('should create a function', () => {
