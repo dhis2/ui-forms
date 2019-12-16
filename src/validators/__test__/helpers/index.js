@@ -12,4 +12,10 @@ const testValidatorValues = (validator, returnValue, values) => {
     }
 }
 
-export { testValidatorValues }
+const allowsEmptyValues = validator => {
+    describe('allows empty values', () => {
+        testValidatorValues(validator, undefined, ['', null, undefined])
+    })
+}
+
+export { testValidatorValues, allowsEmptyValues }

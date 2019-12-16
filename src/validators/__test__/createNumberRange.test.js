@@ -2,7 +2,7 @@ import {
     createNumberRange,
     nonNumericValueMessage,
 } from '../createNumberRange.js'
-import { testValidatorValues } from './helpers/testValidatorValues.js'
+import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
 describe('validator: createNumberRange', () => {
     const betweenSixAndTen = createNumberRange(6, 10)
@@ -12,9 +12,7 @@ describe('validator: createNumberRange', () => {
         expect(typeof betweenSixAndTen).toEqual('function')
     })
 
-    describe('allows empty values', () => {
-        testValidatorValues(betweenSixAndTen, undefined, ['', null, undefined])
-    })
+    allowsEmptyValues(betweenSixAndTen)
 
     describe('allows floats, integers and string representations of numbers', () => {
         testValidatorValues(betweenSixAndTen, undefined, [

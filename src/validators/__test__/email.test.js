@@ -1,5 +1,5 @@
 import { email, invalidEmailMessage } from '../email'
-import { testValidatorValues } from './helpers/testValidatorValues.js'
+import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
 /*
  * A comprehensive list technically valid and invalid email addresses was
@@ -15,9 +15,7 @@ import { testValidatorValues } from './helpers/testValidatorValues.js'
  */
 
 describe('validator: email', () => {
-    describe('allows empty values', () => {
-        testValidatorValues(email, undefined, ['', null, undefined])
-    })
+    allowsEmptyValues(email)
 
     describe('allows valid email addresses', () => {
         /*

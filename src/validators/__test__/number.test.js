@@ -1,10 +1,8 @@
 import { number, invalidNumberMessage } from '../number.js'
-import { testValidatorValues } from './helpers/testValidatorValues.js'
+import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
 describe('validator: number', () => {
-    describe('allows empty values', () => {
-        testValidatorValues(number, undefined, ['', null, undefined])
-    })
+    allowsEmptyValues(number)
 
     describe('allows numbers and string representations of numbers', () => {
         testValidatorValues(number, undefined, [

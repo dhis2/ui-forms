@@ -1,5 +1,5 @@
 import { createCharacterLengthRange } from '../createCharacterLengthRange.js'
-import { testValidatorValues } from './helpers/testValidatorValues.js'
+import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
 describe('validator: createCharacterLengthRange', () => {
     const betweenSixAndTenChars = createCharacterLengthRange(6, 10)
@@ -9,13 +9,7 @@ describe('validator: createCharacterLengthRange', () => {
         expect(typeof betweenSixAndTenChars).toEqual('function')
     })
 
-    describe('allows empty values', () => {
-        testValidatorValues(betweenSixAndTenChars, undefined, [
-            '',
-            null,
-            undefined,
-        ])
-    })
+    allowsEmptyValues(betweenSixAndTenChars)
 
     describe('allows within-range strings', () => {
         testValidatorValues(betweenSixAndTenChars, undefined, [

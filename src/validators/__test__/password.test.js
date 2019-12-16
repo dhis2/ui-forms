@@ -1,10 +1,8 @@
 import { password, errorMessages } from '../password.js'
-import { testValidatorValues } from './helpers/testValidatorValues'
+import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
 describe('validator: password', () => {
-    describe('allows empty values', () => {
-        testValidatorValues(password, undefined, ['', null, undefined])
-    })
+    allowsEmptyValues(password)
 
     it('should return undefined for a valid password', () => {
         expect(password('Testing123!')).toEqual(undefined)

@@ -1,5 +1,5 @@
 import { createEqualTo } from '../createEqualTo.js'
-import { testValidatorValues } from './helpers/testValidatorValues.js'
+import { allowsEmptyValues } from './helpers/index.js'
 
 describe('validator: createEqualTo', () => {
     const equalToFoo = createEqualTo('foo')
@@ -8,9 +8,7 @@ describe('validator: createEqualTo', () => {
         expect(typeof equalToFoo).toEqual('function')
     })
 
-    describe('allows empty values', () => {
-        testValidatorValues(equalToFoo, undefined, ['', null, undefined])
-    })
+    allowsEmptyValues(equalToFoo)
 
     it('should return undefined for empty values on the equalTo field', () => {
         expect(equalToFoo('not foo', { foo: '' })).toEqual(undefined)
