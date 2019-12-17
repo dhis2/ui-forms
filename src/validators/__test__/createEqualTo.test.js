@@ -1,8 +1,18 @@
 import { createEqualTo } from '../createEqualTo.js'
 import { allowsEmptyValues } from './helpers/index.js'
+import { requiredArgumentErrorMessage } from '../helpers/index.js'
 
 describe('validator: createEqualTo', () => {
     const equalToFoo = createEqualTo('foo')
+
+    it('should throw an error when key is not a string', () => {
+        expect(() => {
+            createEqualTo(undefined)
+        }).toThrowError(requiredArgumentErrorMessage)
+        expect(() => {
+            createEqualTo({})
+        }).toThrowError(requiredArgumentErrorMessage)
+    })
 
     it('should create a function', () => {
         expect(typeof equalToFoo).toEqual('function')
