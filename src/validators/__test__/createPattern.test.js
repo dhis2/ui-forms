@@ -1,9 +1,18 @@
-import { createPattern } from '../createPattern.js'
+import { createPattern, invalidPatternMessage } from '../createPattern.js'
 import { allowsEmptyValues } from './helpers/index.js'
 
 describe('validator: createPattern', () => {
     const pattern = /^test$/
     const equalToTestPattern = createPattern(pattern)
+
+    it('should throw an error when pattern is not a regex object', () => {
+        expect(() => {
+            createPattern(undefined)
+        }).toThrowError(invalidPatternMessage)
+        expect(() => {
+            createPattern('test')
+        }).toThrowError(invalidPatternMessage)
+    })
 
     it('should create a function', () => {
         expect(typeof equalToTestPattern).toEqual('function')
