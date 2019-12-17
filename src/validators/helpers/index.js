@@ -3,18 +3,12 @@ export const isEmpty = value =>
 
 export const isString = value => typeof value === 'string'
 
-export const isBoolean = value => typeof value === 'boolean'
-
-export const isArray = value => Array.isArray(value)
-
-export const isObject = value => typeof value === 'object' && !isArray(value)
-
 export const isInteger = value => Number.isSafeInteger(value)
+
+export const isNumber = value => typeof value === 'number'
 
 export const isNumeric = value =>
     (isString(value) || isNumber(value)) && !isNaN(value)
-
-export const isNumber = value => typeof value === 'number'
 
 export const isInRange = (lowerBound, upperBound, value) =>
     value >= lowerBound && value <= upperBound
