@@ -6,7 +6,7 @@ describe('validator: createMinCharacterLength', () => {
     const errorMessage = 'Please enter at least 6 characters'
 
     /*
-     * Since createMinCharacterLength calls createNumberRange internally
+     * Since createMinCharacterLength calls createCharacterLengthRange internally
      * a lot of things have been tested there and here we focus
      * purely on the bounderies
      */
