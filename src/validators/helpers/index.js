@@ -16,4 +16,16 @@ export const isNumeric = value =>
 
 export const isNumber = value => typeof value === 'number'
 
+export const isInRange = (lowerBound, upperBound, value) =>
+    value >= lowerBound && value <= upperBound
+
 export const toNumber = value => Number(value)
+
+export const requiredArgumentErrorMessage =
+    'Incorrect arguments provided when creating validator'
+
+export const requireArgument = (value, type) => {
+    if (isEmpty(value) || typeof value !== type) {
+        throw new Error(requiredArgumentErrorMessage)
+    }
+}

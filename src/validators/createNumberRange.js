@@ -1,25 +1,28 @@
 import i18n from '@dhis2/d2-i18n'
-import { isEmpty, isNumeric, toNumber } from './helpers/index.js'
+import {
+    isEmpty,
+    isNumeric,
+    toNumber,
+    isInRange,
+    requireArgument,
+} from './helpers/index.js'
 
-const nonNumericValueMessage = i18n.t('Please enter numerical values')
+const createNumberRange = (lowerBound, upperBound, customMessage) => {
+    requireArgument(lowerBound, 'number')
+    requireArgument(upperBound, 'number')
 
-const createNumberRange = (lowerBound, upperBound) => value => {
-    if (isEmpty(value)) {
-        return undefined
-    }
+    const errorMessage =
+        customMessage ||
+        i18n.t(
+            'Please enter a number between {{lowerBound}} and {{upperBound}}',
+            { lowerBound, upperBound }
+        )
 
-    if (!isNumeric(value)) {
-        return nonNumericValueMessage
-    }
-
-    const valueAsNumber = toNumber(value)
-
-    return valueAsNumber >= lowerBound && valueAsNumber <= upperBound
-        ? undefined
-        : i18n.t(
-              'Please enter a number between {{lowerBound}} and {{upperBound}}',
-              { lowerBound, upperBound }
-          )
+    return value =>
+        isEmpty(value) ||
+        (isNumeric(value) && isInRange(lowerBound, upperBound, toNumber(value)))
+            ? undefined
+            : errorMessage
 }
 
-export { createNumberRange, nonNumericValueMessage }
+export { createNumberRange }
