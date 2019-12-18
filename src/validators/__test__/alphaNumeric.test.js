@@ -10,13 +10,13 @@ describe('validator: alphaNumeric', () => {
             'abcdef',
             'a1b2c3',
             'A1B2C3d4e5',
+            'I have spaces',
         ])
     })
 
     describe('rejects non-alpha-numeric values', () => {
         testValidatorValues(alphaNumeric, invalidAlphaNumericMessage, [
             '.,/|~',
-            'I have spaces',
             true,
             false,
             0,
