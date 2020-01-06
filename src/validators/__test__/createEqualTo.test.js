@@ -20,12 +20,6 @@ describe('validator: createEqualTo', () => {
 
     allowsEmptyValues(equalToFoo)
 
-    it('should return undefined for empty values on the equalTo field', () => {
-        expect(equalToFoo('not foo', { foo: '' })).toEqual(undefined)
-        expect(equalToFoo('not foo', { foo: null })).toEqual(undefined)
-        expect(equalToFoo('not foo', {})).toEqual(undefined)
-    })
-
     it('should return undefined when the fields have equal values', () => {
         const sameValue = 'abcde'
 

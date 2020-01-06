@@ -10,9 +10,7 @@ const createEqualTo = (key, description) => {
     )
 
     return (value, allValues) =>
-        isEmpty(value) || isEmpty(allValues[key]) || value === allValues[key]
-            ? undefined
-            : errorMessage
+        isEmpty(value) || value === allValues[key] ? undefined : errorMessage
 }
 
 export { createEqualTo }
