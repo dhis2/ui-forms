@@ -1,11 +1,11 @@
-import { username, invalidUsernameMessage } from '../username.js'
+import { dhis2Username, invalidUsernameMessage } from '../dhis2Username.js'
 import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
-describe('validator: username', () => {
-    allowsEmptyValues(username)
+describe('validator: dhis2Username', () => {
+    allowsEmptyValues(dhis2Username)
 
     describe('allows all sorts of strings between 1 and 255 characters long', () => {
-        testValidatorValues(username, undefined, [
+        testValidatorValues(dhis2Username, undefined, [
             'electricchicken',
             '1', //1
             'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', //255
@@ -15,7 +15,7 @@ describe('validator: username', () => {
     })
 
     describe('rejects other data types', () => {
-        testValidatorValues(username, invalidUsernameMessage, [
+        testValidatorValues(dhis2Username, invalidUsernameMessage, [
             1,
             true,
             {},
@@ -25,7 +25,7 @@ describe('validator: username', () => {
     })
 
     describe('values that are too long', () => {
-        testValidatorValues(username, invalidUsernameMessage, [
+        testValidatorValues(dhis2Username, invalidUsernameMessage, [
             'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', //256
         ])
     })
