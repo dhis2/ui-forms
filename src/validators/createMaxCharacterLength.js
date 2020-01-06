@@ -3,7 +3,7 @@ import { createCharacterLengthRange } from './createCharacterLengthRange'
 
 const createMaxCharacterLength = upperBound =>
     createCharacterLengthRange(
-        -Infinity,
+        0,
         upperBound,
         i18n.t('Please enter a maximum of {{upperBound}} characters', {
             upperBound,
