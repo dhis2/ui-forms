@@ -16,6 +16,7 @@ const createDefaultChangeHandler = onChange => payload => {
     }
 }
 
+// TODO: remove once all components have been ported
 const normalizeProps = ({ input, meta, ...ownProps }, changeHandler) => {
     const error = ownProps.error || (meta.touched && meta.invalid)
 
@@ -34,4 +35,17 @@ const normalizeProps = ({ input, meta, ...ownProps }, changeHandler) => {
     }
 }
 
-export { normalizeProps }
+const hasError = ({ meta, error }) => error || (meta.touched && meta.invalid)
+
+const isValid = ({ meta, valid, showValidStatus }) =>
+    valid || (showValidStatus && meta.touched && meta.valid)
+
+const isLoading = ({ meta, loading, showLoadingStatus }) =>
+    loading || (showLoadingStatus && meta.validating)
+
+const getValidationText = ({ meta, validationText, error }) =>
+    validationText ||
+    ((error || (meta.touched && meta.invalid)) && meta.error) ||
+    ''
+
+export { normalizeProps, hasError, isValid, isLoading, getValidationText }
