@@ -60,7 +60,7 @@
         "@storybook/router": "^5.2.8",
         "babel-eslint": "10.x",
         "babel-loader": "^8.0.5",
-        "concurrently": "^5.0.1",
+        "concurrently": "^5.0.2",
         "cypress": "^3.8.0",
         "cypress-cucumber-preprocessor": "^1.19.0",
         "enzyme": "^3.10.0",
