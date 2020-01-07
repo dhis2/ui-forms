@@ -1,6 +1,6 @@
 import {
     internationalPhoneNumber,
-    invalidInternationalPhoneNumber,
+    invalidInternationalPhoneNumberMessage,
 } from '../internationalPhoneNumber'
 import { testValidatorValues, allowsEmptyValues } from './helpers'
 
@@ -26,7 +26,7 @@ describe('validator: internationalPhoneNumber', () => {
     describe('rejects non-string values', () => {
         testValidatorValues(
             internationalPhoneNumber,
-            invalidInternationalPhoneNumber,
+            invalidInternationalPhoneNumberMessage,
             [true, 3, {}, [], () => {}]
         )
     })
@@ -34,7 +34,7 @@ describe('validator: internationalPhoneNumber', () => {
     describe('rejects invalid phone numbers', () => {
         testValidatorValues(
             internationalPhoneNumber,
-            invalidInternationalPhoneNumber,
+            invalidInternationalPhoneNumberMessage,
             [
                 'sometext123', // text
                 '+3172%^$#%*182838485868', // special characters

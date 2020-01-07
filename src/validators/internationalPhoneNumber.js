@@ -27,7 +27,7 @@ import { isEmpty, isString, isNumeric } from './helpers/index.js'
  * leading ‘+’ all characters should be numeric.
  */
 
-const invalidInternationalPhoneNumber = i18n.t(
+const invalidInternationalPhoneNumberMessage = i18n.t(
     'Please provide a valid international phone number.'
 )
 
@@ -39,18 +39,18 @@ const internationalPhoneNumber = value => {
 
     // value must be a string
     if (!isString(value)) {
-        return invalidInternationalPhoneNumber
+        return invalidInternationalPhoneNumberMessage
     }
 
     const cleanedValue = value
-        // strip all hyphens, dots, spaces, plus signs
-        .replace(/[-. +)(]/g, '')
-        // trim leading zeroes
-        .replace(/^0+/, '')
+        // strip all hyphens, dots, spaces
+        .replace(/[-. )(]/g, '')
+        // trim leading zeroes and plus signs
+        .replace(/^[0+]+/, '')
 
     return isNumeric(cleanedValue) && cleanedValue.length <= 15
         ? undefined
-        : invalidInternationalPhoneNumber
+        : invalidInternationalPhoneNumberMessage
 }
 
-export { internationalPhoneNumber, invalidInternationalPhoneNumber }
+export { internationalPhoneNumber, invalidInternationalPhoneNumberMessage }
