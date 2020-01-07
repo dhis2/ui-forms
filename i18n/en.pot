@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-11-06T15:56:26.431Z\n"
-"PO-Revision-Date: 2019-11-06T15:56:26.431Z\n"
+"POT-Creation-Date: 2019-12-17T14:35:58.462Z\n"
+"PO-Revision-Date: 2019-12-17T14:35:58.462Z\n"
 
 msgid "Upload file"
 msgstr ""
@@ -20,8 +20,81 @@ msgstr ""
 msgid "No file(s) selected yet"
 msgstr ""
 
-msgid "Not a valid e-mail"
+msgid "Please provide an alpha-numeric value"
 msgstr ""
 
-msgid "Required"
+msgid "Please provide a boolean value"
+msgstr ""
+
+msgid "Please enter between {{lowerBound}} and {{upperBound}} characters"
+msgstr ""
+
+msgid ""
+"Please make sure the value of this input matches the value in "
+"\"{{otherField}}\"."
+msgstr ""
+
+msgid "Please enter a maximum of {{upperBound}} characters"
+msgstr ""
+
+msgid "Please enter a number with a maximum of {{upperBound}}"
+msgstr ""
+
+msgid "Please enter at least {{lowerBound}} characters"
+msgstr ""
+
+msgid "Please enter a number of at least {{lowerBound}}"
+msgstr ""
+
+msgid "Please enter a number between {{lowerBound}} and {{upperBound}}"
+msgstr ""
+
+msgid ""
+"Please make sure the value of this input matches the pattern "
+"{{patternString}}."
+msgstr ""
+
+msgid "Please provide a valid email address"
+msgstr ""
+
+msgid "Please provide a round number without decimals"
+msgstr ""
+
+msgid "Please provide a valid international phone number."
+msgstr ""
+
+msgid "Please provide a number"
+msgstr ""
+
+msgid "Password should be a string"
+msgstr ""
+
+msgid "Password should be at least 8 characters long"
+msgstr ""
+
+msgid "Password should be no longer than 34 characters"
+msgstr ""
+
+msgid "Password should contain at least one lowercase letter"
+msgstr ""
+
+msgid "Password should contain at least one UPPERCASE letter"
+msgstr ""
+
+msgid "Password should contain at least one number"
+msgstr ""
+
+msgid "Password should have at least one special character"
+msgstr ""
+
+msgid "This is a required field"
+msgstr ""
+
+msgid "Please provide a string"
+msgstr ""
+
+msgid "Please provide a valid url"
+msgstr ""
+
+msgid "Please provide a username between 1 and 255 characters"
 msgstr ""
