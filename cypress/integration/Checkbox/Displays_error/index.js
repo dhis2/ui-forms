@@ -1,6 +1,6 @@
 import '../common'
 import { Given, Then } from 'cypress-cucumber-preprocessor/steps'
-import { requiredMessage } from '../../../../src/validators/required'
+import { hasValueMessage } from '../../../../src/validators/hasValue.js'
 
 Given('an unchecked Checkbox is rendered', () => {
     cy.visitStory('Testing:Checkbox', 'Unchecked')
@@ -8,5 +8,5 @@ Given('an unchecked Checkbox is rendered', () => {
 })
 
 Then('an error message is shown', () => {
-    cy.get('.checkbox .error').should('contain', requiredMessage)
+    cy.get('.checkbox .error').should('contain', hasValueMessage)
 })

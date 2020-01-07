@@ -1,7 +1,7 @@
 import '../common'
 import { Then } from 'cypress-cucumber-preprocessor/steps'
-import { requiredMessage } from '../../../../src/validators/required'
+import { hasValueMessage } from '../../../../src/validators/hasValue.js'
 
 Then('an error message is shown', () => {
-    cy.get('.error').should('contain', requiredMessage)
+    cy.get('.error').should('contain', hasValueMessage)
 })

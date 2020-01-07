@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, Switch, required } from '../src'
+import { Field, Switch, hasValue } from '../src'
 import { formDecorator } from '../.storybook/formDecorator'
 
 storiesOf('Testing:Switch', module)
@@ -12,7 +12,7 @@ storiesOf('Testing:Switch', module)
             className="switch"
             name="switch"
             label="Label text"
-            validate={required}
+            validate={hasValue}
             required
         />
     ))

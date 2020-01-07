@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, FileInput, required } from '../src'
+import { Field, FileInput, hasValue } from '../src'
 import { formDecorator } from '../.storybook/formDecorator'
 
 const files = [new File([], 'file1.txt'), new File([], 'file2.txt')]
@@ -21,7 +21,7 @@ storiesOf('FileInput', module)
             name="upload"
             label="This is a file upload"
             required
-            validate={required}
+            validate={hasValue}
         />
     ))
     .add('Multifile', () => (
@@ -40,7 +40,7 @@ storiesOf('FileInput', module)
             required
             multifile
             initialValue={files}
-            validate={required}
+            validate={hasValue}
         />
     ))
     .add('Prevent placeholder', () => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, Checkbox, required } from '../src'
+import { Field, Checkbox, hasValue } from '../src'
 import { formDecorator } from '../.storybook/formDecorator'
 
 storiesOf('Checkbox', module)
@@ -14,7 +14,7 @@ storiesOf('Checkbox', module)
             name="agree"
             component={Checkbox}
             required
-            validate={required}
+            validate={hasValue}
             label="Do you agree?"
         />
     ))

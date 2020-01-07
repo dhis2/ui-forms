@@ -1,5 +1,5 @@
 import { Given, Then } from 'cypress-cucumber-preprocessor/steps'
-import { requiredMessage } from '../../../../src/validators/required.js'
+import { hasValueMessage } from '../../../../src/validators/hasValue.js'
 
 Given('an empty, required Input is rendered', () => {
     cy.visitStory('Testing:Input', 'Required')
@@ -7,5 +7,5 @@ Given('an empty, required Input is rendered', () => {
 })
 
 Then('an error message is shown', () => {
-    cy.get('.error').should('contain', requiredMessage)
+    cy.get('.error').should('contain', hasValueMessage)
 })
