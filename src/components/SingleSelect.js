@@ -2,8 +2,8 @@ import React from 'react'
 import propTypes from '@dhis2/prop-types'
 import { SingleSelectField, SingleSelectOption } from '@dhis2/ui-core'
 
-import { normalizeProps } from './shared/helpers'
-import { fieldRenderProps } from './shared/propTypes'
+import { normalizeProps } from './shared/helpers.js'
+import { fieldRenderProps } from './shared/propTypes.js'
 
 const createChangeHandler = props => ({ selected }) =>
     props.input.onChange(selected)

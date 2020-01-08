@@ -1,7 +1,7 @@
 import { Field } from 'react-final-form'
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { SingleSelect, hasValue } from '../src'
+import { SingleSelect, hasValue } from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator.js'
 
 const defaultOptions = [{ value: 'initial', label: 'Initial' }]

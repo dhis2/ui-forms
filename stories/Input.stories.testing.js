@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, Input, hasValue } from '../src'
+import { Field, Input, hasValue } from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator.js'
 
 storiesOf('Testing:Input', module)

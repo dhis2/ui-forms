@@ -1,8 +1,13 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, CheckboxGroup, arrayWithIdObjects, hasValue } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import {
+    Field,
+    CheckboxGroup,
+    arrayWithIdObjects,
+    hasValue,
+} from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 const options = [
     { label: 'Foo', value: 'foo' },

@@ -1,4 +1,4 @@
-import '../common'
+import '../common/index.js'
 import { Then } from 'cypress-cucumber-preprocessor/steps'
 import { hasValueMessage } from '../../../../src/validators/hasValue.js'
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, TextArea, hasValue } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import { Field, TextArea, hasValue } from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 storiesOf('TextArea', module)
     .addDecorator(formDecorator)

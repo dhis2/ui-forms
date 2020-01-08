@@ -1,6 +1,6 @@
-import { composeValidators } from '../composeValidators'
-import { hasValue, hasValueMessage } from '../hasValue'
-import { email, invalidEmailMessage } from '../email'
+import { composeValidators } from '../composeValidators.js'
+import { hasValue, hasValueMessage } from '../hasValue.js'
+import { email, invalidEmailMessage } from '../email.js'
 
 describe('composeValidators', () => {
     const validator = composeValidators(hasValue, email)

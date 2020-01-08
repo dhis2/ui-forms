@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, CheckboxGroup, hasValue } from '../src'
+import { Field, CheckboxGroup, hasValue } from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator.js'
 
 const defaultOptions = [

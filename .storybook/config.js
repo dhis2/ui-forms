@@ -1,7 +1,7 @@
 import { configure, addDecorator } from '@storybook/react'
 import { jsxDecorator } from 'storybook-addon-jsx'
 import { withPropsTable } from 'storybook-addon-react-docgen'
-import { CssResetWrapper } from './css-reset-decorator'
+import { CssResetWrapper } from './css-reset-decorator.js'
 
 import 'typeface-roboto'
 

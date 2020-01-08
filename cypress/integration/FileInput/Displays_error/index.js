@@ -1,4 +1,4 @@
-import '../common'
+import '../common/index.js'
 import { When, Then } from 'cypress-cucumber-preprocessor/steps'
 
 When('a file with the wrong file type is provided', () => {

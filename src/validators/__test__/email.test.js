@@ -1,4 +1,4 @@
-import { email, invalidEmailMessage } from '../email'
+import { email, invalidEmailMessage } from '../email.js'
 import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
 /*

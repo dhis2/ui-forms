@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, SingleSelect } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import { Field, SingleSelect } from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 const options = [
     { value: '1', label: 'one' },
@@ -16,6 +16,8 @@ const options = [
     { value: '9', label: 'nine' },
     { value: '10', label: 'ten' },
 ]
+
+const initialValue = { value: '4', label: 'four' }
 
 storiesOf('SingleSelect', module)
     .addDecorator(formDecorator)
@@ -33,6 +35,6 @@ storiesOf('SingleSelect', module)
             name="agree"
             label="Do you agree?"
             options={options}
-            initialValue="1"
+            initialValue={initialValue}
         />
     ))

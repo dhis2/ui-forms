@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, FileInput, hasValue } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import { Field, FileInput, hasValue } from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 const files = [new File([], 'file1.txt'), new File([], 'file2.txt')]
 
