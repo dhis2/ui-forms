@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, Checkbox, required } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import { Field, Checkbox, hasValue } from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 storiesOf('Testing:Checkbox', module)
     .addDecorator(formDecorator)
@@ -12,7 +12,7 @@ storiesOf('Testing:Checkbox', module)
             className="checkbox"
             name="checkbox"
             label="Label text"
-            validate={required}
+            validate={hasValue}
             required
         />
     ))

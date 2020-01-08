@@ -1,7 +1,7 @@
 import { Field } from 'react-final-form'
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { MultiSelect, required } from '../src'
+import { MultiSelect, hasValue } from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator.js'
 
 const defaultOptions = [
@@ -18,7 +18,7 @@ storiesOf('Testing:MultiSelect', module)
             name="multiSelect"
             label="Multi select"
             component={MultiSelect}
-            validate={required}
+            validate={hasValue}
             options={cypressProps.options || defaultOptions}
         />
     ))

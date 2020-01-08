@@ -1,7 +1,7 @@
 import { Field } from 'react-final-form'
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { SingleSelect, required } from '../src'
+import { SingleSelect, hasValue } from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator.js'
 
 const defaultOptions = [{ value: 'initial', label: 'Initial' }]
@@ -15,7 +15,7 @@ storiesOf('Testing:SingleSelect', module)
             name="singleSelect"
             label="Single select"
             component={SingleSelect}
-            validate={required}
+            validate={hasValue}
             options={cypressProps.options || defaultOptions}
         />
     ))

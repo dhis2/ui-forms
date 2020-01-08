@@ -1,8 +1,13 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, CheckboxGroup, arrayWithIdObjects, required } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import {
+    Field,
+    CheckboxGroup,
+    arrayWithIdObjects,
+    hasValue,
+} from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 const options = [
     { label: 'Foo', value: 'foo' },
@@ -28,7 +33,7 @@ storiesOf('CheckboxGroup', module)
             name="choice"
             label="Choose something"
             component={CheckboxGroup}
-            validate={required}
+            validate={hasValue}
             required
             options={options}
             inline={false}

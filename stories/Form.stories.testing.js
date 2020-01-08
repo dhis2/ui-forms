@@ -17,7 +17,7 @@ import {
     TextArea,
     composeValidators,
     email,
-    required,
+    hasValue,
 } from '../src/index.js'
 
 const StandardForm = ({ values }) => {
@@ -44,7 +44,7 @@ const StandardForm = ({ values }) => {
                 required
                 label="First name"
                 name="fname"
-                validate={required}
+                validate={hasValue}
                 component={Input}
                 helpText="Please enter your first name, excluding middle names"
             />
@@ -53,7 +53,7 @@ const StandardForm = ({ values }) => {
                 required
                 label="Last name"
                 name="lname"
-                validate={required}
+                validate={hasValue}
                 component={Input}
                 helpText="Please enter your first name, excluding middle names"
             />
@@ -86,7 +86,7 @@ const StandardForm = ({ values }) => {
                     required={values.subscribe}
                     label="E-mail address confirmation"
                     name="email2"
-                    validate={composeValidators(email, required)}
+                    validate={composeValidators(email, hasValue)}
                     component={Input}
                     helpText="Please confirm your e-mail address"
                 />
@@ -178,7 +178,7 @@ const StandardForm = ({ values }) => {
                 required
                 name="tnc"
                 label="I accept the terms and conditions"
-                validate={required}
+                validate={hasValue}
                 component={Checkbox}
                 className="checkbox"
             />

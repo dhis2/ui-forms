@@ -1,8 +1,8 @@
 import {
     internationalPhoneNumber,
     invalidInternationalPhoneNumberMessage,
-} from '../internationalPhoneNumber'
-import { testValidatorValues, allowsEmptyValues } from './helpers'
+} from '../internationalPhoneNumber.js'
+import { testValidatorValues, allowsEmptyValues } from './helpers/index.js'
 
 describe('validator: internationalPhoneNumber', () => {
     allowsEmptyValues(internationalPhoneNumber)

@@ -1,4 +1,4 @@
-import { hexStringToByte } from './uploadFile/hexStringToByte'
+import { hexStringToByte } from './uploadFile/hexStringToByte.js'
 
 /**
  * @param {string} fileType

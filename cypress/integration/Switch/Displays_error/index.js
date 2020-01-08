@@ -1,6 +1,6 @@
-import '../common'
+import '../common/index.js'
 import { Given, Then } from 'cypress-cucumber-preprocessor/steps'
-import { requiredMessage } from '../../../../src/validators/required'
+import { hasValueMessage } from '../../../../src/validators/hasValue.js'
 
 Given('an unchecked Switch is rendered', () => {
     cy.visitStory('Testing:Switch', 'Unchecked')
@@ -8,5 +8,5 @@ Given('an unchecked Switch is rendered', () => {
 })
 
 Then('an error message is shown', () => {
-    cy.get('.switch .error').should('contain', requiredMessage)
+    cy.get('.switch .error').should('contain', hasValueMessage)
 })

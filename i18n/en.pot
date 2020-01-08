@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-12-17T14:35:58.462Z\n"
-"PO-Revision-Date: 2019-12-17T14:35:58.462Z\n"
+"POT-Creation-Date: 2020-01-07T15:57:03.910Z\n"
+"PO-Revision-Date: 2020-01-07T15:57:03.910Z\n"
 
 msgid "Upload file"
 msgstr ""
@@ -54,18 +54,6 @@ msgid ""
 "{{patternString}}."
 msgstr ""
 
-msgid "Please provide a valid email address"
-msgstr ""
-
-msgid "Please provide a round number without decimals"
-msgstr ""
-
-msgid "Please provide a valid international phone number."
-msgstr ""
-
-msgid "Please provide a number"
-msgstr ""
-
 msgid "Password should be a string"
 msgstr ""
 
@@ -87,14 +75,26 @@ msgstr ""
 msgid "Password should have at least one special character"
 msgstr ""
 
-msgid "This is a required field"
+msgid "Please provide a username between 1 and 255 characters"
+msgstr ""
+
+msgid "Please provide a valid email address"
+msgstr ""
+
+msgid "Please provide a value"
+msgstr ""
+
+msgid "Please provide a round number without decimals"
+msgstr ""
+
+msgid "Please provide a valid international phone number."
+msgstr ""
+
+msgid "Please provide a number"
 msgstr ""
 
 msgid "Please provide a string"
 msgstr ""
 
 msgid "Please provide a valid url"
-msgstr ""
-
-msgid "Please provide a username between 1 and 255 characters"
 msgstr ""

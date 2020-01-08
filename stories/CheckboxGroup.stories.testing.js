@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, CheckboxGroup, required } from '../src'
+import { Field, CheckboxGroup, hasValue } from '../src/index.js'
 import { formDecorator } from '../.storybook/formDecorator.js'
 
 const defaultOptions = [
@@ -25,7 +25,7 @@ storiesOf('Testing:CheckboxGroup', module)
             name="choice"
             label="Choose something"
             component={CheckboxGroup}
-            validate={required}
+            validate={hasValue}
             required
             options={cypressProps.options || defaultOptions}
             inline={false}

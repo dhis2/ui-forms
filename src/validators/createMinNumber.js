@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { createNumberRange } from './createNumberRange'
+import { createNumberRange } from './createNumberRange.js'
 
 const createMinNumber = lowerBound =>
     createNumberRange(

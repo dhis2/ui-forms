@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, TextArea, required } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import { Field, TextArea, hasValue } from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 storiesOf('TextArea', module)
     .addDecorator(formDecorator)
@@ -22,7 +22,7 @@ storiesOf('TextArea', module)
             name="agree"
             component={TextArea}
             required
-            validate={required}
+            validate={hasValue}
             label="Do you agree?"
         />
     ))

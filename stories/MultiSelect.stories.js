@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, MultiSelect } from '../src'
-import { formDecorator } from '../.storybook/formDecorator'
+import { Field, MultiSelect } from '../src/index.js'
+import { formDecorator } from '../.storybook/formDecorator.js'
 
 const options = [
     { value: '1', label: 'one' },
@@ -17,7 +17,12 @@ const options = [
     { value: '10', label: 'ten' },
 ]
 
-const initialValue = ['2', '5']
+const initialValue = [
+    { value: '3', label: 'three' },
+    { value: '4', label: 'four' },
+    { value: '9', label: 'nine' },
+    { value: '10', label: 'ten' },
+]
 
 storiesOf('MultiSelect', module)
     .addDecorator(formDecorator)
