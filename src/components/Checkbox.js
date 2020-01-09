@@ -10,6 +10,7 @@ import {
     isValid,
     getValidationText,
 } from './shared/helpers.js'
+import { metaPropType, inputPropType } from './shared/propTypes.js'
 
 const Checkbox = ({
     checkedValue,
@@ -38,21 +39,10 @@ const Checkbox = ({
 )
 
 Checkbox.propTypes = {
+    input: inputPropType.isRequired,
+    meta: metaPropType.isRequired,
     checkedValue: propTypes.string,
     error: propTypes.bool,
-    input: propTypes.shape({
-        name: propTypes.string.isRequired,
-        onChange: propTypes.func.isRequired,
-        value: propTypes.any,
-        onBlur: propTypes.func,
-        onFocus: propTypes.func,
-    }),
-    meta: propTypes.shape({
-        error: propTypes.string,
-        invalid: propTypes.bool,
-        touched: propTypes.bool,
-        valid: propTypes.bool,
-    }),
     showValidStatus: propTypes.bool,
     valid: propTypes.bool,
     validationText: propTypes.string,
