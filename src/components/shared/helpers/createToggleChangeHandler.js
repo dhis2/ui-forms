@@ -7,7 +7,7 @@ const getToggleValue = ({ checked, value }) => {
     return checked
 }
 
-const createToggleChangeHandler = onChange => payload =>
-    onChange(getToggleValue(payload))
+const createToggleChangeHandler = input => payload =>
+    input.onChange(getToggleValue(payload))
 
 export { createToggleChangeHandler }

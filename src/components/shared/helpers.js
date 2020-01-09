@@ -5,4 +5,6 @@ export {
     isValid,
     isLoading,
     getValidationText,
+    createFocusHandler,
+    createBlurHandler,
 } from './helpers/normalizeProps.js'

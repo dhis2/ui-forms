@@ -4,32 +4,36 @@ import { CheckboxField } from '@dhis2/ui-core'
 
 import {
     createToggleChangeHandler,
+    createFocusHandler,
+    createBlurHandler,
     hasError,
     isValid,
     getValidationText,
 } from './shared/helpers.js'
 
-const Checkbox = props => (
+const Checkbox = ({
+    input,
+    meta,
+    checkedValue,
+    error,
+    onBlur,
+    onFocus,
+    showValidStatus,
+    valid,
+    validationText,
+    ...rest
+}) => (
     <CheckboxField
-        checked={!!props.input.value}
-        className={props.className}
-        dataTest={props.dataTest}
-        dense={props.dense}
-        disabled={props.disabled}
-        error={hasError(props)}
-        helpText={props.helpText}
-        initialFocus={props.initialFocus}
-        label={props.label}
-        name={props.name || props.input.name}
-        onBlur={props.onBlur || props.input.onBlur}
-        onChange={createToggleChangeHandler(props.input.onChange)}
-        onFocus={props.onFocus || props.input.onFocus}
-        required={props.required}
-        tabIndex={props.tabIndex}
-        valid={isValid(props)}
-        validationText={getValidationText(props)}
-        value={props.checkedValue}
-        warning={props.warning}
+        {...rest}
+        checked={!!input.value}
+        name={input.name}
+        error={hasError(meta, error)}
+        valid={isValid(meta, valid, showValidStatus)}
+        validationText={getValidationText(meta, validationText, error)}
+        onFocus={createFocusHandler(input, onFocus)}
+        onChange={createToggleChangeHandler(input)}
+        onBlur={createBlurHandler(input, onBlur)}
+        value={checkedValue}
     />
 )
 
@@ -47,27 +51,13 @@ Checkbox.propTypes = {
         onFocus: propTypes.func,
         value: propTypes.any,
     }),
-    checked: propTypes.bool,
     checkedValue: propTypes.string,
-    className: propTypes.string,
-    dataTest: propTypes.string,
-    dense: propTypes.bool,
-    disabled: propTypes.bool,
     error: propTypes.bool,
-    helpText: propTypes.string,
-    initialFocus: propTypes.bool,
-    label: propTypes.node.isRequired,
-    name: propTypes.string,
     onBlur: propTypes.func,
-    onChange: propTypes.func,
     onFocus: propTypes.func,
-    required: propTypes.bool,
     showValidStatus: propTypes.bool,
-    tabIndex: propTypes.string,
     valid: propTypes.bool,
     validationText: propTypes.string,
-    value: propTypes.string,
-    warning: propTypes.bool,
 }
 
 export { Checkbox }

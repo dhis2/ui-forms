@@ -1,6 +1,6 @@
 const PRIMITIVE_TYPES = new Set(['string', 'number', 'boolean'])
 
-const createDefaultChangeHandler = onChange => payload => {
+const createChangeHandler = onChange => payload => {
     if (payload && 'value' in payload) {
         // ui-core event signature
         onChange(payload.value)
@@ -13,6 +13,22 @@ const createDefaultChangeHandler = onChange => payload => {
     } else {
         // ¯\_(ツ)_/¯
         throw new Error('Could not process event payload')
+    }
+}
+
+const createFocusHandler = (input, onFocus) => (payload, event) => {
+    input.onFocus(event)
+
+    if (onFocus && typeof onFocus === 'function') {
+        onFocus(payload, event)
+    }
+}
+
+const createBlurHandler = (input, onBlur) => (payload, event) => {
+    input.onBlur(event)
+
+    if (onBlur && typeof onBlur === 'function') {
+        onBlur(payload, event)
     }
 }
 
@@ -31,21 +47,29 @@ const normalizeProps = ({ input, meta, ...ownProps }, changeHandler) => {
         loading:
             ownProps.loading || (ownProps.showLoadingStatus && meta.validating),
         validationText: ownProps.validationText || (error && meta.error) || '',
-        onChange: changeHandler || createDefaultChangeHandler(input.onChange),
+        onChange: changeHandler || createChangeHandler(input.onChange),
     }
 }
 
-const hasError = ({ meta, error }) => error || (meta.touched && meta.invalid)
+const hasError = (meta, error) => error || (meta.touched && meta.invalid)
 
-const isValid = ({ meta, valid, showValidStatus }) =>
+const isValid = (meta, valid, showValidStatus) =>
     valid || (showValidStatus && meta.touched && meta.valid)
 
-const isLoading = ({ meta, loading, showLoadingStatus }) =>
+const isLoading = (meta, loading, showLoadingStatus) =>
     loading || (showLoadingStatus && meta.validating)
 
-const getValidationText = ({ meta, validationText, error }) =>
+const getValidationText = (meta, validationText, error) =>
     validationText ||
     ((error || (meta.touched && meta.invalid)) && meta.error) ||
     ''
 
-export { normalizeProps, hasError, isValid, isLoading, getValidationText }
+export {
+    normalizeProps,
+    hasError,
+    isValid,
+    isLoading,
+    getValidationText,
+    createFocusHandler,
+    createBlurHandler,
+}
