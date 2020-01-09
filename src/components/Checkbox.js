@@ -12,15 +12,15 @@ import {
 } from './shared/helpers.js'
 
 const Checkbox = ({
-    input,
-    meta,
     checkedValue,
     error,
-    onBlur,
-    onFocus,
+    input,
+    meta,
     showValidStatus,
     valid,
     validationText,
+    onBlur,
+    onFocus,
     ...rest
 }) => (
     <CheckboxField
@@ -38,26 +38,26 @@ const Checkbox = ({
 )
 
 Checkbox.propTypes = {
-    meta: propTypes.shape({
-        touched: propTypes.bool,
-        invalid: propTypes.bool,
-        valid: propTypes.bool,
-        error: propTypes.string,
-    }),
-    input: propTypes.shape({
-        name: propTypes.string.isRequired,
-        onBlur: propTypes.func,
-        onChange: propTypes.func.isRequired,
-        onFocus: propTypes.func,
-        value: propTypes.any,
-    }),
     checkedValue: propTypes.string,
     error: propTypes.bool,
-    onBlur: propTypes.func,
-    onFocus: propTypes.func,
+    input: propTypes.shape({
+        name: propTypes.string.isRequired,
+        onChange: propTypes.func.isRequired,
+        value: propTypes.any,
+        onBlur: propTypes.func,
+        onFocus: propTypes.func,
+    }),
+    meta: propTypes.shape({
+        error: propTypes.string,
+        invalid: propTypes.bool,
+        touched: propTypes.bool,
+        valid: propTypes.bool,
+    }),
     showValidStatus: propTypes.bool,
     valid: propTypes.bool,
     validationText: propTypes.string,
+    onBlur: propTypes.func,
+    onFocus: propTypes.func,
 }
 
 export { Checkbox }
