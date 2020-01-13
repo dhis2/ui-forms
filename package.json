@@ -55,7 +55,7 @@
         "@dhis2/d2-i18n-generate": "1.1.1",
         "@dhis2/d2-i18n": "1.0.6",
         "@dhis2/ui-core": "4.1.2",
-        "@storybook/addon-notes": "5.2.8",
+        "@storybook/addon-notes": "5.3.2",
         "@storybook/react": "^5.2.8",
         "@storybook/router": "^5.3.2",
         "babel-eslint": "10.x",
