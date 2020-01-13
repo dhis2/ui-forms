@@ -1,11 +1,21 @@
 import React from 'react'
+import propTypes from '@dhis2/prop-types'
 import { CheckboxGroupField, Checkbox } from '@dhis2/ui-core'
 
-import { normalizeProps } from './shared/helpers.js'
-import { toggleGroupOptionsProp } from './shared/propTypes.js'
-import { fieldRenderProps } from './shared/propTypes.js'
+import {
+    hasError,
+    isValid,
+    getValidationText,
+    createFocusHandler,
+    createBlurHandler,
+} from './shared/helpers.js'
+import {
+    toggleGroupOptionsProp,
+    inputPropType,
+    metaPropType,
+} from './shared/propTypes.js'
 
-const createChangeHandler = (currentValues, onChange) => payload => {
+const createChangeHandler = ({ value: currentValues, onChange }) => payload => {
     const activeIndex = currentValues.indexOf(payload.value)
     const valueArray =
         activeIndex === -1
@@ -18,28 +28,47 @@ const createChangeHandler = (currentValues, onChange) => payload => {
     onChange(value)
 }
 
-const CheckboxGroup = props => {
-    const { value, options, ...rest } = normalizeProps(
-        props,
-        createChangeHandler(props.input.value, props.input.onChange)
-    )
-
-    return (
-        <CheckboxGroupField {...rest} value={value || []}>
-            {options.map(({ value, label }) => (
-                <Checkbox key={value} label={label} value={value} />
-            ))}
-        </CheckboxGroupField>
-    )
-}
-
-// eslint-disable-next-line no-unused-vars
-const { children, ...CheckboxGroupProps } = CheckboxGroupField.propTypes
+const CheckboxGroup = ({
+    options,
+    input,
+    meta,
+    error,
+    valid,
+    showValidStatus,
+    validationText,
+    onFocus,
+    onBlur,
+    ...rest
+}) => (
+    <CheckboxGroupField
+        {...rest}
+        value={input.value || []}
+        checked={!!input.value}
+        name={input.name}
+        error={hasError(meta, error)}
+        valid={isValid(meta, valid, showValidStatus)}
+        validationText={getValidationText(meta, validationText, error)}
+        onFocus={createFocusHandler(input, onFocus)}
+        onChange={createChangeHandler(input)}
+        onBlur={createBlurHandler(input, onBlur)}
+    >
+        {options.map(({ value, label }) => (
+            <Checkbox key={value} label={label} value={value} />
+        ))}
+    </CheckboxGroupField>
+)
 
 CheckboxGroup.propTypes = {
-    ...fieldRenderProps,
-    ...CheckboxGroupProps,
+    input: inputPropType.isRequired,
+    meta: metaPropType.isRequired,
     options: toggleGroupOptionsProp.isRequired,
+    checkedValue: propTypes.string,
+    error: propTypes.bool,
+    showValidStatus: propTypes.bool,
+    valid: propTypes.bool,
+    validationText: propTypes.string,
+    onBlur: propTypes.func,
+    onFocus: propTypes.func,
 }
 
 export { CheckboxGroup }
