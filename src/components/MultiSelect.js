@@ -2,21 +2,47 @@ import React from 'react'
 import propTypes from '@dhis2/prop-types'
 import { MultiSelectField, MultiSelectOption } from '@dhis2/ui-core'
 
-import { normalizeProps } from './shared/helpers.js'
-import { fieldRenderProps } from './shared/propTypes.js'
+import {
+    createFocusHandler,
+    createBlurHandler,
+    hasError,
+    isLoading,
+    isValid,
+    getValidationText,
+} from './shared/helpers.js'
+import { inputPropType, metaPropType } from './shared/propTypes.js'
 
-const createChangeHandler = ({ input }) => ({ selected }) => {
-    input.onChange(selected)
+const createChangeHandler = ({ onChange }) => ({ selected }) => {
+    onChange(selected)
 }
 
-const MultiSelect = props => {
-    const { options = [], value, ...rest } = normalizeProps(
-        props,
-        createChangeHandler(props)
-    )
-
+const MultiSelect = ({
+    error,
+    input,
+    loading,
+    meta,
+    onBlur,
+    onFocus,
+    options,
+    showLoadingStatus,
+    showValidStatus,
+    valid,
+    validationText,
+    ...rest
+}) => {
     return (
-        <MultiSelectField {...rest} selected={value || []}>
+        <MultiSelectField
+            {...rest}
+            name={input.name}
+            error={hasError(meta, error)}
+            valid={isValid(meta, valid, showValidStatus)}
+            loading={isLoading(meta, loading, showLoadingStatus)}
+            validationText={getValidationText(meta, validationText, error)}
+            onFocus={createFocusHandler(input, onFocus)}
+            onChange={createChangeHandler(input)}
+            onBlur={createBlurHandler(input, onBlur)}
+            selected={input.value || []}
+        >
             {options.map(option => (
                 <MultiSelectOption key={option.value} {...option} />
             ))}
@@ -24,17 +50,20 @@ const MultiSelect = props => {
     )
 }
 
-// eslint-disable-next-line no-unused-vars
-const { selected, value, ...MultiSelectProps } = MultiSelectField.propTypes
-
 MultiSelect.propTypes = {
-    ...fieldRenderProps,
-    ...MultiSelectProps,
+    input: inputPropType.isRequired,
+    meta: metaPropType.isRequired,
+
+    error: propTypes.bool,
+    loading: propTypes.bool,
     options: MultiSelectField.propTypes.selected,
-    value: propTypes.oneOfType([
-        MultiSelectField.propTypes.selected,
-        propTypes.oneOf(['']),
-    ]),
+    showLoadingStatus: propTypes.bool,
+    showValidStatus: propTypes.bool,
+    valid: propTypes.bool,
+    validationText: propTypes.string,
+
+    onBlur: propTypes.func,
+    onFocus: propTypes.func,
 }
 
 export { MultiSelect }
