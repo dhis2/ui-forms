@@ -23,10 +23,4 @@ const metaPropType = propTypes.shape({
     validating: propTypes.bool,
 })
 
-// TODO: Remove once all components use explicit props
-const fieldRenderProps = {
-    input: inputPropType.isRequired,
-    meta: metaPropType.isRequired,
-}
-
-export { toggleGroupOptionsProp, inputPropType, metaPropType, fieldRenderProps }
+export { toggleGroupOptionsProp, inputPropType, metaPropType }
