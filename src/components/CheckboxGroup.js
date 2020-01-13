@@ -43,7 +43,6 @@ const CheckboxGroup = ({
     <CheckboxGroupField
         {...rest}
         value={input.value || []}
-        checked={!!input.value}
         name={input.name}
         error={hasError(meta, error)}
         valid={isValid(meta, valid, showValidStatus)}
