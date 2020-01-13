@@ -3,6 +3,7 @@ import propTypes from '@dhis2/prop-types'
 import { MultiSelectField, MultiSelectOption } from '@dhis2/ui-core'
 
 import {
+    createSelectChangeHandler,
     createFocusHandler,
     createBlurHandler,
     hasError,
@@ -11,10 +12,6 @@ import {
     getValidationText,
 } from './shared/helpers.js'
 import { inputPropType, metaPropType } from './shared/propTypes.js'
-
-const createChangeHandler = ({ onChange }) => ({ selected }) => {
-    onChange(selected)
-}
 
 const MultiSelect = ({
     error,
@@ -39,7 +36,7 @@ const MultiSelect = ({
             loading={isLoading(meta, loading, showLoadingStatus)}
             validationText={getValidationText(meta, validationText, error)}
             onFocus={createFocusHandler(input, onFocus)}
-            onChange={createChangeHandler(input)}
+            onChange={createSelectChangeHandler(input)}
             onBlur={createBlurHandler(input, onBlur)}
             selected={input.value || []}
         >
