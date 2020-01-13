@@ -15,7 +15,7 @@ const normalizeProps = ({ input, meta, ...ownProps }, changeHandler) => {
         loading:
             ownProps.loading || (ownProps.showLoadingStatus && meta.validating),
         validationText: ownProps.validationText || (error && meta.error) || '',
-        onChange: changeHandler || createChangeHandler(input.onChange),
+        onChange: changeHandler || createChangeHandler(input),
     }
 }
 
