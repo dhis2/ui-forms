@@ -2,20 +2,44 @@ import React from 'react'
 import propTypes from '@dhis2/prop-types'
 import { SingleSelectField, SingleSelectOption } from '@dhis2/ui-core'
 
-import { normalizeProps } from './shared/helpers.js'
-import { fieldRenderProps } from './shared/propTypes.js'
+import {
+    createSelectChangeHandler,
+    createFocusHandler,
+    createBlurHandler,
+    hasError,
+    isLoading,
+    isValid,
+    getValidationText,
+} from './shared/helpers.js'
+import { inputPropType, metaPropType } from './shared/propTypes.js'
 
-const createChangeHandler = props => ({ selected }) =>
-    props.input.onChange(selected)
-
-const SingleSelect = props => {
-    const { options = [], value, onChange, ...rest } = normalizeProps(
-        props,
-        createChangeHandler(props)
-    )
-
+const SingleSelect = ({
+    error,
+    input,
+    loading,
+    meta,
+    onBlur,
+    onFocus,
+    options,
+    showLoadingStatus,
+    showValidStatus,
+    valid,
+    validationText,
+    ...rest
+}) => {
     return (
-        <SingleSelectField {...rest} selected={value || {}} onChange={onChange}>
+        <SingleSelectField
+            {...rest}
+            name={input.name}
+            error={hasError(meta, error)}
+            valid={isValid(meta, valid, showValidStatus)}
+            loading={isLoading(meta, loading, showLoadingStatus)}
+            validationText={getValidationText(meta, validationText, error)}
+            onFocus={createFocusHandler(input, onFocus)}
+            onChange={createSelectChangeHandler(input)}
+            onBlur={createBlurHandler(input, onBlur)}
+            selected={input.value || []}
+        >
             {options.map(option => (
                 <SingleSelectOption key={option.value} {...option} />
             ))}
@@ -24,10 +48,19 @@ const SingleSelect = props => {
 }
 
 SingleSelect.propTypes = {
-    ...fieldRenderProps,
-    ...SingleSelectField.propTypes,
-    options: propTypes.arrayOf(SingleSelectField.propTypes.selected),
-    value: propTypes.string,
+    input: inputPropType.isRequired,
+    meta: metaPropType.isRequired,
+    options: propTypes.arrayOf(SingleSelectField.propTypes.selected).isRequired,
+
+    error: propTypes.bool,
+    loading: propTypes.bool,
+    showLoadingStatus: propTypes.bool,
+    showValidStatus: propTypes.bool,
+    valid: propTypes.bool,
+    validationText: propTypes.string,
+
+    onBlur: propTypes.func,
+    onFocus: propTypes.func,
 }
 
 export { SingleSelect }
