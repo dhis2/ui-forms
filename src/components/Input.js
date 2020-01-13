@@ -43,12 +43,14 @@ const Input = ({
 Input.propTypes = {
     input: inputPropType.isRequired,
     meta: metaPropType.isRequired,
+
     error: propTypes.bool,
     loading: propTypes.bool,
     showLoadingStatus: propTypes.bool,
     showValidStatus: propTypes.bool,
     valid: propTypes.bool,
     validationText: propTypes.string,
+
     onBlur: propTypes.func,
     onFocus: propTypes.func,
 }

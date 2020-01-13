@@ -84,6 +84,7 @@ FileInput.defaultProps = {
 FileInput.propTypes = {
     input: inputPropType.isRequired,
     meta: metaPropType.isRequired,
+
     buttonLabel: propTypes.string,
     disabled: propTypes.bool,
     error: propTypes.bool,

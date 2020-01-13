@@ -62,11 +62,13 @@ CheckboxGroup.propTypes = {
     input: inputPropType.isRequired,
     meta: metaPropType.isRequired,
     options: toggleGroupOptionsProp.isRequired,
+
     checkedValue: propTypes.string,
     error: propTypes.bool,
     showValidStatus: propTypes.bool,
     valid: propTypes.bool,
     validationText: propTypes.string,
+
     onBlur: propTypes.func,
     onFocus: propTypes.func,
 }
