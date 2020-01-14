@@ -27,6 +27,8 @@ storiesOf('SingleSelect', module)
             name="agree"
             label="Do you agree?"
             options={options}
+            clearable
+            clearText="Clear"
         />
     ))
     .add('InitialValue', () => (

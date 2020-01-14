@@ -3,7 +3,6 @@ import propTypes from '@dhis2/prop-types'
 import { MultiSelectField, MultiSelectOption } from '@dhis2/ui-core'
 
 import {
-    createSelectChangeHandler,
     createFocusHandler,
     createBlurHandler,
     hasError,
@@ -12,6 +11,11 @@ import {
     getValidationText,
 } from './shared/helpers.js'
 import { inputPropType, metaPropType } from './shared/propTypes.js'
+
+const createSelectChangeHandler = ({ onChange }) => ({ selected }) => {
+    const value = Array.isArray(selected) && selected.length > 0 ? selected : ''
+    onChange(value)
+}
 
 const MultiSelect = ({
     error,

@@ -3,7 +3,6 @@ import propTypes from '@dhis2/prop-types'
 import { SingleSelectField, SingleSelectOption } from '@dhis2/ui-core'
 
 import {
-    createSelectChangeHandler,
     createFocusHandler,
     createBlurHandler,
     hasError,
@@ -12,6 +11,11 @@ import {
     getValidationText,
 } from './shared/helpers.js'
 import { inputPropType, metaPropType } from './shared/propTypes.js'
+
+const createSelectChangeHandler = ({ onChange }) => ({ selected }) => {
+    const value = 'value' in selected && 'label' in selected ? selected : ''
+    onChange(value)
+}
 
 const SingleSelect = ({
     error,
@@ -38,7 +42,7 @@ const SingleSelect = ({
             onFocus={createFocusHandler(input, onFocus)}
             onChange={createSelectChangeHandler(input)}
             onBlur={createBlurHandler(input, onBlur)}
-            selected={input.value || []}
+            selected={input.value || {}}
         >
             {options.map(option => (
                 <SingleSelectOption key={option.value} {...option} />

@@ -1,7 +1,6 @@
 export { createBlurHandler } from './helpers/createBlurHandler.js'
 export { createChangeHandler } from './helpers/createChangeHandler.js'
 export { createFocusHandler } from './helpers/createFocusHandler.js'
-export { createSelectChangeHandler } from './helpers/createSelectChangeHandler.js'
 export { createToggleChangeHandler } from './helpers/createToggleChangeHandler.js'
 export { getValidationText } from './helpers/getValidationText.js'
 export { hasError } from './helpers/hasError.js'
