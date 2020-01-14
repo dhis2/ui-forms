@@ -15,6 +15,6 @@ Given('a checked Switch without value is rendered', () => {
     cy.verifyFormValue('switch', true)
 })
 
-Then('the form value that corresponds to the switch will be false', () => {
-    cy.verifyFormValue('switch', false)
+Then('the form value that corresponds to the switch will be null', () => {
+    cy.verifyFormValue('switch', null)
 })

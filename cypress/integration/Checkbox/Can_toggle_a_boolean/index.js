@@ -15,6 +15,6 @@ Given('a checked Checkbox without value is rendered', () => {
     cy.verifyFormValue('checkbox', true)
 })
 
-Then('the form value that corresponds to the checkbox will be false', () => {
-    cy.verifyFormValue('checkbox', false)
+Then('the form value that corresponds to the checkbox will be null', () => {
+    cy.verifyFormValue('checkbox', null)
 })
