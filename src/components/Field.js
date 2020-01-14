@@ -2,6 +2,8 @@ import propTypes from '@dhis2/prop-types'
 import { Field } from 'react-final-form'
 
 Field.propTypes = {
+    name: propTypes.string.isRequired,
+
     afterSubmit: propTypes.func,
     allowNull: propTypes.bool,
     beforeSubmit: propTypes.func,
@@ -15,7 +17,6 @@ Field.propTypes = {
     formatOnBlur: propTypes.func,
     initialValue: propTypes.any,
     isEqual: propTypes.func,
-    name: propTypes.string.isRequired,
     parse: propTypes.func,
     render: propTypes.func,
     subscription: propTypes.object,
