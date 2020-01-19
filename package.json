@@ -75,7 +75,7 @@
         "storybook-addon-jsx": "^7.1.6",
         "storybook-addon-react-docgen": "^1.2.21",
         "typeface-roboto": "^0.0.75",
-        "wait-on": "^3.3.0"
+        "wait-on": "^4.0.0"
     },
     "peerDependencies": {
         "@dhis2/d2-i18n": "^1",
