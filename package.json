@@ -67,7 +67,7 @@
         "enzyme-adapter-react-16": "^1.15.2",
         "eslint-plugin-react": "^7.18.0",
         "fs-extra": "^8.1.0",
-        "husky": "^4.1.0",
+        "husky": "^4.2.1",
         "jest": "^24.9.0",
         "react": "^16.9.0",
         "react-dev-utils": "^10.0.0",
