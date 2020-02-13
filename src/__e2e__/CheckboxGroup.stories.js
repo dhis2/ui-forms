@@ -1,8 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, CheckboxGroup, hasValue } from '../src/index.js'
-import { formDecorator } from '../.storybook/formDecorator.js'
+import { Field, CheckboxGroup, hasValue } from '../index.js'
 
 const defaultOptions = [
     { label: 'Foo', value: 'foo' },
@@ -11,7 +10,6 @@ const defaultOptions = [
 ]
 
 storiesOf('Testing:CheckboxGroup', module)
-    .addDecorator(formDecorator)
     .add('Default', ({ cypressProps }) => (
         <Field
             name="choice"

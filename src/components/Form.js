@@ -2,6 +2,12 @@ import { Form } from 'react-final-form'
 import propTypes from '@dhis2/prop-types'
 
 Form.propTypes = {
+    active: propTypes.string,
+    dirty: propTypes.bool,
+    dirtyFields: propTypes.object,
+    dirtySinceLastSubmit: propTypes.bool,
+    error: propTypes.string,
+    errors: propTypes.object,
     form: propTypes.shape({
         batch: propTypes.func,
         blur: propTypes.string,
@@ -23,12 +29,6 @@ Form.propTypes = {
         subscribe: propTypes.func,
     }),
     handleSubmit: propTypes.func,
-    active: propTypes.string,
-    dirty: propTypes.bool,
-    dirtyFields: propTypes.object,
-    dirtySinceLastSubmit: propTypes.bool,
-    error: propTypes.string,
-    errors: propTypes.object,
     hasSubmitErrors: propTypes.bool,
     hasValidationErrors: propTypes.bool,
     initialValues: propTypes.object,
