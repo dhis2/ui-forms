@@ -28,3 +28,6 @@ bundle.stats.json
 
 # auto-generated i18n files
 src/locales
+
+# d2 shell
+.d2/
