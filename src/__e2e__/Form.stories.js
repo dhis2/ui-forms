@@ -2,8 +2,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import {} from '../src/index.js'
-import { formDecorator } from '../.storybook/formDecorator.js'
 import {
     Checkbox,
     CheckboxGroup,
@@ -18,7 +16,7 @@ import {
     composeValidators,
     email,
     hasValue,
-} from '../src/index.js'
+} from '../index.js'
 
 const StandardForm = ({ values }) => {
     return (
@@ -187,7 +185,6 @@ const StandardForm = ({ values }) => {
 }
 
 storiesOf('Testing:Forms', module)
-    .addDecorator(formDecorator)
     .addParameters({ options: { showPanel: false } })
     .add('Standard form', ({ formRenderProps }) => (
         <StandardForm {...formRenderProps} />

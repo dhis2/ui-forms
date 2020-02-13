@@ -1,13 +1,11 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, FileInput, hasValue } from '../src/index.js'
-import { formDecorator } from '../.storybook/formDecorator.js'
+import { Field, FileInput, hasValue } from '../index.js'
 
 const files = [new File([], 'file1.txt'), new File([], 'file2.txt')]
 
 storiesOf('FileInput', module)
-    .addDecorator(formDecorator)
     .add('Default', () => (
         <Field
             component={FileInput}

@@ -1,11 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, Input, hasValue } from '../src/index.js'
-import { formDecorator } from '../.storybook/formDecorator.js'
+import { Field, Input, hasValue } from '../index.js'
 
 storiesOf('Testing:Input', module)
-    .addDecorator(formDecorator)
     .add('Default', () => (
         <Field component={Input} name="agree" label="Do you agree?" />
     ))

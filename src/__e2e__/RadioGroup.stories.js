@@ -1,33 +1,30 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Field, RadioGroup, hasValue } from '../src/index.js'
-import { formDecorator } from '../.storybook/formDecorator.js'
+import { Field, RadioGroup, hasValue } from '../index.js'
 
-const options = [
+const defaultOptions = [
     { label: 'Foo', value: 'foo' },
     { label: 'Bar', value: 'bar' },
     { label: 'Baz', value: 'baz' },
 ]
 
-storiesOf('RadioGroup', module)
-    .addDecorator(formDecorator)
-    .add('Default - Radio', () => (
+storiesOf('Testing:RadioGroup', module)
+    .add('Default', ({ cypressProps }) => (
         <Field
             name="choice"
             label="Choose something"
             component={RadioGroup}
-            options={options}
-            initialValue="bar"
+            options={cypressProps.options || defaultOptions}
         />
     ))
-    .add('Required - Radio', () => (
+    .add('Required', ({ cypressProps }) => (
         <Field
             name="choice"
             label="Choose something"
             component={RadioGroup}
             validate={hasValue}
             required
-            options={options}
+            options={cypressProps.options || defaultOptions}
         />
     ))
