@@ -38,7 +38,9 @@ const SingleSelect = ({
             onFocus={createFocusHandler(input, onFocus)}
             onChange={createSelectChangeHandler(input)}
             onBlur={createBlurHandler(input, onBlur)}
-            selected={input.value || []}
+            selected={
+                input.value || {}
+            } /* input.value is an empty string initially, so we're providing an empty object if falsey */
         >
             {options.map(option => (
                 <SingleSelectOption key={option.value} {...option} />
