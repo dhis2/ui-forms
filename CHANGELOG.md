@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dhis2/ui-forms/compare/v1.0.0...v1.0.1) (2020-02-19)
+
+
+### Bug Fixes
+
+* use object for single select initial value ([f2f677c](https://github.com/dhis2/ui-forms/commit/f2f677ccc5eebbee644aae7688efd2d921a673ee))
+
 # 1.0.0 (2020-02-13)
 
 
