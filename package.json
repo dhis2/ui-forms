@@ -40,7 +40,7 @@
         "@dhis2/ui-core": "4.1.2",
         "@storybook/addon-notes": "5.3.8",
         "@storybook/preset-create-react-app": "^1.5.2",
-        "@storybook/react": "^5.3.8",
+        "@storybook/react": "^5.3.13",
         "@storybook/router": "^5.3.8",
         "concurrently": "^5.0.2",
         "enzyme": "^3.11.0",
