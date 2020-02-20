@@ -42,7 +42,7 @@
         "@storybook/preset-create-react-app": "^1.5.2",
         "@storybook/react": "^5.3.8",
         "@storybook/router": "^5.3.8",
-        "concurrently": "^5.0.2",
+        "concurrently": "^5.1.0",
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.2",
         "fs-extra": "^8.1.0",
