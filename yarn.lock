@@ -1121,7 +1121,7 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@base2/pretty-print-object@^1.0.0":
+"@base2/pretty-print-object@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@base2/pretty-print-object/-/pretty-print-object-1.0.0.tgz#860ce718b0b73f4009e153541faff2cb6b85d047"
   integrity sha512-4Th98KlMHr5+JkxfcoDT//6vY8vM+iSPrLNpHhRyLx2CFYi8e2RfqPLdpbnpo0Q5lQC5hNB79yes07zb02fvCw==
@@ -13327,12 +13327,12 @@ react-draggable@^4.0.3:
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
-react-element-to-jsx-string@^14.0.3:
-  version "14.1.0"
-  resolved "https://registry.yarnpkg.com/react-element-to-jsx-string/-/react-element-to-jsx-string-14.1.0.tgz#31fcc3a82459d5e57ef852aa6879bcd0a578a8cb"
-  integrity sha512-uvfAsY6bn2c8HMBkxwj+2MMXcvNIkKDl0aZg2Jhzp+c096hZaXUNivVCP2H4RBtmGSSJcfMqQA5oPk8YdqFOVw==
+react-element-to-jsx-string@^14.3.1:
+  version "14.3.1"
+  resolved "https://registry.yarnpkg.com/react-element-to-jsx-string/-/react-element-to-jsx-string-14.3.1.tgz#a08fa6e46eb76061aca7eabc2e70f433583cb203"
+  integrity sha512-LRdQWRB+xcVPOL4PU4RYuTg6dUJ/FNmaQ8ls6w38YbzkbV6Yr5tFNESroub9GiSghtnMq8dQg2LcNN5aMIDzVg==
   dependencies:
-    "@base2/pretty-print-object" "^1.0.0"
+    "@base2/pretty-print-object" "1.0.0"
     is-plain-object "3.0.0"
 
 react-error-overlay@^6.0.3, react-error-overlay@^6.0.4:
@@ -15014,15 +15014,15 @@ store2@^2.7.1:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.10.0.tgz#46b82bb91878daf1b0d56dec2f1d41e54d5103cf"
   integrity sha512-tWEpK0snS2RPUq1i3R6OahfJNjWCQYNxq0+by1amCSuw0mXtymJpzmZIeYpA1UAa+7B0grCpNYIbDcd7AgTbFg==
 
-storybook-addon-jsx@^7.1.6:
-  version "7.1.13"
-  resolved "https://registry.yarnpkg.com/storybook-addon-jsx/-/storybook-addon-jsx-7.1.13.tgz#1bc18a64bd9053b0c2f9669d398697ec6fdb6b36"
-  integrity sha512-JHWbVUzpkyIMiGeFWFkxg6qNkR0fLeT++v1Q4IN9s7JfxrHksPskMnCkDra+rmx/Mtdq4uk5XKREJNIl0H8d/w==
+storybook-addon-jsx@^7.1.15:
+  version "7.1.15"
+  resolved "https://registry.yarnpkg.com/storybook-addon-jsx/-/storybook-addon-jsx-7.1.15.tgz#e43b8be4c67cef61273ec647f7820437e562d375"
+  integrity sha512-Z2FWukjv8k4f5oP/c/0lbgWJItL3PNQ3SE3KLZ6rvhYeuAPCoMJppEYSs/FYeMZP5Z3LgygtD1v0R5kqwbb2Aw==
   dependencies:
     "@storybook/components" "^5.2.5"
     copy-to-clipboard "^3.0.8"
     js-beautify "^1.8.8"
-    react-element-to-jsx-string "^14.0.3"
+    react-element-to-jsx-string "^14.3.1"
 
 storybook-addon-react-docgen@^1.2.21:
   version "1.2.28"
